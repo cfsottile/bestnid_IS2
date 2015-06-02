@@ -44,7 +44,7 @@ Route::get('users/edit', [
 				  ]);
 
 Route::post('users/update', [
-						'as' => 'users.store'
+						'as' => 'users.store',
 						'uses' => 'UserController@update'
 					]);
 
@@ -55,3 +55,8 @@ Route::get('user/edit/{id?}', UserController@edit)
 */
 
 //----------------------------------------------------------------
+
+//----------------------Rutas de Auctions------------------------
+
+
+Route::resource('auctions', 'AuctionsController', ['only' => ['show']]);
