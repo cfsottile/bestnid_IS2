@@ -17,9 +17,15 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('email')->unique();
-			$table->string('password', 60);
+			$table->string('password', 100);
+			$table->string('dni',10);
+			$table->date('born_date');
+			$table->string('phone',16);
+			$table->integer('cc_data'); //datos de tarjeta de credito (credit card)
+			$table->boolean('is_admin');
+
+			$table->timestamps(); //crea columnas created_at + updated_at
 			$table->rememberToken();
-			$table->timestamps();
 		});
 	}
 

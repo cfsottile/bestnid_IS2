@@ -50,6 +50,38 @@
 						</div>
 
 						<div class="form-group">
+							<label class="col-md-4 control-label">DNI</label>
+							<div class="col-md-6">
+								<input type="number" class="form-control" name="dni" value="{{ old('dni') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Born Date:</label>
+							<div class="col-md-6">
+								<input type="date" class="form-control" name="born_date" value="{{ old('born_date') }}">
+							</div>
+						</div>
+
+					  <div class="form-group">
+							<label class="col-md-4 control-label">Phone Number:</label>
+							<div class="col-md-6">
+								<input type="number" class="form-control" name="phone" value="{{ old('phone') }}">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Credit Card Number:</label>
+							<div class="col-md-6">
+								<input type="number" class="form-control" name="cc_data" value="{{ old('cc_data') }}">
+							</div>
+						</div>
+
+						<!-- is Admin, hay q meter esto en un lugar menos vulnerable, como en el controlador -->
+						<input type="hidden" class="form-control" name="is_admin" value='0'>
+
+
+						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									Register

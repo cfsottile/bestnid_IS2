@@ -11,6 +11,9 @@
 |
 */
 
+//----------------Rutas de manejo de Usuarios--------------------
+
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -19,3 +22,36 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+Route::resource('users', 'UserController',
+                ['only' => ['destroy', 'show', 'edit']] );
+*/
+
+Route::delete('users/delete', [
+							'as' => 'users.delete',
+							'uses' => 'UserController@destroy'
+					]);
+
+Route::get('users/show', [
+					 'as' => 'users.show',
+					 'uses' => 'UserController@show'
+					]);
+
+Route::get('users/edit', [
+ 					 'as' => 'users.edit',
+					 'uses' => 'UserController@edit'
+				  ]);
+
+Route::post('users/update', [
+						'as' => 'users.store'
+						'uses' => 'UserController@update'
+					]);
+
+/*
+Route::delete('users/delete', UserController@destroy)
+Route::get('user/show/{id?}', UserController@show)
+Route::get('user/edit/{id?}', UserController@edit)
+*/
+
+//----------------------------------------------------------------
