@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('dni',10);
 			$table->date('born_date');
 			$table->string('phone',16);
-			$table->integer('cc_data'); //datos de tarjeta de credito (credit card)
+			$table->integer('cc_data')->nullable(); //datos de tarjeta de credito (credit card)
 			$table->boolean('is_admin');
 
 			$table->timestamps(); //crea columnas created_at + updated_at

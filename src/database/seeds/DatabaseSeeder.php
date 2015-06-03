@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder {
       'dni' => '1',
       'born_date'=> Date('Y/m/d'),
       'phone' => '1111',
-      'cc_data' => '',
+    //   'cc_data' => 0,
       'is_admin' => '0',
     ]);
 
@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder {
       'dni' => '1',
       'born_date'=> Date('Y/m/d'),
       'phone' => '2222',
-      'cc_data' => '',
+    //   'cc_data' => 0,
       'is_admin' => '0',
     ]);
 
@@ -68,7 +68,7 @@ class UsersTableSeeder extends Seeder {
       'dni' => '1',
       'born_date'=> Date('Y/m/d'),
       'phone' => '3333',
-      'cc_data' => '',
+    //   'cc_data' => 0,
       'is_admin' => '0',
     ]);
 

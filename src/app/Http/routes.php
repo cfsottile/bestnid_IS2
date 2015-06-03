@@ -59,7 +59,7 @@ Route::get('user/edit/{id?}', UserController@edit)
 //----------------------Rutas de Auctions------------------------
 
 
-Route::resource('auctions', 'AuctionsController', ['only' => ['show']]);
+Route::resource('auctions', 'AuctionsController');
 
 
 
@@ -72,7 +72,7 @@ Route::resource('auctions', 'AuctionsController', ['only' => ['show']]);
 Route::get('login', 'AuthController@showLogin'); // Mostrar login
 Route::post('login', 'AuthController@postLogin'); // Verificar datos
 Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
- 
+
 // Rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function()
 {

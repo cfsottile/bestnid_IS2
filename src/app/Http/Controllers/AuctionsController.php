@@ -15,7 +15,8 @@ class AuctionsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$all = Auction::all();
+		return view('auctions.index')->with('auctions', $all);
 	}
 
 	/**
