@@ -60,7 +60,7 @@ class AuthController extends Controller {
             return Redirect::to('/');
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
-        return view('auth.login');
+        return View::make('login');
     }
 
 
@@ -81,8 +81,8 @@ class AuthController extends Controller {
             // De ser datos válidos nos mandara a la bienvenida
             return Redirect::to('/');
         }
-
-        // En caso de que la autenticación haya fallado manda un mensaje al formulario de login
+        
+        // En caso de que la autenticación haya fallado manda un mensaje al formulario de login 
         //y también regresamos los valores enviados con withInput().
         return Redirect::to('login')
                     ->with('mensaje_error', 'Tus datos son incorrectos')
