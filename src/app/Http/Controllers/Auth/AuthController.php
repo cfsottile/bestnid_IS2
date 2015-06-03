@@ -38,7 +38,7 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => 'logout']);
 	}
 
 	/*
@@ -60,7 +60,7 @@ class AuthController extends Controller {
             return Redirect::to('/');
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
-        return View::make('login');
+        return view('auth.login');
     }
 
 
@@ -81,23 +81,22 @@ class AuthController extends Controller {
             // De ser datos válidos nos mandara a la bienvenida
             return Redirect::to('/');
         }
-        
-        // En caso de que la autenticación haya fallado manda un mensaje al formulario de login 
+
+        // En caso de que la autenticación haya fallado manda un mensaje al formulario de login
         //y también regresamos los valores enviados con withInput().
-        return Redirect::to('login')
-                    ->with('mensaje_error', 'Tus datos son incorrectos')
-                    ->withInput();
+        return redirect('login');
     }
 
 
     /**
      * Muestra el formulario de login mostrando un mensaje de que cerró sesión.
      */
-    public function logOut()
+    public function logout()
     {
-        Auth::logout();
-        return Redirect::to('login')
-                    ->with('mensaje_correcto', 'Tu sesión ha sido cerrada.');
+
+			Auth::logout();
+      return redirect('login');
+
     }
 
 }

@@ -18,25 +18,38 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+
 Route::controllers([
-	'auth' => 'Auth\AuthController',
+	//'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-/*
-Route::resource('users', 'UserController',
-                ['only' => ['destroy', 'show', 'edit']] );
-*/
+
+Route::get('login', [
+					 'as' => 'login',
+					 'uses' => 'Auth\AuthController@showLogin'
+					 ]); // Mostrar login
+
+Route::post('login', [
+						'as' => 'postLogin',
+						'uses' => 'Auth\AuthController@postLogin'
+						]); // Verificar datos
+
+Route::get('logout', [
+ 					 'as' => 'logout',
+					 'uses' => 'Auth\AuthController@logout'
+				  ]); // Finalizar sesión
+
 
 Route::delete('users/delete', [
 							'as' => 'users.delete',
 							'uses' => 'UserController@destroy'
-					]);
+							]);
 
 Route::get('users/show', [
 					 'as' => 'users.show',
 					 'uses' => 'UserController@show'
-					]);
+					 ]);
 
 Route::get('users/edit', [
  					 'as' => 'users.edit',
@@ -46,13 +59,8 @@ Route::get('users/edit', [
 Route::post('users/update', [
 						'as' => 'users.store',
 						'uses' => 'UserController@update'
-					]);
+					 ]);
 
-/*
-Route::delete('users/delete', UserController@destroy)
-Route::get('user/show/{id?}', UserController@show)
-Route::get('user/edit/{id?}', UserController@edit)
-*/
 
 //----------------------------------------------------------------
 
@@ -62,26 +70,4 @@ Route::get('user/edit/{id?}', UserController@edit)
 Route::resource('auctions', 'AuctionsController');
 
 
-
-//----------------------------------------------------------------
-
-//----------------Rutas para usuarios registrados ----------------
-
-
-/*Llamadas al controlador Auth*/
-Route::get('login', 'AuthController@showLogin'); // Mostrar login
-Route::post('login', 'AuthController@postLogin'); // Verificar datos
-Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
-
-// Rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
-Route::group(array('before' => 'auth'), function()
-{
-	// Esta será nuestra ruta de bienvenida.
-/*	Route::get('/', function()
-	{
-		return View::make('hello');
-	});
-*/
-    // Ruta para cerrar sesión.
-    Route::get('logout', 'AuthController@logOut');
-});
+//-----------------------------------------------------------------
