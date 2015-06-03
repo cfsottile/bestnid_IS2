@@ -44,4 +44,8 @@ class Auction extends Model {
 	public function comments() {
 		return $this->hasMany('App\Comment');
 	}
+
+	public function pictureUrl() {
+		return asset('images/'.$this->picture);
+	}
 }
