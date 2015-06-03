@@ -18,15 +18,13 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-/*
-Route::resource('users', 'UserController',
-                ['only' => ['destroy', 'show', 'edit']] );
-*/
+
 
 Route::delete('users/delete', [
 							'as' => 'users.delete',
@@ -48,12 +46,6 @@ Route::post('users/update', [
 						'uses' => 'UserController@update'
 					]);
 
-/*
-Route::delete('users/delete', UserController@destroy)
-Route::get('user/show/{id?}', UserController@show)
-Route::get('user/edit/{id?}', UserController@edit)
-*/
-
 //----------------------------------------------------------------
 
 //----------------------Rutas de Auctions------------------------
@@ -69,10 +61,10 @@ Route::resource('auctions', 'AuctionsController', ['only' => ['show']]);
 
 
 /*Llamadas al controlador Auth*/
-Route::get('login', 'AuthController@showLogin'); // Mostrar login
+Route::get('login', 'Auth\AuthController@showLogin'); // Mostrar login
 Route::post('login', 'AuthController@postLogin'); // Verificar datos
 Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
- 
+
 // Rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function()
 {
