@@ -32,14 +32,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token','cc_data', 'is_admin'];
 
 
-	/* descomentar a medida que agreguemos los modelos
+//	 descomentar a medida que agreguemos los modelos
 
 	public function auctions(){
 
 			return $this->hasMany('App\Models\Auction');
 
 	}
-
+/*
 	public function comments(){
 
 			return $this->hasMany('App\Models\Comment');

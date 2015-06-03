@@ -60,3 +60,28 @@ Route::get('user/edit/{id?}', UserController@edit)
 
 
 Route::resource('auctions', 'AuctionsController', ['only' => ['show']]);
+
+
+
+//----------------------------------------------------------------
+
+//----------------Rutas para usuarios registrados ----------------
+
+
+/*Llamadas al controlador Auth*/
+Route::get('login', 'AuthController@showLogin'); // Mostrar login
+Route::post('login', 'AuthController@postLogin'); // Verificar datos
+Route::get('logout', 'AuthController@logOut'); // Finalizar sesión
+ 
+// Rutas que están dentro de él sólo serán mostradas si antes el usuario se ha autenticado.
+Route::group(array('before' => 'auth'), function()
+{
+	// Esta será nuestra ruta de bienvenida.
+/*	Route::get('/', function()
+	{
+		return View::make('hello');
+	});
+*/
+    // Ruta para cerrar sesión.
+    Route::get('logout', 'AuthController@logOut');
+});
