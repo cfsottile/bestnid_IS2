@@ -21,7 +21,8 @@ class AuctionsController extends Controller {
 			$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
 			$data = array('auctions' => $auctions, 'query' => $query);
 		} else {
-			$auctions = Auction::currents()->orderBy('created_at')->get();
+			$orderCriteria = Request::get('orderCriteria', 'created_at');
+			$auctions = Auction::currents()->orderBy($orderCriteria)->get();
 			$data = array('auctions' => $auctions);
 		}
 
