@@ -5,6 +5,13 @@
 @section('content')
 
     <h1>Subastas</h1>
+
+    @if(isset($query))
+        <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name') }}">Ordenar por nombre</a>
+    @else
+        <a href="{{ route('auctions.index', 'orderCriteria=name') }}">Ordenar por nombre</a>
+    @endif
+    
     <div class="container-fluid">
     <div class="row">
     @foreach ($auctions as $a)
