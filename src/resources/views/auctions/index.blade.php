@@ -4,14 +4,12 @@
 
 @section('content')
 
-    <h1>Subastas</h1>
-
+    <h1>Subastas</h1><br>
     @if(isset($query))
         <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name') }}">Ordenar por nombre</a>
     @else
         <a href="{{ route('auctions.index', 'orderCriteria=name') }}">Ordenar por nombre</a>
     @endif
-    
     <div class="container-fluid">
     <div class="row">
     @foreach ($auctions as $a)
@@ -19,9 +17,9 @@
         <div class="col-md-4">
 
           <div class="thumbnail panel panel-default" style="height:450px; width:300px">
-            <div class="panel-heading">
+            {{-- <div class="panel-heading">
               <h5>Bids:-|             |Dias:-</h5>
-            </div>
+            </div> --}}
             <div class="panel-body">
               <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
                 <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
