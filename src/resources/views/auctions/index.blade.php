@@ -11,11 +11,23 @@
 
         <div class="col-md-4">
 
-            <a class=thumbnail style="height:400px; width:300px" href="{{ route('auctions.show', ['id' => $a->id ]) }}">
-              <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}" height="250px" width="250px"/>
+          <div  class="thumbnail panel panel-danger" style="height:400px; width:300px">
+            <div class="panel-heading">
+              <h3 class="panel-title"> {{ $a->name }} </h3>
+              <h5> {{ $a->description }} </h5>
+            </div>
+            <div class="panel-body">
+              <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
+                <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
+              </a>
+            </div>
+          </div>
+
+            {{-- <a class=thumbnail style="height:400px; width:300px" href="{{ route('auctions.show', ['id' => $a->id ]) }}">
+              <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
               <h3>{{ $a->name }}</h3>
               <p> {{ $a->description }} </p>
-            </a>
+            </a> --}}
 
 
         </div>
@@ -23,5 +35,7 @@
     @endforeach
     </div>
     </div>
+  </div>
+
 
 @overwrite

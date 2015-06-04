@@ -7,7 +7,8 @@
           @section('styles')
           <!-- insert your styles here -->
             <!-- Bootstrap -->
-            <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+            <link rel="stylesheet" href="{{asset('css/bootstrap-darklytheme.css')}}">
+            <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
           @show
           @section('scripts')
             <!-- insert your scripts here -->
@@ -19,20 +20,22 @@
     <body>
       <div class='container'>
         @section('header')
+          @include('partials.header')
+
 
         @show
 
         @section('notifications')
           @include('partials.notifications')
 
-        @endsection
+        @show
 
         @yield('content')
 
         @section('footer')
           @include('partials.footer')
 
-        @endsection
+        @show
       </div>
 
     </body>

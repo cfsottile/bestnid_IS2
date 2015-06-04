@@ -12,4 +12,4 @@
         Fecha de cierre: {{ $auction->end_date }}<br>
     </p>
 
-@show
+@overwrite
