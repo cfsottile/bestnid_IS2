@@ -48,4 +48,12 @@ class Auction extends Model {
 	public function pictureUrl() {
 		return asset('images/'.$this->picture);
 	}
+
+	public function scopeNameIncludes($query, $string) {
+		return $query->where('name', 'LIKE', '%'.$string.'%');
+	}
+
+	public function scopeCurrents ($query) {
+		return $query->where('end_date', '>', Date('Y/m/d H:i:s'));
+	}
 }

@@ -18,12 +18,11 @@ class AuctionsController extends Controller {
 		if (Request::has('query')) {
 			$query = Request::get('query');
 			$orderCriteria = Request::get('orderCriteria', 'created_at');
-			$auctions = $this->searchByName($query, $orderCriteria);
-
+			$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
 			$data = array('auctions' => $auctions, 'query' => $query);
 		} else {
-			$auctions = Auction::where('end_date', '>', Date('Y/m/d H:i:s'))->orderBy('created_at')->get();
-
+			$orderCriteria = Request::get('orderCriteria', 'created_at');
+			$auctions = Auction::currents()->orderBy($orderCriteria)->get();
 			$data = array('auctions' => $auctions);
 		}
 
@@ -93,25 +92,5 @@ class AuctionsController extends Controller {
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function getAuctionsOrderedBy() {
-
-	}
-
-	private function searchByName($name, $orderCriteria) {
-		return Auction::where('name', 'LIKE', '%'.$name.'%')
-			->orderBy($orderCriteria)
-			->get();
-	}
-
-	private function searchAndSort() {
-
-	}
-
-	private function searchAuctionsBetweenDates($startDate, $endDate, $orderCriteria) {
-		return Auction::where('created_at', 'between', $startDate.' and '.$endDate)
-			->orderBy($orderCriteria)
-			->get();
 	}
 }
