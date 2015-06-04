@@ -29,11 +29,11 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Buscar..." name="query">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">APRETAME</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
