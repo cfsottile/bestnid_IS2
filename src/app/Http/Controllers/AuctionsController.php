@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Auction;
 
-use Illuminate\Http\Request;
+use Request;
 
 class AuctionsController extends Controller {
 
@@ -15,8 +15,19 @@ class AuctionsController extends Controller {
 	 */
 	public function index()
 	{
-		$all = Auction::all();
-		return view('auctions.index')->with('auctions', $all);
+		if (Request::has('query')) {
+			$query = Request::get('query');
+			$orderCriteria = Request::get('orderCriteria', 'created_at');
+			$auctions = $this->searchByName($query, $orderCriteria);
+
+			$data = array('auctions' => $auctions, 'query' => $query);
+		} else {
+			$auctions = Auction::where('end_date', '>', Date('Y/m/d H:i:s'))->orderBy('created_at')->get();
+
+			$data = array('auctions' => $auctions);
+		}
+
+		return view('auctions.index')->with($data);
 	}
 
 	/**
@@ -84,4 +95,23 @@ class AuctionsController extends Controller {
 		//
 	}
 
+	public function getAuctionsOrderedBy() {
+
+	}
+
+	private function searchByName($name, $orderCriteria) {
+		return Auction::where('name', 'LIKE', '%'.$name.'%')
+			->orderBy($orderCriteria)
+			->get();
+	}
+
+	private function searchAndSort() {
+
+	}
+
+	private function searchAuctionsBetweenDates($startDate, $endDate, $orderCriteria) {
+		return Auction::where('created_at', 'between', $startDate.' and '.$endDate)
+			->orderBy($orderCriteria)
+			->get();
+	}
 }
