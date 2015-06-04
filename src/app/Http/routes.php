@@ -25,6 +25,18 @@ Route::controllers([
 ]);
 
 
+Route::get('register',[
+					 //'middleware' => 'auth',
+					 'as' => 'getRegister',
+					 'uses' => 'Auth\AuthController@getregister'
+					]);
+
+Route::post('register',[
+					//'middleware' => 'auth',
+					 'as' => 'postRegister',
+					 'uses' => 'Auth\AuthController@postregister'
+					]);
+
 Route::get('login', [
 					 'as' => 'login',
 					 'uses' => 'Auth\AuthController@showLogin'
@@ -36,30 +48,32 @@ Route::post('login', [
 						]); // Verificar datos
 
 Route::get('logout', [
+					 'middleware' => 'auth',
  					 'as' => 'logout',
 					 'uses' => 'Auth\AuthController@logout'
 				  ]); // Finalizar sesión
 
+// A implementar
 
-Route::delete('users/delete', [
-							'as' => 'users.delete',
-							'uses' => 'UserController@destroy'
-							]);
-
-Route::get('users/show', [
-					 'as' => 'users.show',
-					 'uses' => 'UserController@show'
-					 ]);
-
-Route::get('users/edit', [
- 					 'as' => 'users.edit',
-					 'uses' => 'UserController@edit'
-				  ]);
-
-Route::post('users/update', [
-						'as' => 'users.store',
-						'uses' => 'UserController@update'
-					 ]);
+// Route::delete('users/delete', [
+// 							'as' => 'users.delete',
+// 							'uses' => 'UserController@destroy'
+// 							]);
+//
+// Route::get('users/show', [
+// 					 'as' => 'users.show',
+// 					 'uses' => 'UserController@show'
+// 					 ]);
+//
+// Route::get('users/edit', [
+//  					 'as' => 'users.edit',
+// 					 'uses' => 'UserController@edit'
+// 				  ]);
+//
+// Route::post('users/update', [
+// 						'as' => 'users.store',
+// 						'uses' => 'UserController@update'
+// 					 ]);
 
 
 //----------------------------------------------------------------

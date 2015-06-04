@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Session;
 
 
 class AuthController extends Controller {
@@ -82,9 +83,9 @@ class AuthController extends Controller {
             return Redirect::to('/');
         }
 
-        // En caso de que la autenticación haya fallado manda un mensaje al formulario de login
-        //y también regresamos los valores enviados con withInput().
-        return redirect('login');
+
+				Session::flash('error', 'Credenciales invalidas');
+				return redirect('login');
     }
 
 

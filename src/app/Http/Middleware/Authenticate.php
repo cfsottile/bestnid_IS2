@@ -40,8 +40,12 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('login');
 			}
+		}
+
+		if ($request->RequestUri == '/register'){
+			return redirect('home');
 		}
 
 		return $next($request);
