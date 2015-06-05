@@ -18,14 +18,14 @@ class AuctionsController extends Controller {
 	{
 		$data = array();
 		$orderCriteria = Request::get('orderCriteria', 'created_at');
-
 		if (Request::has('query')) {
 			$query = Request::get('query');
-			if (Request::get('category', false)) {
-				$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
+			if (Request::has('category')) {
+				$auctions = Auction::isOfCategory(Category::idForName($query)->first()->id)
+					->currents()->orderBy($orderCriteria)->get();
+				$data['category'] = true;
 			} else {
-				$auctions = Auction::isOfCategory(Category::find($query))->currents()->orderBy($orderCriteria)->get();
-				$dat['category'] = true;
+				$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
 			}
 			$data['query'] = $query;
 		} else {
