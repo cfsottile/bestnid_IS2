@@ -69,7 +69,7 @@
 										<p class="help-block">{{$errors->first('dni')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El dni debe ser mayor que 999.999 y menor que 100.000.000">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('born_date')) has-error @endif">
