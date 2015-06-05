@@ -117,6 +117,7 @@ return [
 			'required' => 'El DNI es requerido',
 			'min' => 'El DNI debe tener al menos :min números',
 			'max' => 'El DNI debe tener hasta :max números',
+			'regex' => 'El DNI tiene no tiene un formato válido'
 		],
 		'born_date' => [
 			'required' => 'La fecha de nacimiento es requerida',
@@ -126,10 +127,13 @@ return [
 			'required' => 'EL telefono es requerido',
 			'min' => 'El telefono debe tener al menos :min números',
 			'max' => 'El telefono debe tener hasta :max números',
+			'regex' => 'El teléfono no tiene un formato válido'
 		],
 		'cc_data' => [
 			'required' => 'La tarjeta es requerida',
-			'regex' => 'El número de tarjeta no tiene un formato válido',	
+			'regex' => 'El número de tarjeta no tiene un formato válido',
+			'min' => 'El número de tarjeta debe tener 16 números',
+			'max' => 'El número de tarjeta debe tener 16 números'
 		],
 
 	],

@@ -15,15 +15,19 @@ class Registrar implements RegistrarContract {
 	public function validator(array $data)
 	{
 		return Validator::make($data, [
-			'name' => 'required|string|max:50|min:4',
+			// 'name' => 'required|string|min:4|max:50|regex:/^[A-z][A-z\s\.\']+$/',
+			// 'last_name' => 'required|min_4|max:50|regex:/^[A-z][A-z\s\.\']+$/',
+			'name' => 'required|string|max:50|min:4|regex:/^[A-zñÁÉÍÓÚáéíóúü][A-zñáéíóúÁÉÍÓÚü\'\ ]+$/',
 			'last_name' => 'required|string|max:50|min:4',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6',
-			'dni' => 'required|numeric|min:7|max:8',
+			'dni' => 'required|min:7|max:8|regex:/^[0-9]+$/',
 			'born_date' => 'required|Date',
-			'phone' => 'required|numeric|max:16|min:7',
-			'cc_data' => 'numeric|required|min:6',
-			'is_admin' => 'required|boolean'
+			'phone' => 'required|regex:/^\+(?:[0-9] ?){6,14}[0-9]$/',
+			'cc_data' => 'max:16|min:16|required|regex:/^[0-9]+$/',
+			'is_admin' => 'required|boolean',
+			'accept_terms' => 'accepted'
+
 			//regDate pasa a ser equivalente a created_at
 		]);
 	}

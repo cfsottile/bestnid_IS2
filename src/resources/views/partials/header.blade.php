@@ -29,7 +29,7 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" method="GET">
+      <form class="navbar-form navbar-left" role="search" method="GET" action="{{ route('auctions.index')}}">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Buscar..." name="query">
         </div>
