@@ -115,7 +115,7 @@ class UsersTableSeeder extends Seeder {
 				'end_date' => Date('Y/m/d', strtotime("+23 days")),
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
-				'owner_id' => 1,
+				'owner_id' => 2,
 				'category_id' => 5
 			]);
 
@@ -142,7 +142,7 @@ class UsersTableSeeder extends Seeder {
 				'end_date' => Date('Y/m/d', strtotime("+26 days")),
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
-				'owner_id' => 3,
+				'owner_id' => 2,
 				'category_id' => 5
 			]);
 
