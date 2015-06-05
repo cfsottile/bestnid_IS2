@@ -12,7 +12,9 @@
     @endif
 
     @if ( Session::has('error'))
-        {{Session::get('error')}}
+      <ul>
+        <li>{{Session::get('error')}}</li>
+      </ul>
     @endif
     @if (count($errors) > 0)
         <ul>

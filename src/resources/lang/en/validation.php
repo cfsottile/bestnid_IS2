@@ -90,6 +90,9 @@ return [
 		'attribute-name' => [
 			'rule-name' => 'custom-message',
 		],
+		'name' => [
+			'min' => 'El nombre debe tener al menos :min caracteres',
+		],
 	],
 
 	/*
