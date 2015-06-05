@@ -17,13 +17,13 @@
         {{-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li> --}}
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorías <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
 
             <li><a href="{{ route('auctions.index', 'query=Automotores'.'&category=true') }}">Automotores</a></li>
             <li><a href="{{ route('auctions.index', 'query=Cocina'.'&category=true') }}">Cocina</a></li>
             <li><a href="{{ route('auctions.index', 'query=Electrónica'.'&category=true') }}">Electrónica</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Mueblería'.'&category=true') }}">Muebleria</a></li>
+            <li><a href="{{ route('auctions.index', 'query=Mueblería'.'&category=true') }}">Mueblería</a></li>
             <li><a href="{{ route('auctions.index', 'query=Ropa'.'&category=true') }}">Ropa</a></li>
             {{-- <li class="divider"></li> --}}
           </ul>
