@@ -90,7 +90,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'Botella de agua',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+20 days")),
+				// 'end_date' => 2015-06-03 20:51:57,
+				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Botella de agua en no muy buen estado; se cayó del camión repartidor.',
 				'picture' => 'auction_1.jpg',
 				'owner_id' => 1,
@@ -99,7 +100,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'AK-47',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+25 days")),
+				'end_date' => Date('Y/m/d', strtotime("+23 days")),
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
 				'owner_id' => 1,
@@ -108,7 +109,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'Moto G 2013',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+30 days")),
+				'end_date' => Date('Y/m/d', strtotime("+30 days")),
 				'description' => 'El celular está en perfecto estado.',
 				'picture' => 'auction_3.jpg',
 				'owner_id' => 2,
@@ -117,7 +118,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'Cargador para macbook',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+15 days")),
+				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Buen estado.',
 				'picture' => 'auction_4.jpg',
 				'owner_id' => 2,
@@ -126,7 +127,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'Casco',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+26 days")),
+				'end_date' => Date('Y/m/d', strtotime("+26 days")),
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
 				'owner_id' => 3,
@@ -135,7 +136,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'name' => 'Cartuchera Faber-Castell',
-				'end_date' => Date('Y/m/d H:i:s', strtotime("+18 days")),
+				'end_date' => Date('Y/m/d', strtotime("+18 days")),
 				'description' => 'Feroz cartuchera.',
 				'picture' => 'auction_6.jpg',
 				'owner_id' => 3,
