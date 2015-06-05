@@ -1,4 +1,6 @@
-@extends('app')
+@extends('layout.default')
+
+@section('title', 'Registro')
 
 @section('content')
 <div class="container-fluid">

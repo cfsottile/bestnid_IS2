@@ -6,6 +6,7 @@
   <div class="page-header">
     <h1>Subastas</h1>
   </div>
+
     @if ($auctions->count() == 0)
       <h3><small>No se encontraron resultados para '{{ $query }}' </small></h3>
     @else
@@ -16,6 +17,8 @@
       @else
           <a href="{{ route('auctions.index', 'orderCriteria=name') }}">Ordenar por nombre</a>
       @endif
+    
+
       <div class="container-fluid">
       <div class="row">
       @foreach ($auctions as $a)

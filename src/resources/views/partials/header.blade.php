@@ -19,13 +19,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="{{ route('auctions.index', 'query=2'.'&Category=true') }}">Automotores</a></li>
+            <li><a href="{{ route('auctions.index', 'query=3'.'&Category=true') }}">Cocina</a></li>
+            <li><a href="{{ route('auctions.index', 'query=1'.'&Category=true') }}">Electronica</a></li>
+            <li><a href="{{ route('auctions.index', 'query=5'.'&Category=true') }}">Muebleria</a></li>
+            <li><a href="{{ route('auctions.index', 'query=4'.'&Category=true') }}">Ropa</a></li>
+            {{-- <li class="divider"></li> --}}
           </ul>
         </li>
       </ul>
