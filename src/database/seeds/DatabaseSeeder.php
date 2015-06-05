@@ -95,7 +95,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Botella de agua en no muy buen estado; se cayó del camión repartidor.',
 				'picture' => 'auction_1.jpg',
 				'owner_id' => 1,
-				'category_id' => 1
+				'category_id' => 5
 			]);
 
 			Auction::create([
@@ -104,7 +104,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
 				'owner_id' => 1,
-				'category_id' => 1
+				'category_id' => 5
 			]);
 
 			Auction::create([
@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'El celular está en perfecto estado.',
 				'picture' => 'auction_3.jpg',
 				'owner_id' => 2,
-				'category_id' => 2
+				'category_id' => 3
 			]);
 
 			Auction::create([
@@ -122,7 +122,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Buen estado.',
 				'picture' => 'auction_4.jpg',
 				'owner_id' => 2,
-				'category_id' => 2
+				'category_id' => 3
 			]);
 
 			Auction::create([
@@ -131,7 +131,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
 				'owner_id' => 3,
-				'category_id' => 3
+				'category_id' => 5
 			]);
 
 			Auction::create([
@@ -140,7 +140,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Feroz cartuchera.',
 				'picture' => 'auction_6.jpg',
 				'owner_id' => 3,
-				'category_id' => 3
+				'category_id' => 5
 			]);
 	}
 }
@@ -152,10 +152,6 @@ class UsersTableSeeder extends Seeder {
 		{
 
 			Category::create([
-				'name' => 'Electrónica'
-			]);
-
-			Category::create([
 				'name' => 'Automotores'
 			]);
 
@@ -164,12 +160,17 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Category::create([
-				'name' => 'Ropa'
+				'name' => 'Electrónica'
 			]);
 
 			Category::create([
 				'name' => 'Mueblería'
 			]);
+
+			Category::create([
+				'name' => 'Varios'
+			]);
+
 		}
 
 }

@@ -24,7 +24,7 @@
             <li><a href="{{ route('auctions.index', 'query=Cocina'.'&category=true') }}">Cocina</a></li>
             <li><a href="{{ route('auctions.index', 'query=Electrónica'.'&category=true') }}">Electrónica</a></li>
             <li><a href="{{ route('auctions.index', 'query=Mueblería'.'&category=true') }}">Mueblería</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Ropa'.'&category=true') }}">Ropa</a></li>
+            <li><a href="{{ route('auctions.index', 'query=Varios'.'&category=true') }}">Varios</a></li>
             {{-- <li class="divider"></li> --}}
           </ul>
         </li>
