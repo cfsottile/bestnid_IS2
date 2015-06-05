@@ -91,9 +91,47 @@ return [
 			'rule-name' => 'custom-message',
 		],
 		'name' => [
-			'min' => 'El nombre debe tener al menos :min caracteres',
-			'required' => 'El nombre es requerido'
+			'min' => 'El nombre debe tener al menos :min carácteres',
+			'required' => 'El nombre es requerido',
+			'max' => 'El nombre debe tener hasta :max carácteres',
+			'regex' => 'El nombre no tiene un formato válido',
 		],
+		'last_name' => [
+			'min' => 'El apellido debe tener al menos :min carácteres',
+			'required' => 'El apellido es requerido',
+			'max' => 'El apellido debe tener hasta :max carácteres',
+			'regex' => 'El apellido no tiene un formato válido',
+		],
+		'email' => [
+			'required' => 'La dirección email es requerida',
+			'max' => 'La dirección email debe tener hasta :max carácteres',
+			'email' => 'La dirección email debe ser una dirección válida.',
+		],
+		'password' => [
+			'required' => 'La contraseña es requerida',
+			'max' => 'La contraseña debe tener hasta :max carácteres',
+			'min' => 'La contraseña debe tener al menos :min carácteres',
+			'confirmed' => 'Es necesario que las dos contraseñas coincidan',
+		],
+		'dni' => [
+			'required' => 'El DNI es requerido',
+			'min' => 'El DNI debe tener al menos :min números',
+			'max' => 'El DNI debe tener hasta :max números',
+		],
+		'born_date' => [
+			'required' => 'La fecha de nacimiento es requerida',
+			'date' => 'No es un formato válido de fecha',
+		],
+		'phone' => [
+			'required' => 'EL telefono es requerido',
+			'min' => 'El telefono debe tener al menos :min números',
+			'max' => 'El telefono debe tener hasta :max números',
+		],
+		'cc_data' => [
+			'required' => 'La tarjeta es requerida',
+			'regex' => 'El número de tarjeta no tiene un formato válido',	
+		],
+
 	],
 
 	/*
