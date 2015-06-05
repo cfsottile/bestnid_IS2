@@ -21,7 +21,8 @@ class AuctionsController extends Controller {
 		if (Request::has('query')) {
 			$query = Request::get('query');
 			if (Request::has('category')) {
-				$auctions = Auction::isOfCategory(Category::find($query))->currents()->orderBy($orderCriteria)->get();
+				$auctions = Auction::isOfCategory(Category::idForName($query)->first()->id)
+					->currents()->orderBy($orderCriteria)->get();
 				$data['category'] = true;
 			} else {
 				$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
