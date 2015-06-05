@@ -58,6 +58,6 @@ class Auction extends Model {
 	}
 
 	public function scopeIsOfCategory($query, $categoryId) {
-		return $query->where('category', '=', $categoryId);
+		return $query->where('category_id', '=', $categoryId);
 	}
 }
