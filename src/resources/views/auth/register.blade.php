@@ -32,6 +32,7 @@
 									<p class="help-block">{{$errors->first('name')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El nombre puede contener cualquier carácter">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('email')) has-error @endif">
@@ -42,6 +43,7 @@
 									<p class="help-block">{{$errors->first('email')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El email debe ser real">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('password')) has-error @endif">
@@ -52,6 +54,7 @@
 									<p class="help-block">{{$errors->first('password')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="La contraseña debe tener al menos 6 carácteres">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('password_confirmation')) has-error @endif">
@@ -62,6 +65,7 @@
 									<p class="help-block">{{$errors->first('password_confirmation')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Los campos contraseña y confirmar contraseña deben coincidir">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('dni')) has-error @endif">
@@ -72,6 +76,7 @@
 									<p class="help-block">{{$errors->first('dni')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El dni debe ser mayor que 999.999 y menor que 100.000.000">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('born_date')) has-error @endif">
@@ -82,6 +87,7 @@
 									<p class="help-block">{{$errors->first('born_date')}}</p>
 								@endif
 							</div>
+							{{-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">?</button> --}}
 						</div>
 
 					  <div class="form-group @if($errors->has('phone')) has-error @endif">
@@ -92,6 +98,7 @@
 									<p class="help-block">{{$errors->first('phone')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Se debe ingresar toda la información perteniente. Ejemplo: +54 221 444 4444">?</button>
 						</div>
 
 						<div class="form-group @if($errors->has('cc_data')) has-error @endif">
@@ -102,6 +109,7 @@
 									<p class="help-block">{{$errors->first('cc_data')}}</p>
 								@endif
 							</div>
+							<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Se debe utilizar un espacio como separador cada 4 dígitos. Ejemplo: 0000 0000 0000 0000">?</button>
 						</div>
 
 						<!-- is Admin, hay q meter esto en un lugar menos vulnerable, como en el controlador -->
@@ -121,4 +129,9 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 @endsection
