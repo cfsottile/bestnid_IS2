@@ -106,6 +106,7 @@ return [
 			'required' => 'La dirección email es requerida',
 			'max' => 'La dirección email debe tener hasta :max carácteres',
 			'email' => 'La dirección email debe ser una dirección válida.',
+			'unique' => 'La dirección email ya ha sido usada'
 		],
 		'password' => [
 			'required' => 'La contraseña es requerida',
@@ -124,7 +125,7 @@ return [
 			'date' => 'No es un formato válido de fecha',
 		],
 		'phone' => [
-			'required' => 'EL telefono es requerido',
+			'required' => 'El telefono es requerido',
 			'min' => 'El telefono debe tener al menos :min números',
 			'max' => 'El telefono debe tener hasta :max números',
 			'regex' => 'El teléfono no tiene un formato válido'
@@ -135,6 +136,10 @@ return [
 			'min' => 'El número de tarjeta debe tener 16 números',
 			'max' => 'El número de tarjeta debe tener 16 números'
 		],
+		'accept_terms' => [
+			'accepted' => 'Es necesario aceptar los términos y condiciones',
+		]
+		
 
 	],
 
