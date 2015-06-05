@@ -16,15 +16,41 @@
     @else
 
       @if(isset($query))
-          <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name') }}">Ordenar por nombre</a>
+      {{-- resultados con query (cateogria o busqueda) --}}
           @if(isset($category))
+            {{-- resutados para busqueda con query (categoria) --}}
+            <div class="container-fluid pull-right">
+              <span> Ordenar por:
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&category=true') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+                <a href="#" class="btn btn-primary btn-sm"> nombre Z-A</a>
+                <a href="#" class="btn btn-primary btn-sm">más reciente</a>
+                <a href="#" class="btn btn-primary btn-sm">menos reciente</a>
+            </div>
             <h3><small>Resultados para la categoria '{{ $query }}' </small></h3>
           @else
+            {{-- resultados para busqueda con query (busqueda) --}}
+            <div class="container-fluid pull-right">
+              <span> Ordenar por:
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+                <a href="#" class="btn btn-primary btn-sm"> nombre Z-A</a>
+                <a href="#" class="btn btn-primary btn-sm">más reciente</a>
+                <a href="#" class="btn btn-primary btn-sm">menos reciente</a>
+            </div>
             <h3><small>Resultados para '{{ $query }}' </small></h3>
           @endif
       @else
-          <a href="{{ route('auctions.index', 'orderCriteria=name') }}">Ordenar por nombre</a>
+        {{-- Resultados sin query (sin categoria ni busqueda) --}}
+          <div class="container">
+            <div class="pull-right">
+            <span> Ordenar por:
+              <a href="{{ route('auctions.index', 'orderCriteria=name') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+              <a href="#" class="btn btn-primary btn-sm"> nombre Z-A</a>
+              <a href="#" class="btn btn-primary btn-sm">más reciente</a>
+              <a href="#" class="btn btn-primary btn-sm">menos reciente</a>
+          </div>
+        </div>
       @endif
+      <br>
 
 
       <div class="container-fluid">
