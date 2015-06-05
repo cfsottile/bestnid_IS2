@@ -13,11 +13,15 @@
 
       @if(isset($query))
           <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name') }}">Ordenar por nombre</a>
-          <h3><small>Resultados para '{{ $query }}' </small></h3>
+          @if(isset($category))
+            <h3><small>Resultados para la categoria '{{ $query }}' </small></h3>
+          @else
+            <h3><small>Resultados para '{{ $query }}' </small></h3>
+          @endif
       @else
           <a href="{{ route('auctions.index', 'orderCriteria=name') }}">Ordenar por nombre</a>
       @endif
-    
+
 
       <div class="container-fluid">
       <div class="row">
