@@ -15,15 +15,22 @@ class AuctionsController extends Controller {
 	 */
 	public function index()
 	{
+		$data = array();
+		$orderCriteria = Request::get('orderCriteria', 'created_at');
+
+
 		if (Request::has('query')) {
 			$query = Request::get('query');
-			$orderCriteria = Request::get('orderCriteria', 'created_at');
-			$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
-			$data = array('auctions' => $auctions, 'query' => $query);
+			if (Request::get('category', false)) {
+				$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
+			} else {
+				$auctions = Auction::isOfCategory(Category::find($query))->currents()->orderBy($orderCriteria)->get();
+				array_push('category' => true);
+			}
+			array_push($data, 'auctions' => $auctions, 'query' => $query);
 		} else {
-			$orderCriteria = Request::get('orderCriteria', 'created_at');
 			$auctions = Auction::currents()->orderBy($orderCriteria)->get();
-			$data = array('auctions' => $auctions);
+			array_push('auctions' => $auctions);
 		}
 
 		return view('auctions.index')->with($data);
