@@ -56,4 +56,8 @@ class Auction extends Model {
 	public function scopeCurrents ($query) {
 		return $query->where('end_date', '>', Date('Y/m/d H:i:s'));
 	}
+
+	public function scopeIsOfCategory($query, $categoryId) {
+		return $query->where('category', '=', $categoryId);
+	}
 }
