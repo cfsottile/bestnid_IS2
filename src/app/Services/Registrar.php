@@ -15,13 +15,13 @@ class Registrar implements RegistrarContract {
 	public function validator(array $data)
 	{
 		return Validator::make($data, [
-			'name' => 'required|max:255',
+			'name' => 'required|string|max:50|min:4',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6',
-			'dni' => 'required|numeric',
+			'dni' => 'required|numeric|min:7',
 			'born_date' => 'required|Date',
-			'phone' => 'required|max:16',
-			'cc_data' => 'numeric',
+			'phone' => 'required|numeric|max:16|min:7',
+			'cc_data' => 'numeric|required|min:6',
 			'is_admin' => 'required|boolean'
 			//regDate pasa a ser equivalente a created_at
 		]);
