@@ -25,10 +25,8 @@
 
         @show
 
-        @section('notifications')
-          @include('partials.notifications')
+        <!-- @yield('notifications') -->
 
-        @show
 
         @yield('content')
 

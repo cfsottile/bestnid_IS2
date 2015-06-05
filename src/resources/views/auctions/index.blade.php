@@ -3,8 +3,9 @@
 @section('title', 'Subastas')
 
 @section('content')
-
-    <h1>Subastas</h1><br>
+  <div class="page-header">
+    <h1>Subastas</h1>
+  </div>
     @if ($auctions->count() == 0)
       <h3><small>No se encontraron resultados para '{{ $query }}' </small></h3>
     @else
@@ -19,7 +20,7 @@
       <div class="row">
       @foreach ($auctions as $a)
 
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-6">
 
             <div class="thumbnail panel panel-default" style="height:450px; width:300px">
               {{-- <div class="panel-heading">

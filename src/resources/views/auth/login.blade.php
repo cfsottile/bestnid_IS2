@@ -1,4 +1,6 @@
-@extends('app')
+@extends('layout.default')
+
+@section('title', 'Iniciar Sesión')
 
 @section('content')
 <div class="container-fluid">
@@ -7,9 +9,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
 				<div class="panel-body">
-					@if ((count($errors) > 0) || Session::has('error'))
+					@include('partials.notifications')
+					{{-- @if ((count($errors) > 0) || Session::has('error'))
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<strong>Opa!</strong> Parece que hubo algunos errores.<br><br>
 							<ul>
 								@if (Session::has('error'))
 									<li> {{Session::get('error')}} </li>
@@ -19,7 +22,7 @@
 								@endforeach
 							</ul>
 						</div>
-					@endif
+					@endif --}}
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -38,7 +41,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+						{{-- Funcion para recordar al usuario, para mas adelante --}}
+						{{-- <div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<div class="checkbox">
 									<label>
@@ -46,13 +50,14 @@
 									</label>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+								<button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+								{{-- funcion para resetear la password, para mas adelante --}}
+								{{-- <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a> --}}
 							</div>
 						</div>
 					</form>
