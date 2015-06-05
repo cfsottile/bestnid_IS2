@@ -65,10 +65,11 @@ Route::get('logout', [
 // 					 'uses' => 'UserController@show'
 // 					 ]);
 //
-// Route::get('users/edit', [
-//  					 'as' => 'users.edit',
-// 					 'uses' => 'UserController@edit'
-// 				  ]);
+Route::get('users/edit/{id}', [
+	//				'middleware' => 'auth',
+ 					'as' => 'users.edit',
+					'uses' => 'UserController@edit'
+				  ]) ->where('id', '[0-9]+');
 //
 // Route::post('users/update', [
 // 						'as' => 'users.store',

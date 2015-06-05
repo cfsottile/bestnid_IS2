@@ -79,8 +79,7 @@ class AuthController extends Controller {
         // Validamos los datos y además mandamos como un segundo parámetro la opción de recordar el usuario.
         if(Auth::attempt($userdata, Request::input('remember-me', 0)))
         {
-            // De ser datos válidos nos mandara a la bienvenida
-            return Redirect::to('/');
+            return Redirect::to('/auctions');
         }
 
 
