@@ -1,5 +1,9 @@
 @if(Session::has('success'))
-	<span>{{Session::get('success')}}</span>
+	<div class="alert alert-success" role="alert">
+		<span class="glyphicon glyphicon-ok-sign"></span>
+		<strong> Esa! </strong> Todo ha salido bien.<br><br>
+		<span>{{Session::get('success')}}</span>
+	</div>
 @endif
 
 @if( Session::has('error') || Session::has('errors') || (count($errors) > 0))
