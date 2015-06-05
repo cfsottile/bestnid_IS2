@@ -4,12 +4,16 @@
 
 @section('content')
 
-    <h1>{{ $auction->name }}</h1>
-    <p>
-        
-        <img src='{{ $auction->picture }}'/><br>
-        {{ $auction->description }}<br>
-        Fecha de cierre: {{ $auction->end_date }}<br>
-    </p>
-
+    <div class="jumbotron">
+        <h1>{{ $auction->name }}</h1><br>
+        <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail"/><br><br>
+        <p>
+            <b>Descripción</b><br>
+            {{ $auction->description }}
+        </p>
+        <p>
+            <b>Fecha de cierre</b><br>
+            {{ substr($auction->end_date, 0, 10) }}
+        </p>
+    </div>
 @overwrite
