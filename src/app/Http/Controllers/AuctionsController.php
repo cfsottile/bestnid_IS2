@@ -18,7 +18,6 @@ class AuctionsController extends Controller {
 		$data = array();
 		$orderCriteria = Request::get('orderCriteria', 'created_at');
 
-
 		if (Request::has('query')) {
 			$query = Request::get('query');
 			if (Request::get('category', false)) {
