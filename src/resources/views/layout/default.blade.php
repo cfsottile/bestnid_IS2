@@ -7,7 +7,7 @@
           @section('styles')
           <!-- insert your styles here -->
             <!-- Bootstrap -->
-            <link rel="stylesheet" href="{{asset('css/bootstrap-darklytheme.css')}}">
+            <link rel="stylesheet" href="{{asset('css/bootstrap-yeti-theme.css')}}">
             <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
           @show
           @section('scripts')
