@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller {
 
@@ -66,7 +67,11 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		//Nati: falta terminar el editar usuario	
+		$user = User::findOrFail($id);
+
+		return view('users.edit', compact('user'));
+
 	}
 
 	/**
