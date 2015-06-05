@@ -43,6 +43,7 @@
 							</div> --}}
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
+									<a href="{{ URL::previous() }}" class="btn btn-default">Atrás</a>
 									<button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
 									{{-- funcion para resetear la password, para mas adelante --}}

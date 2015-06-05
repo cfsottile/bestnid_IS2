@@ -18,14 +18,25 @@
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 							<div class="form-group @if($errors->has('name')) has-error @endif">
-								<label class="col-md-4 control-label">Nombre</label>
+								<label class="col-md-4 control-label">Nombres</label>
 								<div class="col-md-6">
 									<input type="text" class="form-control" name="name" value="{{ old('name') }}">
 									@if($errors->has('name'))
 										<p class="help-block">{{$errors->first('name')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El nombre puede contener cualquier carácter">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El nombre puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes.">?</button>
+							</div>
+
+							<div class="form-group @if($errors->has('last_name')) has-error @endif">
+								<label class="col-md-4 control-label">Apellidos</label>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+									@if($errors->has('last_name'))
+										<p class="help-block">{{$errors->first('last_name')}}</p>
+									@endif
+								</div>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El apellido puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes.">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('email')) has-error @endif">
@@ -36,7 +47,7 @@
 										<p class="help-block">{{$errors->first('email')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El email debe ser real">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El email debe ser real">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('password')) has-error @endif">
@@ -47,7 +58,7 @@
 										<p class="help-block">{{$errors->first('password')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="La contraseña debe tener al menos 6 carácteres">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="La contraseña debe tener al menos 6 carácteres">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('password_confirmation')) has-error @endif">
@@ -58,18 +69,18 @@
 										<p class="help-block">{{$errors->first('password_confirmation')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Los campos contraseña y confirmar contraseña deben coincidir">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Los campos contraseña y confirmar contraseña deben coincidir">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('dni')) has-error @endif">
 								<label class="col-md-4 control-label">DNI</label>
 								<div class="col-md-6">
-									<input type="number" class="form-control" name="dni" value="{{ old('dni') }}">
+									<input type="string" class="form-control" name="dni" value="{{ old('dni') }}">
 									@if($errors->has('dni'))
 										<p class="help-block">{{$errors->first('dni')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('born_date')) has-error @endif">
@@ -80,29 +91,42 @@
 										<p class="help-block">{{$errors->first('born_date')}}</p>
 									@endif
 								</div>
-								{{-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">?</button> --}}
+								{{-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="">?</button> --}}
 							</div>
 
 						  <div class="form-group @if($errors->has('phone')) has-error @endif">
 								<label class="col-md-4 control-label">Teléfono:</label>
 								<div class="col-md-6">
-									<input type="number" class="form-control" name="phone" value="{{ old('phone') }}">
+									<input type="string" class="form-control" name="phone" value="{{ old('phone') }}">
 									@if($errors->has('phone'))
 										<p class="help-block">{{$errors->first('phone')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Se debe ingresar toda la información perteniente. Ejemplo: +54 221 444 4444">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Se debe ingresar código de país, código de ciudad y número particular. No se ingresa 15. Ejemplo: +54 221 444 4444">?</button>
 							</div>
 
 							<div class="form-group @if($errors->has('cc_data')) has-error @endif">
 								<label class="col-md-4 control-label">Tarjeta de Crédito:</label>
 								<div class="col-md-6">
-									<input type="number" class="form-control" name="cc_data" value="{{ old('cc_data') }}">
+									<input type="string" class="form-control" name="cc_data" value="{{ old('cc_data') }}">
 									@if($errors->has('cc_data'))
 										<p class="help-block">{{$errors->first('cc_data')}}</p>
 									@endif
 								</div>
-								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Se debe utilizar un espacio como separador cada 4 dígitos. Ejemplo: 0000 0000 0000 0000">?</button>
+								<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Se deben ingresar los 16 dígitos seguidos. Ejemplo: 0000111122223333">?</button>
+							</div>
+
+							<div class="form-group @if($errors->has('accept_terms')) has-error @endif">
+								<label class="col-md-4 control-label"></label>
+								<div class="col-md-6">
+
+									<input type="checkbox" name="accept_terms" value="{{ old('accept_terms') }}"> Acepto los
+									<a href="#" onclick="terms();">términos y condiciones</a>
+									@if($errors->has('accept_terms'))
+										<p class="help-block">{{$errors->first('accept_terms')}}</p>
+									@endif
+								</div>
+								{{-- <button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="">?</button> --}}
 							</div>
 
 							<!-- is Admin, hay q meter esto en un lugar menos vulnerable, como en el controlador -->
@@ -111,6 +135,9 @@
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
+									<a href="{{ URL::previous() }}" class="btn btn-default">
+										Atrás
+									</a>
 									<button type="submit" class="btn btn-primary">
 										Registrarme
 									</button>
@@ -128,5 +155,8 @@
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+function terms() {
+	alert('1. Para participar en las subastas divulgadas en el PORTAL BestNid, el Usuario deberá proceder con su registro informando sus datos personales. Se deben completar todos los campos de forma clara y precisa. Siempre que sea necesario, el Usuario deberá actualizar su registro.\n2. Al registrarse, el Usuario indicará un LOGIN que lo identificará en el PORTAL y una CONTRASEÑA personal e intransferible, que no se podrá utilizar con otras finalidades no autorizadas.\n3. El Usuario se compromete a no divulgar su contraseña a terceros. El uso no autorizado de la contraseña es de total responsabilidad del Usuario, y el hecho deberá ser comunicado inmediatamente por correo electrónico a la Central de Atención del PORTAL.\n4. Para seguridad del Usuario, su contraseña y datos se transmitirán encriptados (Certificado de Seguridad SSL).\n5. Si el usuario no quiere que los demás le reconozcan, deberá escoger un LOGIN no identificable ni asociado a su nombre real.\n6. El Usuario registrado en el Portal autoriza que BestNid consulte Centrales de Riesgo y entidades competentes, para la verificación de sus datos.\n7. Si se verifica inconsistencia y/o problemas legales, judiciales o financieros asociados a los datos informados por el Usuario la Central de Atención contactará con este, por correo electrónico o teléfono.\n8. El usuario debe aceptar los términos del Contrato de Uso de Bestnid.\n9. El usuario podrá utilizar el PORTAL un día hábil después de la validación del registro y la aceptación de los términos. El hecho le será comunicado por correo electrónico.\n10. El PORTAL permite recibir ofertas por internet o presenciales, simultáneamente y en tiempo real.\n11. Las ofertas por web, fax y de viva voz tienen las mismas condiciones una vez confirmada la recepción y validada la identidad del ofertante.\n12. El usuario podrá hacer mas de una oferta al mismo bien, prevalecerá la mayor.\n13. El usuario podrá programar ofertas automáticas, de manera que, si otro participante supera una oferta, el sistema generará otra oferta añadida en un incremento fijo y predeterminado, hasta el límite máximo definido, con el objetivo de que el mismo tenga la certeza de que, hasta el valor estipulado para ofertas automáticas, la oferta venza. Las ofertas automáticas serán registradas en el sistema con fecha en que se la hizo la programación.\n14. Cada lote tiene la fecha y el horario previsto de cierre, en su página de descripción. Cerca del horario del cierre, en la página de ofertas FlashBid, el reloj indica el tiempo pendiente para cerrar. Si el sistema recibe alguna oferta dentro del intervalo de 3 (tres) minutos antes del cierre del lote, el cronómetro reinicia 3 minutos adicionales sucesivamente a cada lance efectuado en ese intervalo, para que todos los Usuarios interesados tengan la oportunidad de efectuar nuevas ofertas.\n15. El Usuario registrado autoriza a BestNid a consultar bases de datos para verificar la veracidad de sus datos, la moralidad crediticia del Usuario y sus antecedentes judiciales, en caso de ser posible realizarlo. De la misma manera autoriza a BestNid a reportar la información a las centrales de riesgo del sector financiero y real acerca de su comportamiento comercial del aceptante, la cual será actualizada periódicamente conforme con lo establecido por las leyes de la república de Argentina, las cuales el Usuario registrado declara conocer a cabalidad.');
+}
 </script>
 @endsection
