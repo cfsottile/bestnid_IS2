@@ -8,6 +8,11 @@
         <h1>{{ $auction->name }}</h1><br>
         <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail"/><br><br>
         <p>
+            <b>Subastador</b><br>
+            {{ $auction->owner->name.' '.$auction->owner->last_name }}
+        </p>
+
+        <p>
             <b>Descripción</b><br>
             {{ $auction->description }}
         </p>

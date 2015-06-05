@@ -40,39 +40,51 @@ class UsersTableSeeder extends Seeder {
     DB::table('users')->delete();
 
     User::create([
-      'name' => 'Usuario 1',
-			'last_name' => 'Mengano',
-      'email' => 'sarasa1@sarasa.com',
-      'password' => Hash::make('usuariouno'),
-      'dni' => '1',
-      'born_date'=> Date('Y/m/d'),
-      'phone' => '1111',
-       'cc_data' => '0000000000000000',
+      'name' => 'Cristian',
+	  'last_name' => 'Sottile',
+      'email' => 'cristian.sottile@is2.com',
+      'password' => Hash::make('cristian.sottile'),
+      'dni' => '36948134',
+      'born_date'=> Date('1992/06/27'),
+      'phone' => '+54 9 221 444 1111',
+      'cc_data' => '0000000000000001',
       'is_admin' => '0',
     ]);
 
-		User::create([
-      'name' => 'Usuario 2',
-			'last_name' => 'Fulano',
-      'email' => 'sarasa2@sarasa.com',
-      'password' => Hash::make('usuariodos'),
-      'dni' => '1',
-      'born_date'=> Date('Y/m/d'),
-      'phone' => '2222',
-      'cc_data' => '1111111111111111',
+	User::create([
+      'name' => 'Ignacio',
+	  'last_name' => 'Babbini',
+      'email' => 'ignacio.babbini@is2.com',
+      'password' => Hash::make('ignacio.babbini'),
+      'dni' => '36571600',
+      'born_date'=> Date('1991/11/12'),
+      'phone' => '+54 9 221 444 2222',
+      'cc_data' => '0000000000000002',
       'is_admin' => '0',
     ]);
 
-		User::create([
-      'name' => 'Usuario 3',
-			'last_name' => 'Soprano',
-      'email' => 'sarasa3@sarasa.com',
-      'password' => Hash::make('usuariotres'),
-      'dni' => '1',
-      'born_date'=> Date('Y/m/d'),
-      'phone' => '3333',
-       'cc_data' => '2222222222222222',
+	User::create([
+      'name' => 'Natalia',
+	  'last_name' => 'Aparicio',
+      'email' => 'natalia.aparicio@is2.com',
+      'password' => Hash::make('natalia.aparicio'),
+      'dni' => '38706162',
+      'born_date'=> Date('1995/05/21'),
+      'phone' => '+54 9 221 444 3333',
+       'cc_data' => '0000000000000003',
       'is_admin' => '0',
+    ]);
+
+	User::create([
+      'name' => 'admin',
+	  'last_name' => 'admin',
+      'email' => 'admin.admin@is2.com',
+      'password' => Hash::make('admin.admin'),
+      'dni' => '10000000',
+      'born_date'=> Date('1980/04/12'),
+      'phone' => '+54 9 221 444 4444',
+       'cc_data' => '0000000000000004',
+      'is_admin' => '1',
     ]);
 
 	}
