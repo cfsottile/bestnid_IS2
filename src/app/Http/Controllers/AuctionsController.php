@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Auction;
+use App\Models\Category;
 
 use Request;
 
@@ -18,21 +19,19 @@ class AuctionsController extends Controller {
 		$data = array();
 		$orderCriteria = Request::get('orderCriteria', 'created_at');
 
-
 		if (Request::has('query')) {
 			$query = Request::get('query');
 			if (Request::get('category', false)) {
 				$auctions = Auction::nameIncludes($query)->currents()->orderBy($orderCriteria)->get();
 			} else {
 				$auctions = Auction::isOfCategory(Category::find($query))->currents()->orderBy($orderCriteria)->get();
-				array_push('category' => true);
+				$dat['category'] = true;
 			}
-			array_push($data, 'auctions' => $auctions, 'query' => $query);
+			$data['query'] = $query;
 		} else {
 			$auctions = Auction::currents()->orderBy($orderCriteria)->get();
-			array_push('auctions' => $auctions);
 		}
-
+		$data['auctions'] = $auctions;
 		return view('auctions.index')->with($data);
 	}
 
