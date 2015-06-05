@@ -14,6 +14,12 @@
 //----------------Rutas de manejo de Usuarios--------------------
 
 
+Route::get('/home',[
+					 'as' => '/',
+					 'uses' =>'AuctionsController@index'
+	]);
+
+
 Route::get('/',[
 					 'as' => '/',
 					 'uses' =>'AuctionsController@index'

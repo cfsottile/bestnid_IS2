@@ -45,7 +45,7 @@ class Authenticate {
 		}
 
 		if ($request->RequestUri == '/register'){
-			return redirect('home');
+			return redirect('auctions');
 		}
 
 		return $next($request);

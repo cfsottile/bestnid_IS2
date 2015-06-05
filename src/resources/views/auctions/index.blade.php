@@ -63,12 +63,12 @@
               {{-- <div class="panel-heading">
                 <h5>Bids:-|             |Dias:-</h5>
               </div> --}}
-              <div class="panel-body">
+              <div class="panel-body" style="height:300px">
                 <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
                 </a>
               </div>
-              <div class="panel-footer">
+              <div class="panel-footer" style="height:140px">
                 <h2 class="panel-title"> {{ $a->name }} </h2>
                 <h5> {{ $a->description }} </h5>
               </div>
