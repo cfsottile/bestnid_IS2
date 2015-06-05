@@ -2,7 +2,11 @@
 
 @section('title', 'Subastas')
 
+
+
 @section('content')
+
+  @include('partials.notifications')
   <div class="page-header">
     <h1>Subastas</h1>
   </div>

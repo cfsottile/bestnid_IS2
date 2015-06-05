@@ -79,6 +79,7 @@ class AuthController extends Controller {
         // Validamos los datos y además mandamos como un segundo parámetro la opción de recordar el usuario.
         if(Auth::attempt($userdata, Request::input('remember-me', 0)))
         {
+						Session::flash('success', 'Bienvenido, '.(Auth::user()->name).'!');
             return Redirect::to('/auctions');
         }
 
@@ -94,6 +95,7 @@ class AuthController extends Controller {
     public function logout()
     {
 
+			Session::flash('success', 'Sesión cerrada. Hasta luego '.Auth::user()->name.'!');
 			Auth::logout();
       return redirect('login');
 
