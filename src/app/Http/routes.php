@@ -14,6 +14,11 @@
 //----------------Rutas de manejo de Usuarios--------------------
 
 
+Route::get('/',[
+					 'as' => '/',
+					 'uses' =>'AuctionsController@index'
+	]);
+
 Route::controllers([
 	//'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -27,7 +32,7 @@ Route::get('register',[
 					]);
 
 Route::post('register',[
-					//'middleware' => 'auth',
+					 //'middleware' => 'auth',
 					 'as' => 'postRegister',
 					 'uses' => 'Auth\AuthController@postregister'
 					]);

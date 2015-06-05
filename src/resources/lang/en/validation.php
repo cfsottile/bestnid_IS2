@@ -92,6 +92,7 @@ return [
 		],
 		'name' => [
 			'min' => 'El nombre debe tener al menos :min caracteres',
+			'required' => 'El nombre es requerido'
 		],
 	],
 
