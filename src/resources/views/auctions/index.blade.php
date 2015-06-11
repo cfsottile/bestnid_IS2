@@ -68,9 +68,13 @@
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
                 </a>
               </div>
-              <div class="panel-footer" style="height:140px">
+              <div class="panel-footer" style="height:140px; overflow:auto" >
+                <!-- POR AHORA DEJO ACA LA FECHA -->
+                <h6> Fecha de cierre: {{ substr($a->end_date, 0, 10) }} </h6>
                 <h2 class="panel-title"> {{ $a->name }} </h2>
                 <h5> {{ $a->description }} </h5>
+                <br>
+                
               </div>
             </div>
           </div>
