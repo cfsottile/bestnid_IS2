@@ -72,12 +72,12 @@ Route::get('logout', [
 // 					 ]);
 //
 Route::get('users/edit/{id}', [
-	//				'middleware' => 'auth',
+					'middleware' => 'auth',
  					'as' => 'users.edit',
 					'uses' => 'UserController@edit'
 				  ]) ->where('id', '[0-9]+');
 
-Route::post('users/update', [
+Route::patch('users/update', [
 						'as' => 'users.store',
 						'uses' => 'UserController@update'
 					 ]);
