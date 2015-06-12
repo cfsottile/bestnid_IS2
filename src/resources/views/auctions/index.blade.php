@@ -23,8 +23,8 @@
               <span> Ordenar por:
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&category=true&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&category=true&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=asc') }}" class="btn btn-primary btn-sm">más reciente</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=desc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
             </div>
             <h3><small>Resultados para la categoria '{{ $query }}' </small></h3>
           @else
@@ -33,8 +33,8 @@
               <span> Ordenar por:
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">más reciente</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
             </div>
             <h3><small>Resultados para '{{ $query }}' </small></h3>
           @endif
@@ -45,8 +45,8 @@
             <span> Ordenar por:
               <a href="{{ route('auctions.index', 'orderCriteria=name&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
               <a href="{{ route('auctions.index', 'orderCriteria=name&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">más reciente</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
           </div>
         </div>
       @endif
