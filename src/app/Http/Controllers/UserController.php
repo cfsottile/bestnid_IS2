@@ -36,6 +36,9 @@ class UserController extends Controller {
 	public function store()
 	{
 		//responsabilidad de auth
+/*		$user = User::create(Request::all());
+
+		return redirect()->back();*/
 	}
 
 	/**
@@ -67,11 +70,10 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//Nati: falta terminar el editar usuario	
 		$user = User::findOrFail($id);
 
-		return view('users.edit', compact('user'));
-
+		return view('users.edit')
+					->with('user', $user);
 	}
 
 	/**
@@ -85,6 +87,7 @@ class UserController extends Controller {
 
 		$validator = Validator::make($data, [
 			'name' => 'required|max:255',
+			'last_name' => 'required|max:255',			
 			'email' => 'required|email|max:255|unique:users',
 			'dni' => 'required|numeric',
 			'born_date' => 'required|Date',
@@ -106,6 +109,7 @@ class UserController extends Controller {
 		$user = User::find($id);
 
 		$user->name = Request::input('name');
+		$user->last_name = Request::input('name');
 		$user->email = Request::input('email');
 		$user->dni = Request::input('dni');
 		$user->born_date = Request::input('born_date');

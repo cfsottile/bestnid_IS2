@@ -1,3 +1,4 @@
+
 @extends('layout.default')
 
 @section('title', 'Subastas')
@@ -56,10 +57,9 @@
       <div class="container-fluid">
       <div class="row">
       @foreach ($auctions as $a)
-
           <div class="col-md-4 col-sm-6">
 
-            <div class="thumbnail panel panel-default" style="height:450px; width:300px">
+            <div class="thumbnail panel panel-default" style="height:420px; width:300px">
               {{-- <div class="panel-heading">
                 <h5>Bids:-|             |Dias:-</h5>
               </div> --}}
@@ -68,9 +68,23 @@
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
                 </a>
               </div>
-              <div class="panel-footer" style="height:140px">
+              <div class="panel-footer" style="height:110px; overflow:auto" >
+                <!-- POR AHORA DEJO ACA LA FECHA -->
+                <h6> 
+                  Faltan  
+                  <?php
+                  $datetime1 = new DateTime(substr($a->end_date, 0, 10));
+                  $datetime2 = new DateTime("now");
+                  $interval = $datetime2->diff($datetime1);
+                  echo $interval->format('%a días');
+                  //$a->contDaysEnd() 
+                  ?>
+                  para el cierre 
+                </h6>
                 <h2 class="panel-title"> {{ $a->name }} </h2>
-                <h5> {{ $a->description }} </h5>
+                <!-- <h5> {{ $a->description }} </h5> -->
+                <br>
+                
               </div>
             </div>
           </div>
@@ -83,3 +97,4 @@
 
 
 @overwrite
+  

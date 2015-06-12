@@ -116,9 +116,9 @@ return [
 		],
 		'dni' => [
 			'required' => 'El DNI es requerido',
+			'regex' => 'El DNI tiene no tiene un formato válido',
 			'min' => 'El DNI debe tener al menos :min números',
 			'max' => 'El DNI debe tener hasta :max números',
-			'regex' => 'El DNI tiene no tiene un formato válido'
 		],
 		'born_date' => [
 			'required' => 'La fecha de nacimiento es requerida',
