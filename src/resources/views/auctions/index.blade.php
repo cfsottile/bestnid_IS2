@@ -70,21 +70,12 @@
               </div>
               <div class="panel-footer" style="height:110px; overflow:auto" >
                 <!-- POR AHORA DEJO ACA LA FECHA -->
-                <h6> 
-                  Faltan  
-                  <?php
-                  $datetime1 = new DateTime(substr($a->end_date, 0, 10));
-                  $datetime2 = new DateTime("now");
-                  $interval = $datetime2->diff($datetime1);
-                  echo $interval->format('%a días');
-                  //$a->contDaysEnd() 
-                  ?>
-                  para el cierre 
+                <h6>
+                  Quedan {{$a->remainingDays()}} días
                 </h6>
                 <h2 class="panel-title"> {{ $a->name }} </h2>
-                <!-- <h5> {{ $a->description }} </h5> -->
                 <br>
-                
+
               </div>
             </div>
           </div>
@@ -97,4 +88,3 @@
 
 
 @overwrite
-  

@@ -61,18 +61,8 @@ class Auction extends Model {
 		return $query->where('category_id', '=', $categoryId);
 	}
 
-//Dice que no encuentra la clase DateTime y es nativa de php. 
-//revisar funciones
-	public function contDayEnd(){
-        $datetime1 = new DateTime(substr($this->end_date, 0, 10));
-        $datetime2 = new DateTime("now");
-        $interval = $datetime2->diff($datetime1);
-        /*return $interval->format('%a días');*/
-        return 5;
+	public function remainingDays(){
+		return (new \DateTime($this->end_date))->diff(new \DateTime("now"))->d;
     }
 
 }
-/*		$datetime1 = new DateTime($this->end_date);
-        $datetime2 = new DateTime("now");
-        $interval = $datetime2->diff($datetime1);
-        return ($interval->format('%a días'));*/
