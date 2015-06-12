@@ -3,8 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 use App\User;
+use Validator;
+use Request;
 
 class UserController extends Controller {
 
@@ -36,9 +37,9 @@ class UserController extends Controller {
 	public function store()
 	{
 		//responsabilidad de auth
-/*		$user = User::create(Request::all());
+		$user = User::create(Request::all());
 
-		return redirect()->back();*/
+		return redirect()->back();
 	}
 
 	/**
@@ -84,14 +85,15 @@ class UserController extends Controller {
 	 */
 	public function update()
 	{
+		
+		$data = Request::all();
 
 		$validator = Validator::make($data, [
-			'name' => 'required|max:255',
-			'last_name' => 'required|max:255',			
-			'email' => 'required|email|max:255|unique:users',
+			'name' => 'required|max:255|min:4',
+			'last_name' => 'required|max:255|min:4',			
 			'dni' => 'required|numeric',
 			'born_date' => 'required|Date',
-			'phone' => 'required|max:16',
+			'phone' => 'required|max:20|min:16',
 			'cc_data' => 'numeric',
 
 		]);
@@ -99,18 +101,19 @@ class UserController extends Controller {
 		if ( $validator->fails() )
 		{
 			$errors = $validator->errors()->all();
+			$user = User::findOrFail($data['id']);
 
 			return redirect()
 				->back()
-				->with('errors', $errors);
+				->with('errors', $errors)
+				->with('user', $user);
 		}
 
 		$id = Request::input('id');
 		$user = User::find($id);
 
 		$user->name = Request::input('name');
-		$user->last_name = Request::input('name');
-		$user->email = Request::input('email');
+		$user->last_name = Request::input('last_name');
 		$user->dni = Request::input('dni');
 		$user->born_date = Request::input('born_date');
 		$user->phone = Request::input('phone');
