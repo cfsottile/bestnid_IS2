@@ -66,11 +66,12 @@ Route::get('logout', [
 // 							'uses' => 'UserController@destroy'
 // 							]);
 //
-// Route::get('users/show', [
-// 					 'as' => 'users.show',
-// 					 'uses' => 'UserController@show'
-// 					 ]);
-//
+Route::get('users/show', [
+					 'middleware' => 'auth',
+					 'as' => 'users.show',
+					 'uses' => 'UserController@show'
+					 ]);
+
 Route::get('users/edit/{id}', [
 					'middleware' => 'auth',
  					'as' => 'users.edit',
@@ -81,6 +82,7 @@ Route::patch('users/update', [
 						'as' => 'users.store',
 						'uses' => 'UserController@update'
 					 ]);
+
 
 
 //----------------------------------------------------------------

@@ -3,10 +3,12 @@
 @section('title', $auction->name)
 
 @section('content')
-
+    <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
     <div class="jumbotron">
-        <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
-        <h1>{{ $auction->name }}</h1><br>
+      <div class="page-header">
+        <h1>{{ $auction->name }}</h1>
+      </div>
+      <br>
         <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail"/><br><br>
 <!--    <p>
             <b>Subastador</b><br>

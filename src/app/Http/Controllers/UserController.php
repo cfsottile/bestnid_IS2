@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
 use Request;
+use Auth;
 
 class UserController extends Controller {
 
@@ -43,15 +44,16 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Display the Auth::user() user.
 	 *
-	 * @param  int  $id
+	 *
 	 * @return Response
 	 */
-	public function show($id)
+	public function show()
 	{
-		$user = User::find($id);
+		// $user = User::find($id);
 
+		$user = Auth::user();
 		if (!$user) {
 
 			Session::flash('error', 'No se encontró al usuario con ID: '.$id);
@@ -62,6 +64,29 @@ class UserController extends Controller {
 		return view('users.show')
 					->with('user', $user);
 	}
+
+
+	// /**
+	//  * Display the specified resource.
+	//  *
+	//  * @param  int  $id
+	//  * @return Response
+	//  */
+	// public function show($id)
+	// {
+	// 	// $user = User::find($id);
+	//
+	// 	$user = Auth::user();
+	// 	if (!$user) {
+	//
+	// 		Session::flash('error', 'No se encontró al usuario con ID: '.$id);
+	//
+	// 		return redirect()->back();
+	// 	}
+	//
+	// 	return view('users.show')
+	// 				->with('user', $user);
+	// }
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -85,12 +110,12 @@ class UserController extends Controller {
 	 */
 	public function update()
 	{
-		
+
 		$data = Request::all();
 
 		$validator = Validator::make($data, [
 			'name' => 'required|max:255|min:4',
-			'last_name' => 'required|max:255|min:4',			
+			'last_name' => 'required|max:255|min:4',
 			'dni' => 'required|numeric',
 			'born_date' => 'required|Date',
 			'phone' => 'required|max:20|min:16',
