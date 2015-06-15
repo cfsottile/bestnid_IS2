@@ -7,17 +7,19 @@ use App\User;
 use Validator;
 use Request;
 use Auth;
+use Session;
 
 class UserController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of resources.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//not implemented
+		$users = User::all();
+		return view('users.index')->with('users',$users);
 	}
 
 	/**
@@ -66,27 +68,29 @@ class UserController extends Controller {
 	}
 
 
-	// /**
-	//  * Display the specified resource.
-	//  *
-	//  * @param  int  $id
-	//  * @return Response
-	//  */
-	// public function show($id)
-	// {
-	// 	// $user = User::find($id);
-	//
-	// 	$user = Auth::user();
-	// 	if (!$user) {
-	//
-	// 		Session::flash('error', 'No se encontró al usuario con ID: '.$id);
-	//
-	// 		return redirect()->back();
-	// 	}
-	//
-	// 	return view('users.show')
-	// 				->with('user', $user);
-	// }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminShow($id)
+	{
+		// $user = User::find($id);
+
+		$user = User::find($id);
+		if (!$user) {
+
+			Session::flash('error', 'No se encontró al usuario con ID: '.$id);
+
+			return redirect()->back();
+		}
+
+		return view('users.show')
+					->with('user', $user);
+	}
+
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -94,13 +98,31 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit()
+	{
+		$user = Auth::user();
+
+		return view('users.edit')
+					->with('user', $user);
+	}
+
+
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function adminEdit($id)
 	{
 		$user = User::findOrFail($id);
 
 		return view('users.edit')
 					->with('user', $user);
+
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -148,6 +170,22 @@ class UserController extends Controller {
 
 		return redirect()->back()->with('success','Cambios guardados');
 	}
+	/**
+	* Remove the specified resource from storage.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
+	public function destroy()
+	{
+		//ver "soft delete", podria servir
+		$username = Auth::user()->name;
+		$id = Auth::user()->id;
+		User::destroy($id);
+		Session::flash('success', 'Su cuenta ha sido eliminada con exito, '.$username.'. Hasta nunca.');
+		return redirect()->back();
+	}
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -155,7 +193,7 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function adminDestroy($id)
 	{
 		//ver "soft delete", podria servir
 

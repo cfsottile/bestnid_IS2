@@ -59,24 +59,26 @@ Route::get('logout', [
 					 'uses' => 'Auth\AuthController@logout'
 				  ]); // Finalizar sesión
 
-// A implementar
 
-// Route::delete('users/delete', [
-// 							'as' => 'users.delete',
-// 							'uses' => 'UserController@destroy'
-// 							]);
-//
+
+Route::delete('users/delete', [
+							'middleware' =>'auth',
+							'as' => 'users.delete',
+							'uses' => 'UserController@destroy'
+							]);
+
+
 Route::get('users/show', [
 					 'middleware' => 'auth',
 					 'as' => 'users.show',
 					 'uses' => 'UserController@show'
 					 ]);
 
-Route::get('users/edit/{id}', [
+Route::get('users/edit', [
 					'middleware' => 'auth',
  					'as' => 'users.edit',
 					'uses' => 'UserController@edit'
-				  ]) ->where('id', '[0-9]+');
+				  ]);
 
 Route::patch('users/update', [
 						'as' => 'users.store',
@@ -94,3 +96,28 @@ Route::resource('auctions', 'AuctionsController');
 
 
 //-----------------------------------------------------------------
+//---------------------Rutas de Administracion---------------------
+
+Route::get('users/index',[
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.users.index',
+					 'uses' => 'UserController@index'
+					 ]);
+
+Route::get('users/delete/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+ 					 'as' => 'admin.users.delete',
+					 'uses' => 'UserController@adminDestroy'
+				   ]) ->where('id', '[0-9]+');
+
+Route::get('users/show/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+ 					 'as' => 'admin.users.show',
+					 'uses' => 'UserController@adminShow'
+				   ]) ->where('id', '[0-9]+');
+
+Route::get('users/edit/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+ 					 'as' => 'admin.users.edit',
+					 'uses' => 'UserController@adminEdit'
+				   ]) ->where('id', '[0-9]+');
