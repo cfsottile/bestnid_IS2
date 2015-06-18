@@ -68,9 +68,15 @@ class AuctionsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		dd($request);
+		$this->validates($request, Auction::rules());
+
+		$data = $request;
+		$data['owner_id'] = Auth::user()->id;
+
+		return Auction::create($data);
 	}
 
 	/**
@@ -116,5 +122,10 @@ class AuctionsController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function assignWinner ($id) {
+		$winner_id = Request::get('winner_id');
+		Auction::find($id)->winner()->associate(User::find($winner_id));
 	}
 }

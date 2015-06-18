@@ -16,7 +16,7 @@ class Auction extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['endDate', 'description'];
+	protected $fillable = ['name', 'end_date', 'description', 'owner_id', 'category_id', 'picture'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -26,11 +26,11 @@ class Auction extends Model {
 	// protected $hidden = [];
 
 	public function owner() {
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User', 'owner_id');
 	}
 
 	public function winner() {
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User', 'winner_id');
 	}
 
 	public function category() {
@@ -64,5 +64,16 @@ class Auction extends Model {
 	public function remainingDays(){
 		return (new \DateTime($this->end_date))->diff(new \DateTime("now"))->d;
     }
+
+	public static function rules () {
+		return [
+			'name' => 'required|string|max:255|min:3',
+			'description' => 'required',
+			'owner_id' => 'required|exists:users,id',
+			'category_id' => 'required|exists:categories,id',
+			'end_date' => 'required',
+			'picture' => 'required|string|min:4'
+		];
+	}
 
 }

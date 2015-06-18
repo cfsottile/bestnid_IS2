@@ -17,7 +17,7 @@ class CreateAuctionsTable extends Migration {
 			$table->increments('id');
 			$table->string('name', 100);
 			$table->timestamp('end_date');
-			$table->string('description');
+			$table->text('description');
 			$table->string('picture');
 			$table->integer('owner_id')->unsigned();
 			$table->integer('winner_id')->unsigned()->nullable();

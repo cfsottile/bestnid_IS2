@@ -105,6 +105,11 @@ Route::get('auctions/show/{id}', [
 					 'uses' => 'AuctionsController@show'
 				   ]) ->where('id', '[0-9]+');
 
+Route::post('auctions/{id}/winners', [
+	'as' => 'auctions.postWinner',
+	'uses' => 'AuctionsController@postWinner'
+	])->where('id', '[0-9]+');
+
 
 //-----------------------------------------------------------------
 //---------------------Rutas de Administracion---------------------
@@ -124,7 +129,7 @@ Route::get('admin/index', [
 
 Route::get('/help', [
 					'as' => '/help',
-					function(){ 
+					function(){
 						return view('help.help');
 					}
 					]);
