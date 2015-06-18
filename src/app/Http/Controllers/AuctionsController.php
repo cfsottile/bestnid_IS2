@@ -5,7 +5,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Auction;
 use App\Models\Category;
 
+use App\User;
 use Request;
+use Session;
 
 class AuctionsController extends Controller {
 
@@ -35,6 +37,21 @@ class AuctionsController extends Controller {
 		$data['auctions'] = $auctions;
 		return view('auctions.index')->with($data);
 	}
+
+	/**
+	 * Shows auctions index intended for administrator tasks.
+	 *
+	 * @return Response
+	 */
+	public function superIndex()
+	{
+		$auctions = Auction::all();
+
+		return view('auctions.superIndex')->with('auctions', $auctions);
+	}
+
+
+
 
 	/**
 	 * Show the form for creating a new resource.
