@@ -121,6 +121,14 @@ Route::get('admin/index', [
 
 //---------------------Administracion de usuarios------------------
 
+
+Route::get('/help', [
+					'as' => '/help',
+					function(){ 
+						return view('help.help');
+					}
+					]);
+
 Route::get('users/index',[
 					 'middleware' => ['auth','isAdmin'],
 					 'as' => 'admin.users.index',
