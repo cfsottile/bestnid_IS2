@@ -92,11 +92,32 @@ Route::patch('users/update', [
 //----------------------Rutas de Auctions------------------------
 
 
-Route::resource('auctions', 'AuctionsController');
+// Route::resource('auctions', 'AuctionsController');
+
+
+Route::get('auctions', [
+					 'as' => 'auctions.index',
+					 'uses' =>'AuctionsController@index'
+					]);
+
+Route::get('auctions/show/{id}', [
+					 'as' => 'auctions.show',
+					 'uses' => 'AuctionsController@show'
+				   ]) ->where('id', '[0-9]+');
 
 
 //-----------------------------------------------------------------
 //---------------------Rutas de Administracion---------------------
+
+
+Route::get('admin/index', function()
+						{
+							return view('administration.index');
+						});
+
+
+
+//---------------------Administracion de usuarios------------------
 
 Route::get('users/index',[
 					 'middleware' => ['auth','isAdmin'],
@@ -121,3 +142,11 @@ Route::get('users/edit/{id}', [
  					 'as' => 'admin.users.edit',
 					 'uses' => 'UserController@adminEdit'
 				   ]) ->where('id', '[0-9]+');
+
+//---------------------Administracion de subastas------------------
+
+Route::get('auctions/superindex',[
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.auctions.superindex',
+					 'uses' => 'AuctionsController@superIndex'
+					 ]);
