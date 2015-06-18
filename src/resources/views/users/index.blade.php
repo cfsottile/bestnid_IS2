@@ -10,12 +10,38 @@
   <h1> Indice de usuarios registrados </h1>
 </div>
 
+<form role="form" method="POST" action="{{url('admin.users.index')}}">
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-4">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Registrados entre: </label>
+        <div class="col-md-9">
+          <input type="date" class="form-control" name="date_start" value="{{ old('date_start') }}">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <div class="input-group col-lg-6">
+            <input type="date" class="form-control" name="date_end" value="{{ old('date_end')}}">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Buscar</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
       <th>#ID</th>
       <th>Nombre y Apellido</th>
       <th>Email</th>
+      <th>Registro</th>
       <th>DNI</th>
       <th>Opciones<th>
     </tr>
@@ -27,6 +53,7 @@
       <td>{{$user->id}}</td>
       <td>{{$user->name}} {{$user->last_name}}</td>
       <td>{{$user->email}}</td>
+      <td>{{$user->created_at}}</td>
       <td>{{$user->dni}}</td>
       <td>
          <a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Ver</a>

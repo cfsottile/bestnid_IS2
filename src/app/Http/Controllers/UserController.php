@@ -19,6 +19,13 @@ class UserController extends Controller {
 	public function index()
 	{
 		$users = User::all();
+		dd(Request::all());
+		if (Request::has('date_start') || Request::has('date_end')) {
+
+			$date_start = Request::get('date_start');
+			$date_end = Request::get('date_end');
+			$users = User::between($date_start,$date_end);
+		}
 		return view('users.index')->with('users',$users);
 	}
 
