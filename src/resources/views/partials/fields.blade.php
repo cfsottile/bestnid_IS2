@@ -6,7 +6,7 @@
 				<p class="help-block">{{$errors->first('name')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El nombre puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes.">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El nombre puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('last_name')) has-error @endif">
@@ -17,7 +17,7 @@
 				<p class="help-block">{{$errors->first('last_name')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El apellido puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes.">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El apellido puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('email')) has-error @endif">

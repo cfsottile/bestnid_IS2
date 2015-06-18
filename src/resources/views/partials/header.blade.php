@@ -44,7 +44,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hola, {{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-                {{-- <?php $user = Auth::user() ?> --}}
+                <!-- <?php $user = Auth::user() ?> -->
                 <li><a href="{{ route('users.edit') }}">Editar mi cuenta</a></li>
                 <li><a href="{{ route('users.show') }}">Ver mis datos</a></li>
                 <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
