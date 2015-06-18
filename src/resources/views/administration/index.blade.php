@@ -15,22 +15,22 @@
   <div class="row">
 
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-    <a class="img-thumbnail" href="{{ route('admin.users.index')}}">
-      {{-- <img src="{{}}" /> --}}
-      Administracion de Usuarios
-    </a>
+      <a class="img-thumbnail" href="{{ route('admin.users.index') }}">
+
+        Administracion de Usuarios
+      </a>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-    <a class="img-thumbnail" href="{{ route('admin.auctions.superindex') }}">
-      {{-- <img src="{{}}" /> --}}
-      Administracion de Subastas
-    </a>
+      <a class="img-thumbnail" href="{{ route('admin.auctions.superindex') }}">
+
+        Administracion de Subastas
+      </a>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
     <a class="img-thumbnail" href="#">
-      {{-- <img src="{{}}" /> --}}
+
       Administracion de Categorias
     </a>
     </div>

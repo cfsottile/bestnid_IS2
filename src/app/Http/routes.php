@@ -110,10 +110,12 @@ Route::get('auctions/show/{id}', [
 //---------------------Rutas de Administracion---------------------
 
 
-Route::get('admin/index', function()
-						{
+Route::get('admin/index', [
+						'as' => 'admin.index',
+						function(){
 							return view('administration.index');
-						});
+						}
+						]);
 
 
 
