@@ -10,7 +10,7 @@
   <h1> Indice de usuarios registrados </h1>
 </div>
 
-<form role="form" method="POST" action="{{url('admin.users.index')}}">
+<form role="form" method="POST" action="{{route('admin.users.postindex')}}">
   <div class="row">
     <div class="col-lg-offset-2 col-lg-4">
       <div class="form-group">

@@ -8,6 +8,9 @@ use Validator;
 use Request;
 use Auth;
 use Session;
+use Carbon;
+
+
 
 class UserController extends Controller {
 
@@ -19,12 +22,16 @@ class UserController extends Controller {
 	public function index()
 	{
 		$users = User::all();
-		dd(Request::all());
-		if (Request::has('date_start') || Request::has('date_end')) {
 
-			$date_start = Request::get('date_start');
-			$date_end = Request::get('date_end');
-			$users = User::between($date_start,$date_end);
+		if (Request::has('date_start') && Request::has('date_end')) {
+			//dd(Request::all());
+			$dt = Carbon::now();
+      $from =  $dt->toDateString(Input::get('date_start'));
+      $to = $dt->toDateString(Input::get('date_end'));
+
+			// $date_start = Request::get('date_start');
+			// $date_end = Request::get('date_end');
+			$users = User::whereBetween('created_at',[$from,$to]);
 		}
 		return view('users.index')->with('users',$users);
 	}

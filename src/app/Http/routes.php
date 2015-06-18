@@ -140,6 +140,12 @@ Route::get('users/index',[
 					 'uses' => 'UserController@index'
 					 ]);
 
+Route::post('users/index',[
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.users.postindex',
+					 'uses' => 'UserController@index'
+					 ]);
+
 Route::get('users/delete/{id}', [
 					 'middleware' => ['auth','isAdmin'],
  					 'as' => 'admin.users.delete',
