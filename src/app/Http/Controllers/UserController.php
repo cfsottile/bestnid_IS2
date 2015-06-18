@@ -8,7 +8,6 @@ use Validator;
 use Request;
 use Auth;
 use Session;
-use Carbon;
 
 
 
@@ -24,15 +23,18 @@ class UserController extends Controller {
 		$users = User::all();
 
 		if (Request::has('date_start') && Request::has('date_end')) {
-			//dd(Request::all());
-			$dt = Carbon::now();
-      $from =  $dt->toDateString(Input::get('date_start'));
-      $to = $dt->toDateString(Input::get('date_end'));
 
-			// $date_start = Request::get('date_start');
-			// $date_end = Request::get('date_end');
-			$users = User::whereBetween('created_at',[$from,$to]);
+			 $from = Request::get('date_start');
+			 $to = Request::get('date_end');
+
+			$users = User::whereBetween('created_at',[$from,$to])->get();
 		}
+
+		if ((Request::has('date_start') && !Request::has('date_end'))	|| (!Request::has('date_start') && Request::has('date_end')))
+		{
+			Session::flash('error','Debe introducir ambas fechas');
+		} 
+
 		return view('users.index')->with('users',$users);
 	}
 
