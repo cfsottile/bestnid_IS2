@@ -171,3 +171,9 @@ Route::get('auctions/superindex',[
 					 'as' => 'admin.auctions.superindex',
 					 'uses' => 'AuctionsController@superIndex'
 					 ]);
+
+Route::post('auctions/superindex',[
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.auctions.postsuperindex',
+					 'uses' => 'AuctionsController@superIndex'
+					 ]);

@@ -47,6 +47,20 @@ class AuctionsController extends Controller {
 	{
 		$auctions = Auction::all();
 
+
+		if (Request::has('date_start') && Request::has('date_end')) {
+
+			 $from = Request::get('date_start');
+			 $to = Request::get('date_end');
+
+			$auctions = Auction::whereBetween('created_at',[$from,$to])->get();
+		}
+
+		if ((Request::has('date_start') && !Request::has('date_end'))	|| (!Request::has('date_start') && Request::has('date_end')))
+		{
+			Session::flash('error','Debe introducir ambas fechas');
+		}
+
 		return view('auctions.superIndex')->with('auctions', $auctions);
 	}
 

@@ -10,12 +10,39 @@
   <h1> Indice de subastas </h1>
 </div>
 
+<form role="form" method="POST" action="{{route('admin.auctions.postsuperindex')}}">
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-4">
+      <div class="form-group">
+        <label class="col-md-3 control-label">Registradas entre: </label>
+        <div class="col-md-9">
+          <input type="date" class="form-control" name="date_start" value="{{ old('date_start') }}">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <div class="input-group col-lg-6">
+            <input type="date" class="form-control" name="date_end" value="{{ old('date_end')}}">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">Buscar</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
       <th>#ID</th>
       <th>#ID dueño</th>
       <th>Nombre</th>
+      <th>Fecha de inicio</th>
       <th>Fecha de cierre</th>
       <th>Opciones<th>
     </tr>
@@ -27,6 +54,7 @@
       <td>{{$auction->id}}</td>
       <td>{{$auction->owner_id}}</td>
       <td>{{$auction->name}}</td>
+      <td>{{$auction->created_at}}</td>
       <td>{{$auction->end_date}}</td>
       <td>
          <a href="{{ route('auctions.show' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Ver</a>
