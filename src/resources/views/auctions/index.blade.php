@@ -7,7 +7,8 @@
 
 @section('content')
 
-  @include('partials.notifications')
+  @include('partials.detailed_notifications')
+  
   <div class="page-header">
     <h1>Subastas</h1>
   </div>

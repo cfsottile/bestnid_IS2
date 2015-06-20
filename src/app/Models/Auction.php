@@ -38,7 +38,7 @@ class Auction extends Model {
 	}
 
 	public function offers() {
-		return $this->hasMany('App\Auction');
+		return $this->hasMany('App\Offer');
 	}
 
 	public function comments() {
@@ -75,5 +75,25 @@ class Auction extends Model {
 			'picture' => 'required|string|min:4'
 		];
 	}
+
+	public function isDeleteable() {
+
+		if (count($this->offers()) > 0) { //si tiene ofertas
+
+			if ($this->end_date < Date('Y/m/d H:i:s')){ //si tiene ofertas y pero ya cerró
+
+				return true;
+			}
+
+			return false;
+
+		} else { //si no tiene ofertas
+
+			return true;
+
+		}
+
+	}
+
 
 }

@@ -17,10 +17,9 @@ class isAdmin {
 
 		if(Auth::user()->is_admin == 0){
 
-			return redirect('auctions');
+			return redirect()->back()->with('warning', 'Estas intentando acceder a una sección restringida');
 
 		}
-
 
 		return $next($request);
 	}

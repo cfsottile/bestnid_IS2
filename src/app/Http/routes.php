@@ -61,7 +61,7 @@ Route::get('logout', [
 
 
 
-Route::delete('users/delete', [
+Route::get('users/delete', [
 							'middleware' =>'auth',
 							'as' => 'users.delete',
 							'uses' => 'UserController@destroy'

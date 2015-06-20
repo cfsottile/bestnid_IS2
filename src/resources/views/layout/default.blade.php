@@ -21,6 +21,7 @@
       <div class='container'>
         @section('header')
           @include('partials.header')
+          @include('partials.warnings')
 
 
         @show

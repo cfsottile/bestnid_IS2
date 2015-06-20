@@ -20,6 +20,9 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
+		// para sacar todos los ususarios, incluso los "eliminados"
+		// $users = User::withTrashed()->get();
+
 		$users = User::all();
 
 		if (Request::has('date_start') && Request::has('date_end')) {
@@ -195,11 +198,14 @@ class UserController extends Controller {
 	public function destroy()
 	{
 		//ver "soft delete", podria servir
-		$username = Auth::user()->name;
-		$id = Auth::user()->id;
-		User::destroy($id);
-		Session::flash('success', 'Su cuenta ha sido eliminada con exito, '.$username.'. Hasta nunca.');
-		return redirect()->back();
+		if(Auth::user()->isDeleteable()){
+			$username = Auth::user()->name;
+			$id = Auth::user()->id;
+			User::destroy($id);
+			return redirect('login')->with('success', 'Su cuenta ha sido eliminada con exito, '.$username.'. Hasta nunca.');
+		} else {
+			return redirect()->back()->with('error', 'No puede eliminar su cuenta, tiene subastas activas');
+		}
 	}
 
 
@@ -212,6 +218,7 @@ class UserController extends Controller {
 	public function adminDestroy($id)
 	{
 		//ver "soft delete", podria servir
+
 
 		$user = User::find($id);
 		$user->delete();
