@@ -74,7 +74,7 @@ class AuctionsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('auctions.create');
 	}
 
 	/**
@@ -89,6 +89,8 @@ class AuctionsController extends Controller {
 
 		$data = $request;
 		$data['owner_id'] = Auth::user()->id;
+		$data['category_id'] = Category::idForName($data['categoryName']);
+		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
 
 		return Auction::create($data);
 	}

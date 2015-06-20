@@ -19,12 +19,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorías <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-
-            <li><a href="{{ route('auctions.index', 'query=Automotores'.'&category=true') }}">Automotores</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Cocina'.'&category=true') }}">Cocina</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Electrónica'.'&category=true') }}">Electrónica</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Mueblería'.'&category=true') }}">Mueblería</a></li>
-            <li><a href="{{ route('auctions.index', 'query=Varios'.'&category=true') }}">Varios</a></li>
+              @foreach (App\Models\Category::all() as $c)
+                <li><a href="{{ route('auctions.index', 'query='.$c->name.'&category=true') }}">{{$c->name}}</a></li>
+              @endforeach
             {{-- <li class="divider"></li> --}}
           </ul>
         </li>

@@ -110,6 +110,15 @@ Route::post('auctions/{id}/winners', [
 	'uses' => 'AuctionsController@postWinner'
 	])->where('id', '[0-9]+');
 
+Route::get('auctions/create', [
+	'as' => 'auctions.create',
+	'uses' => 'AuctionsController@create'
+	]);
+
+Route::post('auctions', [
+	'as' => 'auctions.store',
+	'uses' => 'AuctionsController@store'
+	]);
 
 //-----------------------------------------------------------------
 //---------------------Rutas de Administracion---------------------
