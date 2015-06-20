@@ -33,7 +33,7 @@ class UserController extends Controller {
 		if ((Request::has('date_start') && !Request::has('date_end'))	|| (!Request::has('date_start') && Request::has('date_end')))
 		{
 			Session::flash('error','Debe introducir ambas fechas');
-		} 
+		}
 
 		return view('users.index')->with('users',$users);
 	}
@@ -213,7 +213,8 @@ class UserController extends Controller {
 	{
 		//ver "soft delete", podria servir
 
-		User::destroy($id);
+		$user = User::find($id);
+		$user->delete();
 		Session::flash('success', 'Usuario eliminado con exito');
 		return redirect()->back();
 	}

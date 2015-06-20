@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration {
 			$table->string('cc_exp_date',5)->nullable();
 			$table->boolean('is_admin');
 
+			$table->softDeletes(); //crea columna deleted_at
 			$table->timestamps(); //crea columnas created_at + updated_at
 			$table->rememberToken();
 		});
