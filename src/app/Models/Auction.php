@@ -4,12 +4,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Auction extends Model {
 
+	use SoftDeletes;
+
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
 	protected $table = 'auctions';
+
+	protected $dates = ['deleted_at'];
 
 	/**
 	 * The attributes that are mass assignable.

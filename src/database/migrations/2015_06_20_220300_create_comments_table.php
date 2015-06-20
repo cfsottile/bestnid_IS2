@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration {
 			$table->integer('owner_id')->unsigned();
 			$table->integer('auction_id')->unsigned();
 			$table->timestamps();
+			$table->softDeletes();
 
 			$table->foreign('owner_id')->references('id')->on('users');
 			$table->foreign('auction_id')->references('id')->on('auctions');

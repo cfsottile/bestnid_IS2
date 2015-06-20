@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration {
 			$table->string('name', 50);
 			$table->timestamp('created_at');
 			$table->timestamp('updated_at');
+			$table->softDeletes();
 		});
 	}
 

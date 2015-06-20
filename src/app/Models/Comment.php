@@ -4,6 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model {
 
+	use SoftDeletes;
+
+	protected $dates = ['deleted_at'];
+
 	public function owner() {
 		return $this->belongsTo('App\User', 'owner_id');
 	}

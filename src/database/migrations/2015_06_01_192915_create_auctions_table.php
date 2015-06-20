@@ -24,6 +24,7 @@ class CreateAuctionsTable extends Migration {
 			$table->integer('category_id')->unsigned();
 			$table->timestamp('created_at');
 			$table->timestamp('updated_at');
+			$table->softDeletes();
 
 			$table->foreign('owner_id')->references('id')->on('users');
 			$table->foreign('winner_id')->references('id')->on('users');
