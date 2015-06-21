@@ -39,15 +39,15 @@ class Auction extends Model {
 	}
 
 	public function category() {
-		return $this->belongsTo('App\Category');
+		return $this->belongsTo('App\Models\Category');
 	}
 
 	public function offers() {
-		return $this->hasMany('App\Offer');
+		return $this->hasMany('App\Models\Offer');
 	}
 
 	public function comments() {
-		return $this->hasMany('App\Comment');
+		return $this->hasMany('App\Models\Comment');
 	}
 
 	public function pictureUrl() {
@@ -83,7 +83,7 @@ class Auction extends Model {
 
 	public function isDeleteable() {
 
-		if (count($this->offers()) > 0) { //si tiene ofertas
+		if (count($this->offers) > 0) { //si tiene ofertas
 
 			if ($this->end_date < Date('Y/m/d H:i:s')){ //si tiene ofertas y pero ya cerró
 

@@ -8,7 +8,7 @@
 @section('content')
 
   @include('partials.detailed_notifications')
-  
+
   <div class="page-header">
     <h1>Subastas</h1>
   </div>
@@ -61,19 +61,20 @@
           <div class="col-md-4 col-sm-6">
 
             <div class="thumbnail panel panel-default" style="height:420px; width:300px">
-              {{-- <div class="panel-heading">
-                <h5>Bids:-|             |Dias:-</h5>
-              </div> --}}
+              <div class="panel-heading">
+                <h6>
+                  Dias restantes: {{$a->remainingDays()}}
+                <br>
+                  Ofertas: {{ count($a->offers) }}
+                </h6>
+              </div>
               <div class="panel-body" style="height:300px">
                 <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
                 </a>
               </div>
               <div class="panel-footer" style="height:110px; overflow:auto" >
-                <!-- POR AHORA DEJO ACA LA FECHA -->
-                <h6>
-                  Quedan {{$a->remainingDays()}} días
-                </h6>
+
                 <h2 class="panel-title"> {{ $a->name }} </h2>
                 <br>
 

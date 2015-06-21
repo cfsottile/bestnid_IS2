@@ -41,12 +41,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isDeleteable(){
 
-		$user_auctions = $this->auctions();
+		$user_auctions = $this->auctions;
 		$active_auctions = 0;
 		foreach ($user_auctions as $auction){
 
 			if ( $auction->isDeleteable() ) {
-				 $active_auction += 1; }
+				 $active_auctions += 1; }
 		}
 
 		if ($active_auctions > 0){
@@ -64,7 +64,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function auctions(){
 
-			return $this->hasMany('App\Models\Auction');
+			return $this->hasMany('App\Models\Auction', 'owner_id');
 
 	}
 
