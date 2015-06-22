@@ -73,7 +73,7 @@
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->title }}"/>
                 </a>
               </div>
-              <div class="panel-footer" style="height:0=150px" >
+              <div class="panel-footer" style="height:0=150px; overflow:auto" >
 
                 <h2 class="panel-title"> {{ $a->title }} </h2>
                 <br>
