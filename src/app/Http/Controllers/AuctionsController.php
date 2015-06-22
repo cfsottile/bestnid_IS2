@@ -98,12 +98,12 @@ class AuctionsController extends Controller {
 		if (Auth::user() != null) {
 			$data['owner_id'] = Auth::user()->id;
 		} else {
-			return redirect()->
+			return redirect()->route('registrationPersuasion')->with('message', 'Tenés que estar registrado para dar de alta subastas.');
 		}
 
-		$data['category_id'] = Category::idForName($data['categoryName']);
+		$data['category_id'] = Category::idForName($data['categoryName'])->first()->id;
 		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
-		$data['picture'] =
+		$data['picture'] = 'auction_'.Date('YmdHis').$data['owner_id'].rand(100,999);
 
 		$validator = Auction::finalValidate($data);
 		if ($validator->fails()) {
@@ -113,10 +113,10 @@ class AuctionsController extends Controller {
 				->withInput();
 		}
 
+		Request::file('image')->move(public_path().'/images/', $data['picture']);
+		Auction::create($data);
 
-		Request::file('image')->move($destinationPath, 'auction_');
-
-		return Auction::create($data);
+		return redirect()->route('auctions.exito')->with('auctionTitle', $data['title']);
 	}
 
 	/**
@@ -168,4 +168,9 @@ class AuctionsController extends Controller {
 		$winner_id = Request::get('winner_id');
 		Auction::find($id)->winner()->associate(User::find($winner_id));
 	}
+
+	public function exito () {
+		return view('auctions.exito');
+	}
+
 }

@@ -85,6 +85,11 @@ Route::patch('users/update', [
 						'uses' => 'UserController@update'
 					 ]);
 
+Route::get('users/persuade', [
+	'as' => 'registrationPersuasion',
+	'uses' => 'UserController@persuade'
+	]);
+
 
 
 //----------------------------------------------------------------
@@ -118,6 +123,11 @@ Route::get('auctions/create', [
 Route::post('auctions', [
 	'as' => 'auctions.store',
 	'uses' => 'AuctionsController@store'
+	]);
+
+Route::get('auctions/exito', [
+	'as' => 'auctions.exito',
+	'uses' => 'AuctionsController@exito'
 	]);
 
 //-----------------------------------------------------------------

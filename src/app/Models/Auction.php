@@ -22,7 +22,7 @@ class Auction extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'end_date', 'description', 'owner_id', 'category_id', 'picture'];
+	protected $fillable = ['title', 'end_date', 'description', 'owner_id', 'category_id', 'picture'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -106,6 +106,5 @@ class Auction extends Model {
 		}
 
 	}
-
 
 }

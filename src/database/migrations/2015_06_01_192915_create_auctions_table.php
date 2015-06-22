@@ -15,7 +15,7 @@ class CreateAuctionsTable extends Migration {
 		Schema::create('auctions', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name', 100);
+			$table->string('title', 100);
 			$table->timestamp('end_date');
 			$table->text('description');
 			$table->string('picture');

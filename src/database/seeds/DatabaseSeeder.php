@@ -101,7 +101,7 @@ class UsersTableSeeder extends Seeder {
 	    DB::table('auctions')->delete();
 
 			Auction::create([
-				'name' => 'Botella de agua 1L',
+				'title' => 'Botella de agua 1L',
 				// 'end_date' => 2015-06-03 20:51:57,
 				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Botella de agua en no muy buen estado; se cayó del camión repartidor.',
@@ -111,7 +111,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'AK-47',
+				'title' => 'AK-47',
 				'end_date' => Date('Y/m/d', strtotime("+23 days")),
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
@@ -120,7 +120,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Moto G 2013',
+				'title' => 'Moto G 2013',
 				'end_date' => Date('Y/m/d', strtotime("+30 days")),
 				'description' => 'El celular está en perfecto estado.',
 				'picture' => 'auction_3.jpg',
@@ -129,7 +129,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Cargador para macbook',
+				'title' => 'Cargador para macbook',
 				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Buen estado.',
 				'picture' => 'auction_4.jpg',
@@ -138,7 +138,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Casco',
+				'title' => 'Casco',
 				'end_date' => Date('Y/m/d', strtotime("+26 days")),
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
@@ -147,7 +147,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Cartuchera Faber-Castell',
+				'title' => 'Cartuchera Faber-Castell',
 				'end_date' => Date('Y/m/d', strtotime("+18 days")),
 				'description' => 'Feroz cartuchera.',
 				'picture' => 'auction_6.jpg',
@@ -156,7 +156,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Neumatico Pirelli P400 185/65/14',
+				'title' => 'Neumatico Pirelli P400 185/65/14',
 				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Rueda 0 KM!!!',
 				'picture' => 'auction_7.jpg',
@@ -165,7 +165,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'DeLorean Volver al Futuro II (Sun Star S2710)',
+				'title' => 'DeLorean Volver al Futuro II (Sun Star S2710)',
 				'end_date' => Date('Y/m/d', strtotime("+16 days")),
 				'description' => 'Solo se puede teletransportar al presente',
 				'picture' => 'auction_8.jpg',
@@ -174,7 +174,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Cocina Industrial Morelli 60cm Horno Visor',
+				'title' => 'Cocina Industrial Morelli 60cm Horno Visor',
 				'end_date' => Date('Y/m/d', strtotime("+19 days")),
 				'description' => 'Medida: 60 x 62 x 82 cm. Tiene frente, mesaday laterales en acero inoxidables esmerilado.',
 				'picture' => 'auction_9.jpg',
@@ -183,7 +183,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Cocina Escorial Candor C/valvula Seguridad',
+				'title' => 'Cocina Escorial Candor C/valvula Seguridad',
 				'end_date' => Date('Y/m/d', strtotime("+20 days")),
 				'description' => 'Facil limpieza',
 				'picture' => 'auction_10.jpg',
@@ -192,7 +192,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Olla pucherona de 35 cm. Essen',
+				'title' => 'Olla pucherona de 35 cm. Essen',
 				'end_date' => Date('Y/m/d', strtotime("+21 days")),
 				'description' => 'Color Cerezo, Capacidad: 16 litros, Interior de alumnio.',
 				'picture' => 'auction_11.jpg',
@@ -201,7 +201,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Savarín naranja',
+				'title' => 'Savarín naranja',
 				'end_date' => Date('Y/m/d', strtotime("+22 days")),
 				'description' => 'Diametro de 12 cm. para hacer grandes y ricos potres.',
 				'picture' => 'auction_12.jpg',
@@ -210,7 +210,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Estacion de soldado aire caliente',
+				'title' => 'Estacion de soldado aire caliente',
 				'end_date' => Date('Y/m/d', strtotime("+23 days")),
 				'description' => 'Para smd y contacto Hy908',
 				'picture' => 'auction_13.jpg',
@@ -219,7 +219,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Tira Led Rgb 5 Metros',
+				'title' => 'Tira Led Rgb 5 Metros',
 				'end_date' => Date('Y/m/d', strtotime("+29 days")),
 				'description' => 'Viene con Transformador Exterior',
 				'picture' => 'auction_14.jpg',
@@ -228,7 +228,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Placard',
+				'title' => 'Placard',
 				'end_date' => Date('Y/m/d', strtotime("+17 days")),
 				'description' => 'Armo placards y quiero probar suerte subastando uno.',
 				'picture' => 'auction_15.jpg',
@@ -237,7 +237,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Dressoir',
+				'title' => 'Dressoir',
 				'end_date' => Date('Y/m/d', strtotime("+26 days")),
 				'description' => 'Lo encontré en la calle, está en muy buen estado.',
 				'picture' => 'auction_16.jpg',
@@ -246,7 +246,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Mesa de cedro',
+				'title' => 'Mesa de cedro',
 				'end_date' => Date('Y/m/d', strtotime("+27 days")),
 				'description' => 'Esta mesa de cedro fue fabricada en el año 1754, siempre fue cuidada en extremo.',
 				'picture' => 'auction_17.jpg',
@@ -255,7 +255,7 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 			Auction::create([
-				'name' => 'Sofa de lujo',
+				'title' => 'Sofa de lujo',
 				'end_date' => Date('Y/m/d', strtotime("+xx days")),
 				'description' => 'Genial sofá, imperdible',
 				'picture' => 'auction_18.jpg',
