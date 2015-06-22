@@ -6,7 +6,7 @@
     <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
     <div class="jumbotron">
       <div class="page-header">
-        <h1>{{ $auction->name }}</h1>
+        <h1>{{ $auction->title }}</h1>
       </div>
       <br>
         <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail"/><br><br>

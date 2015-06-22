@@ -60,7 +60,7 @@
       @foreach ($auctions as $a)
           <div class="col-md-4 col-sm-6">
 
-            <div class="thumbnail panel panel-default" style="height:420px; width:300px">
+            <div class="thumbnail panel panel-default" style="height:460px; width:300px">
               <div class="panel-heading">
                 <h6>
                   Dias restantes: {{$a->remainingDays()}}
@@ -73,7 +73,7 @@
                   <img src="{{ $a->pictureUrl() }}" alt="{{ $a->title }}"/>
                 </a>
               </div>
-              <div class="panel-footer" style="height:110px; overflow:auto" >
+              <div class="panel-footer" style="height:0=150px" >
 
                 <h2 class="panel-title"> {{ $a->title }} </h2>
                 <br>
