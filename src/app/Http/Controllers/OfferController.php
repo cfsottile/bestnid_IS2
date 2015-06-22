@@ -20,12 +20,12 @@ class OfferController extends Controller {
 	 * Ofertas de UN usuario 
 	 * @return Response
 	 */
-	public function index($id)
+	public function index()
 	{
 		$user = Auth::user();
 		$offers = $user->offers;
 
-		return view('offers.index')->with($offers);
+		return view('offers.index')->with('offers',$offers);
 	}
 
 	/**
