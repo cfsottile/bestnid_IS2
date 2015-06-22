@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Validator;
 
 class Auction extends Model {
 
@@ -70,15 +71,21 @@ class Auction extends Model {
 		return (new \DateTime($this->end_date))->diff(new \DateTime("now"))->d;
     }
 
-	public static function rules () {
-		return [
-			'name' => 'required|string|max:255|min:3',
+	public static function initialValidate ($data) {
+		return Validator::make($data, [
+			'title' => 'required|string|min:3|max:255',
 			'description' => 'required',
+			'image' => 'required|image|mimes:jpg,jpeg,png',
+			'categoryName' => 'required|string|exists:categories,name',
+			'durationInDays' => 'required|integer|between:15,30'
+			]);
+	}
+
+	public static function finalValidate ($data) {
+		return Validator::make($data, [
 			'owner_id' => 'required|exists:users,id',
-			'category_id' => 'required|exists:categories,id',
-			'end_date' => 'required',
 			'picture' => 'required|string|min:4'
-		];
+			]);
 	}
 
 	public function isDeleteable() {

@@ -12,12 +12,12 @@
 					{{-- FORMULARIO --}}
 					<form class="form-horizontal" role="form" method="POST" action="{{ route('users.store') }}">
 						<fieldset>
-							<legend><h3>Edicion de datos: {{ $user->name }}</h3></legend>
+							<legend><h3>Edición de datos: {{ $user->name }}</h3></legend>
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="_method" value="PATCH">
 							<input type="hidden" name="id" value="{{ $user->id }}">
 							@include('partials.notifications')
-							
+
 							<div class="form-group @if($errors->has('name')) has-error @endif">
 								<label class="col-md-4 control-label">Nombres</label>
 								<div class="col-md-6">

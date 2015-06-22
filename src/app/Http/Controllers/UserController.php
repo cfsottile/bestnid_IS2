@@ -58,7 +58,7 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//responsabilidad de auth
+		//responsabilidad de authz
 		$user = User::create(Request::all());
 
 		return redirect()->back();

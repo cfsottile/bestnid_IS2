@@ -138,8 +138,32 @@ return [
 		],
 		'accept_terms' => [
 			'accepted' => 'Es necesario aceptar los términos y condiciones',
+		],
+		'title' => [
+			'required' => 'El título es requerido',
+			'max' => 'El título debe tener como máximo :max caracteres',
+			'min' => 'El título debe tener como mínimo :min caracteres',
+		],
+		'description' => [
+			'required' => 'La desripción es requerida',
+		],
+		'owner_id' => [
+			'required' => 'Debe estar registrado para crear subastas',
+			'exists' => 'Hubo un error con su usuario. Contacte a la administración',
+		],
+		'categoryName' => [
+			'required' => 'Debe ingresar alguna categoría',
+			'exists' => 'Hubo un problema con la categoría. Contacte a la administración'
+		],
+		'durationInDays' => [
+			'required' => 'La duración de la subasta es requerida',
+		],
+		'picture' => [
+			'required' => 'La foto es requerida',
+
+			// 'image' => 'El archivo no es una imagen',
+			// 'mime' => 'El formato de la imagen no es válido. Sólo JPEG, JPG o PNG'
 		]
-		
 
 	],
 

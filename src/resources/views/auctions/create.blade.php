@@ -11,15 +11,13 @@
 				<div class="panel-body">
 
 
-          <form class="form-horizontal" method="POST" action="{{ route('auctions.store') }}"
-          {{-- enctype="multipart/form-data" --}}
-          >
+          <form class="form-horizontal" role="form" method="POST" action="{{ route('auctions.store') }}" enctype="multipart/form-data">
             <fieldset>
               <legend>Alta de subasta</legend>
               <div class="form-group">
-                <label for="name" class="col-lg-2 control-label">Nombre</label>
+                <label for="name" class="col-lg-2 control-label">Título</label>
                 <div class="col-lg-10">
-                  <input type="text" class="form-control" id="name">
+                  <input type="text" class="form-control" id="title" name="title">
                 </div>
               </div>
               {{-- <div class="form-group">
@@ -36,7 +34,7 @@
               <div class="form-group">
                 <label for="description" class="col-lg-2 control-label">Descripción</label>
                 <div class="col-lg-10">
-                  <textarea class="form-control" rows="3" id="description"></textarea>
+                  <textarea class="form-control" rows="3" id="description" name="description"></textarea>
                   {{-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> --}}
                 </div>
               </div>
@@ -58,16 +56,16 @@
                 </div>
               </div> --}}
               <div class="form-group">
-                <label for="picture" class="col-lg-2 control-label">Imagen</label>
+                <label for="image" class="col-lg-2 control-label">Imagen</label>
                 <div class="col-lg-10">
-                    <input type="file" id="picture">
+                    <input type="file" id="image" name="image">
                     {{-- <p class="help-block">Example block-level help text here.</p> --}}
                 </div>
               </div>
               <div class="form-group">
                 <label for="categoryName" class="col-lg-2 control-label">Categoría</label>
                 <div class="col-lg-10">
-                  <select class="form-control" id="categoryName">
+                  <select class="form-control" id="categoryName" name="categoryName">
                       @foreach (App\Models\Category::all() as $c)
                         <option>{{ $c->name }}</option>
                       @endforeach
@@ -77,7 +75,7 @@
               <div class="form-group">
                 <label for="durationInDays" class="col-lg-2 control-label">Días de duración</label>
                 <div class="col-lg-10">
-                  <select class="form-control" id="durationInDays">
+                  <select class="form-control" id="durationInDays" name="durationInDays">
                     @for ($i = 15; $i <= 30; $i++)
                       <option>{{ $i }}</option>
                     @endfor
@@ -92,7 +90,6 @@
               </div>
             </fieldset>
           </form>
-
         </div>
       </div>
     </div>

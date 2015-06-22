@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Auction;
 use App\Models\Category;
 
+use Auth;
 use App\User;
 use Request;
 use Session;
@@ -82,15 +83,38 @@ class AuctionsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store()
 	{
-		dd($request);
-		$this->validates($request, Auction::rules());
+		$data = Request::all();
 
-		$data = $request;
-		$data['owner_id'] = Auth::user()->id;
+		$validator = Auction::initialValidate($data);
+		if ($validator->fails()) {
+			return redirect()
+				->back()
+				->with('errors', $validator->messages())
+				->withInput();
+		}
+
+		if (Auth::user() != null) {
+			$data['owner_id'] = Auth::user()->id;
+		} else {
+			return redirect()->
+		}
+
 		$data['category_id'] = Category::idForName($data['categoryName']);
 		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
+		$data['picture'] =
+
+		$validator = Auction::finalValidate($data);
+		if ($validator->fails()) {
+			return redirect()
+				->back()
+				->with('errors', $validator->messages())
+				->withInput();
+		}
+
+
+		Request::file('image')->move($destinationPath, 'auction_');
 
 		return Auction::create($data);
 	}
