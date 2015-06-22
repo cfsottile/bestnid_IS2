@@ -91,6 +91,22 @@ Route::get('users/persuade', [
 	]);
 
 
+//----------------------------------------------------------------
+
+//----------------------Rutas de Offers---------------------------
+
+//RUTAS EN ESTADO DE PRUEBA AUN
+
+Route::get('offers', [
+					'as' => 'offers.index',
+					'uses' => 'OfferController@index'
+					]) ->where('id', '[0-9]+');
+
+Route::get('offers/create', [
+	'as' => 'offers.create',
+	'uses' => 'OfferController@create'
+	]);
+
 
 //----------------------------------------------------------------
 

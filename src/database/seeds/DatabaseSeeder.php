@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Offer;
 use App\Models\Auction;
 use App\Models\Category;
 use App\User;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->call('CategoriesTableSeeder');
 		$this->call('AuctionsTableSeeder');
+		$this->call('OffersTableSeeder');
 
 		// $this->call('UserTableSeeder');
 
@@ -292,5 +294,20 @@ class UsersTableSeeder extends Seeder {
 			]);
 
 		}
-
 }
+
+	class OffersTableSeeder extends Seeder{
+
+		public function run(){
+
+			Offer::create([
+				'amount' => 15.5,
+				'reason' => 'Me gustaria ese casco porque me recuerda a mis ancestros alemanes',
+				'owner_id' => 2,
+				'auction_id' => 5
+				]);
+
+		}
+	}
+
+
