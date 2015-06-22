@@ -3,7 +3,15 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Models\Auction;
+use App\Models\Category;
+use App\Models\Offer; 
+
+use Auth;
+use App\User;
+use Request;
+use Session;
+
 
 class OfferController extends Controller {
 
@@ -14,8 +22,10 @@ class OfferController extends Controller {
 	 */
 	public function index($id)
 	{
-		$offers = Offer::owner();
-		return view('offers.index')->with($id);
+		$user = Auth::user();
+		$offers = $user->offers;
+
+		return view('offers.index')->with($offers);
 	}
 
 	/**

@@ -98,15 +98,16 @@ Route::get('users/persuade', [
 //RUTAS EN ESTADO DE PRUEBA AUN
 
 Route::get('offers', [
+					'middleware' =>'auth',
 					'as' => 'offers.index',
 					'uses' => 'OfferController@index'
-					]) ->where('id', '[0-9]+');
+					]);
 
-Route::get('offers/create', [
+/*Route::get('offers/create', [
 	'as' => 'offers.create',
 	'uses' => 'OfferController@create'
 	]);
-
+*/
 
 //----------------------------------------------------------------
 

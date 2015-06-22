@@ -155,24 +155,24 @@ class UserController extends Controller {
 		$data = Request::all();
 
 		$validator = Validator::make($data, [
-			'name' => 'required|max:255|min:4',
-			'last_name' => 'required|max:255|min:4',
-			'dni' => 'required|numeric',
+			'name' => 'required|string|max:50|min:4|regex:/^[A-zñÁÉÍÓÚáéíóúü][A-zñáéíóúÁÉÍÓÚü\'\ ]+$/',
+			'last_name' => 'required|string|max:50|min:4|regex:/^[A-zñÁÉÍÓÚáéíóúü][A-zñáéíóúÁÉÍÓÚü\'\ ]+$/',
+			'dni' => 'required|min:7|max:8|regex:/^[0-9]+$/',
 			'born_date' => 'required|Date',
-			'phone' => 'required|max:20|min:16',
-			'cc_data' => 'numeric',
+			'phone' => 'required|regex:/^\+(?:[0-9] ?){6,14}[0-9]$/',
+			'cc_data' => 'max:16|min:16|required|regex:/^[0-9]+$/',
+
 
 		]);
 
 		if ( $validator->fails() )
 		{
-			$errors = $validator->errors()->all();
-			$user = User::findOrFail($data['id']);
+/*			$errors = $validator->errors()->all();
+*/
 
 			return redirect()
 				->back()
-				->with('errors', $errors)
-				->with('user', $user);
+				->with('errors', $validator->messages());
 		}
 
 		$id = Request::input('id');

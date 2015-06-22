@@ -76,7 +76,7 @@
 							<div class="form-group @if($errors->has('cc_data')) has-error @endif">
 								<label class="col-md-4 control-label">Tarjeta de Crédito:</label>
 								<div class="col-md-6">
-									<input type="string" class="form-control" name="cc_data" value="{{ old('cc_data') }}">
+									<input type="string" class="form-control" name="cc_data" value="{{ $user->cc_data }}">
 									@if($errors->has('cc_data'))
 										<p class="help-block">{{$errors->first('cc_data')}}</p>
 									@endif
