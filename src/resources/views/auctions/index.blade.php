@@ -23,8 +23,8 @@
             {{-- resutados para busqueda con query (categoria) --}}
             <div class="container-fluid pull-right">
               <span> Ordenar por:
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&category=true&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&category=true&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
             </div>
@@ -33,8 +33,8 @@
             {{-- resultados para busqueda con query (busqueda) --}}
             <div class="container-fluid pull-right">
               <span> Ordenar por:
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=name&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
                 <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
             </div>
@@ -45,8 +45,8 @@
           <div class="container">
             <div class="pull-right">
             <span> Ordenar por:
-              <a href="{{ route('auctions.index', 'orderCriteria=name&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=name&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
               <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
               <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
           </div>
@@ -70,12 +70,12 @@
               </div>
               <div class="panel-body" style="height:300px">
                 <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
-                  <img src="{{ $a->pictureUrl() }}" alt="{{ $a->name }}"/>
+                  <img src="{{ $a->pictureUrl() }}" alt="{{ $a->title }}"/>
                 </a>
               </div>
               <div class="panel-footer" style="height:110px; overflow:auto" >
 
-                <h2 class="panel-title"> {{ $a->name }} </h2>
+                <h2 class="panel-title"> {{ $a->title }} </h2>
                 <br>
 
               </div>

@@ -56,7 +56,7 @@ class Auction extends Model {
 	}
 
 	public function scopeNameIncludes($query, $string) {
-		return $query->where('name', 'LIKE', '%'.$string.'%');
+		return $query->where('title', 'LIKE', '%'.$string.'%');
 	}
 
 	public function scopeCurrents ($query) {

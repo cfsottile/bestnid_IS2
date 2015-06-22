@@ -53,7 +53,7 @@
     <tr>
       <td>{{$auction->id}}</td>
       <td>{{$auction->owner_id}}</td>
-      <td>{{$auction->name}}</td>
+      <td>{{$auction->title}}</td>
       <td>{{$auction->created_at}}</td>
       <td>{{$auction->end_date}}</td>
       <td>
