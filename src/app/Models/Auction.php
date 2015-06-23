@@ -44,11 +44,11 @@ class Auction extends Model {
 	}
 
 	public function offers() {
-		return $this->hasMany('App\Models\Offer');
+		return $this->hasMany('App\Models\Offer', 'id');
 	}
 
 	public function comments() {
-		return $this->hasMany('App\Models\Comment');
+		return $this->hasMany('App\Models\Comment', 'id');
 	}
 
 	public function pictureUrl() {
