@@ -76,7 +76,7 @@
                   <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td>
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
-                  @if(substr($auction->end_date, 0, 10) < Date("Y-m-d"))
+                  @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
                       <td>
                           <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
                               <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
