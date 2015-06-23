@@ -139,6 +139,7 @@ return [
 		'accept_terms' => [
 			'accepted' => 'Es necesario aceptar los términos y condiciones',
 		],
+
 		'title' => [
 			'required' => 'El título es requerido',
 			'max' => 'El título debe tener como máximo :max caracteres',
@@ -147,23 +148,29 @@ return [
 		'description' => [
 			'required' => 'La desripción es requerida',
 		],
-		'owner_id' => [
-			'required' => 'Debe estar registrado para crear subastas',
-			'exists' => 'Hubo un error con su usuario. Contacte a la administración',
-		],
 		'categoryName' => [
 			'required' => 'Debe ingresar alguna categoría',
-			'exists' => 'Hubo un problema con la categoría. Contacte a la administración'
+			'exists' => 'Hubo un problema con la categoría. Contacte a la administración.'
 		],
 		'durationInDays' => [
 			'required' => 'La duración de la subasta es requerida',
+			'between' => 'La duración debe ser de entre :min y :max días inclusive'
 		],
+		'image' => [
+			'required' => 'La imagen es requerida',
+			'image' => 'La imagen debe ser un archivo de tipo imagen',
+			'mimes' => 'Los tipos de archivos soportados son jpg, jpeg y png',
+			'size' => 'El tamaño de la imagen no puede ser superior a :size'
+		],
+
 		'picture' => [
 			'required' => 'La foto es requerida',
-
-			// 'image' => 'El archivo no es una imagen',
-			// 'mime' => 'El formato de la imagen no es válido. Sólo JPEG, JPG o PNG'
-		]
+			'min:4' => 'El nombre de la imagen es inválido. Contacte a la administración.'
+		],
+		'owner_id' => [
+			'required' => 'Debe estar registrado para crear subastas',
+			'exists' => 'Hubo un error con su usuario. Contacte a la administración.',
+		],
 
 	],
 

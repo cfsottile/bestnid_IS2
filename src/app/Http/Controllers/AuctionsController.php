@@ -86,6 +86,7 @@ class AuctionsController extends Controller {
 	public function store()
 	{
 		$data = Request::all();
+		dd($data);
 
 		$validator = Auction::initialValidate($data);
 		if ($validator->fails()) {
