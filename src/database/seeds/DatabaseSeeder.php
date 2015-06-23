@@ -301,10 +301,38 @@ class UsersTableSeeder extends Seeder {
 		public function run(){
 
 			Offer::create([
-				'amount' => 15.5,
+				'amount' => 62.5,
 				'reason' => 'Me gustaria ese casco porque me recuerda a mis ancestros alemanes',
 				'owner_id' => 2,
 				'auction_id' => 5
+				]);
+
+			Offer::create([
+				'amount' => 8,
+				'reason' => 'Tengo sed',
+				'owner_id' => 3,
+				'auction_id' => 1
+				]);
+
+			Offer::create([
+				'amount' => 15.5,
+				'reason' => 'QUIERO ESA BOTELLA',
+				'owner_id' => 2,
+				'auction_id' => 1
+				]);
+
+			Offer::create([
+				'amount' => 5.5,
+				'reason' => 'Se ve piola, me gusta',
+				'owner_id' => 3,
+				'auction_id' => 1
+				]);
+
+			Offer::create([
+				'amount' => 1006,
+				'reason' => 'Para administrar mejor mi negocio',
+				'owner_id' => 4,
+				'auction_id' => 2
 				]);
 
 		}

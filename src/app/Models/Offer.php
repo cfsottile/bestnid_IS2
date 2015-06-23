@@ -10,11 +10,11 @@ class Offer extends Model {
 	protected $dates = ['deleted_at'];
 
 	public function owner() {
-		return $this->belongsTo('App\User', 'owner_id');
+		return $this->belongsTo('App\User', 'id');
 	}
 
 	public function auction() {
-		return $this->belongsTo('App\User', 'auction_id');
+		return $this->belongsTo('App\Models\Auction', 'id');
 	}
 
 }
