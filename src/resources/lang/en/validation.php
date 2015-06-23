@@ -160,7 +160,7 @@ return [
 			'required' => 'La imagen es requerida',
 			'image' => 'La imagen debe ser un archivo de tipo imagen',
 			'mimes' => 'Los tipos de archivos soportados son jpg, jpeg y png',
-			'size' => 'El tamaño de la imagen no puede ser superior a :size'
+			'max' => 'El tamaño de la imagen no puede ser superior a :max bytes'
 		],
 
 		'picture' => [

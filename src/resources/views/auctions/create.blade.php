@@ -16,12 +16,15 @@
               <legend>Alta de subasta</legend>
               <div class="form-group @if($errors->has('title')) has-error @endif">
                 <label for="name" class="col-lg-2 control-label">Título</label>
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                   <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
 					@if($errors->has('title'))
 						<p class="help-block">{{$errors->first('title')}}</p>
 					@endif
                 </div>
+				<div class="col-lg-1">
+					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="El título debe contener entre 3 y 255 carácteres">?</button>
+				</div>
               </div>
               {{-- <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
@@ -36,12 +39,15 @@
               </div> --}}
               <div class="form-group @if($errors->has('description')) has-error @endif">
                 <label for="description" class="col-lg-2 control-label">Descripción</label>
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                   <textarea class="form-control" rows="3" id="description" name="description">{{ old('description') }}</textarea>
 				@if($errors->has('description'))
 					<p class="help-block">{{$errors->first('description')}}</p>
 				@endif
                 </div>
+				<div class="col-lg-1">
+					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="La descripción no tiene restricciones">?</button>
+				</div>
               </div>
               {{-- <div class="form-group">
                 <label class="col-lg-2 control-label">Radios</label>
@@ -62,16 +68,19 @@
               </div> --}}
               <div class="form-group @if($errors->has('image')) has-error @endif">
                 <label for="image" class="col-lg-2 control-label">Imagen</label>
-                <div class="col-lg-10">
-                    <input type="file" id="image" name="image"  value="{{ old('image') }}">
+                <div class="col-lg-9">
+                    <input type="file" id="image" name="image" value="{{ old('image') }}">
 					@if($errors->has('image'))
 						<p class="help-block">{{$errors->first('image')}}</p>
 					@endif
                 </div>
+				<div class="col-lg-1">
+					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="La imagen debe ser .jpg, .jpeg o .png, su tamaño no debe superar los 10MB, y sus dimensiones no deben ser mayores a 500x500">?</button>
+				</div>
               </div>
               <div class="form-group @if($errors->has('categoryName')) has-error @endif">
                 <label for="categoryName" class="col-lg-2 control-label">Categoría</label>
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                   <select class="form-control" id="categoryName" name="categoryName"  value="{{ old('categoryName') }}">
                       @foreach (App\Models\Category::all() as $c)
                         <option @if($c->name == old('categoryName')) selected="true" @endif>{{ $c->name }}</option>
@@ -84,7 +93,7 @@
               </div>
               <div class="form-group @if($errors->has('durationInDays')) has-error @endif">
                 <label for="durationInDays" class="col-lg-2 control-label">Días de duración</label>
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                   <select class="form-control" id="durationInDays" name="durationInDays"  value="{{ old('durationInDays') }}">
                     @for ($i = 15; $i <= 30; $i++)
                       <option @if($i == old('durationInDays')) selected="true" @endif>{{ $i }}</option>
@@ -108,4 +117,9 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 @overwrite

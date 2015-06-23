@@ -86,9 +86,15 @@ class AuctionsController extends Controller {
 	public function store()
 	{
 		$data = Request::all();
-		dd($data);
 
 		$validator = Auction::initialValidate($data);
+
+		if (AuctionsController::validateImageDimension()) {
+			$validator->messages()->add('image', 'La dimensión de la imagen no puede ser mayor a 500x500');
+			return redirect()->back()->with('errors', $validator->messages())->withInput();
+		};
+
+
 		if ($validator->fails()) {
 			return redirect()
 				->back()
@@ -118,6 +124,11 @@ class AuctionsController extends Controller {
 		Auction::create($data);
 
 		return redirect()->route('auctions.exito')->with('auctionTitle', $data['title']);
+	}
+
+	public static function validateImageDimension () {
+		list($width, $height) = getimagesize(Request::file('image'));
+		return ($width <= 500) && ($height <= 500);
 	}
 
 	/**

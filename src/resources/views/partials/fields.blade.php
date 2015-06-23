@@ -6,7 +6,7 @@
 				<p class="help-block">{{$errors->first('name')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El nombre puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="El nombre puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('last_name')) has-error @endif">
@@ -17,7 +17,7 @@
 				<p class="help-block">{{$errors->first('last_name')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El apellido puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="El apellido puede contener, además de letras comunes, vocales con tildes, u con diéresis, apóstrofes; minimo 3 letras">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('email')) has-error @endif">
@@ -28,7 +28,7 @@
 				<p class="help-block">{{$errors->first('email')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El email debe ser real">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="El email debe ser real">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('password')) has-error @endif">
@@ -39,7 +39,7 @@
 				<p class="help-block">{{$errors->first('password')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="La contraseña debe tener al menos 6 carácteres">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="La contraseña debe tener al menos 6 carácteres">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('password_confirmation')) has-error @endif">
@@ -50,7 +50,7 @@
 				<p class="help-block">{{$errors->first('password_confirmation')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Los campos contraseña y confirmar contraseña deben coincidir">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="Los campos contraseña y confirmar contraseña deben coincidir">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('dni')) has-error @endif">
@@ -61,7 +61,7 @@
 				<p class="help-block">{{$errors->first('dni')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="El dni debe tener 7 u 8 dígitos, debiendo excluirse los puntos. Ejemplo: 12345678">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('born_date')) has-error @endif">
@@ -83,7 +83,7 @@
 				<p class="help-block">{{$errors->first('phone')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Se debe ingresar código de país, código de ciudad y número particular. No se ingresa 15. Ejemplo: +54 221 444 4444">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="Se debe ingresar código de país, código de ciudad y número particular. No se ingresa 15. Ejemplo: +54 221 444 4444">?</button>
 	</div>
 
 	<div class="form-group @if($errors->has('cc_data')) has-error @endif">
@@ -94,5 +94,5 @@
 				<p class="help-block">{{$errors->first('cc_data')}}</p>
 			@endif
 		</div>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Se deben ingresar los 16 dígitos seguidos. Ejemplo: 0000111122223333">?</button>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" tabindex="-1" data-placement="top" title="" data-original-title="Se deben ingresar los 16 dígitos seguidos. Ejemplo: 0000111122223333">?</button>
 	</div>

@@ -75,7 +75,7 @@ class Auction extends Model {
 		return Validator::make($data, [
 			'title' => 'required|string|min:3|max:255',
 			'description' => 'required',
-			'image' => 'required|image|mimes:jpg,jpeg,png',
+			'image' => 'required|image|mimes:jpg,jpeg,png|max:10240',
 			'categoryName' => 'required|string|exists:categories,name',
 			'durationInDays' => 'required|integer|between:15,30'
 			]);
