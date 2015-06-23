@@ -89,11 +89,10 @@ class AuctionsController extends Controller {
 
 		$validator = Auction::initialValidate($data);
 
-		if (AuctionsController::validateImageDimension()) {
-			$validator->messages()->add('image', 'La dimensión de la imagen no puede ser mayor a 500x500');
-			return redirect()->back()->with('errors', $validator->messages())->withInput();
-		};
-
+		// if (AuctionsController::validateImageDimension()) {
+		// 	$validator->messages()->add('image', 'La dimensión de la imagen no puede ser mayor a 500x500');
+		// 	return redirect()->back()->with('errors', $validator->messages())->withInput();
+		// };
 
 		if ($validator->fails()) {
 			return redirect()
@@ -176,9 +175,17 @@ class AuctionsController extends Controller {
 		//
 	}
 
-	public function assignWinner ($id) {
+	public function postWinner ($id) {
+		$auction = Auction::find($id);
 		$winner_id = Request::get('winner_id');
-		Auction::find($id)->winner()->associate(User::find($winner_id));
+		if (Auth::user() != null
+				&& (Auth::user()->id == $auction->owner->id)
+				&& (User::find($winner_id) != null)) {
+			$auction->winner()->associate(User::find($winner_id));
+			$auction->save();
+		} else {
+			return view('errors.picaron');
+		}
 	}
 
 	public function exito () {

@@ -63,19 +63,27 @@
             <table class="table table-striped table-hover collapse" id="demo">
               <thead>
                 <tr>
-                  <th>#ID</th>
+                  {{-- <th>#ID</th> --}}
                   <th>Usuario</th>
                   <th>Motivo</th>
-                  <th>Monto</th>
+                  {{-- <th>Monto</th> --}}
                 </tr>
               </thead>
               <tbody>
                 @foreach($auction->offers as $offer)
                 <tr>
-                  <td>{{$offer->id}}</td>
+                  {{-- <td>{{$offer->id}}</td> --}}
                   <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td>
                   <td>{{$offer->reason}}</td>
-                  <td> X </td>
+                  {{-- <td> X </td> --}}
+                  @if(substr($auction->end_date, 0, 10) < Date("Y-m-d"))
+                      <td>
+                          <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
+                              <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
+                              <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
+                          </form>
+                      </td>
+                  @endif
                 </tr>
                 @endforeach
               </tbody>

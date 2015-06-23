@@ -226,4 +226,8 @@ class UserController extends Controller {
 		return redirect()->back();
 	}
 
+	public function persuade () {
+		return view('users.persuade');
+	}
+
 }

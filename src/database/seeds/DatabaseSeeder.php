@@ -300,42 +300,45 @@ class UsersTableSeeder extends Seeder {
 
 		public function run(){
 
-			Offer::create([
+			$offer = Offer::create([
 				'amount' => 62.5,
 				'reason' => 'Me gustaria ese casco porque me recuerda a mis ancestros alemanes',
-				'owner_id' => 2,
+				'owner_id' => 4,
 				'auction_id' => 5
 				]);
+			Auction::find(5)->offers()->save($offer);
 
-			Offer::create([
+			$offer = Offer::create([
 				'amount' => 8,
 				'reason' => 'Tengo sed',
+				'owner_id' => 2,
+				'auction_id' => 1
+				]);
+			Auction::find(1)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 15.5,
+				'reason' => 'QUIERO ESA BOTELLA',
 				'owner_id' => 3,
 				'auction_id' => 1
 				]);
+			Auction::find(1)->offers()->save($offer);
 
-			Offer::create([
-				'amount' => 15.5,
-				'reason' => 'QUIERO ESA BOTELLA',
-				'owner_id' => 2,
-				'auction_id' => 1
-				]);
-
-			Offer::create([
+			$offer = Offer::create([
 				'amount' => 5.5,
 				'reason' => 'Se ve piola, me gusta',
 				'owner_id' => 1,
 				'auction_id' => 1
 				]);
+			Auction::find(1)->offers()->save($offer);
 
-			Offer::create([
+			$offer = Offer::create([
 				'amount' => 1006,
 				'reason' => 'Para administrar mejor mi negocio',
 				'owner_id' => 4,
 				'auction_id' => 2
 				]);
+			Auction::find(2)->offers()->save($offer);
 
 		}
 	}
-
-

@@ -44,7 +44,7 @@ class Auction extends Model {
 	}
 
 	public function offers() {
-		return $this->hasMany('App\Models\Offer', 'id');
+		return $this->hasMany('App\Models\Offer', 'auction_id');
 	}
 
 	public function comments() {

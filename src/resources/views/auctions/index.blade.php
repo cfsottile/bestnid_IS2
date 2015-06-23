@@ -60,7 +60,7 @@
       @foreach ($auctions as $a)
           <div class="col-md-4 col-sm-6">
 
-            <div class="thumbnail panel panel-default" style="height:460px; width:300px">
+            <div class="thumbnail panel panel-default" style="height:440px; width:300px">
               <div class="panel-heading">
                 <h6>
                   Dias restantes: {{$a->remainingDays()}}

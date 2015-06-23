@@ -127,7 +127,7 @@ Route::get('auctions/show/{id}', [
 					 'uses' => 'AuctionsController@show'
 				   ]) ->where('id', '[0-9]+');
 
-Route::post('auctions/{id}/winners', [
+Route::post('auctions/{id}/winner', [
 	'as' => 'auctions.postWinner',
 	'uses' => 'AuctionsController@postWinner'
 	])->where('id', '[0-9]+');
