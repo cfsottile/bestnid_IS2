@@ -324,7 +324,7 @@ class UsersTableSeeder extends Seeder {
 			Offer::create([
 				'amount' => 5.5,
 				'reason' => 'Se ve piola, me gusta',
-				'owner_id' => 3,
+				'owner_id' => 1,
 				'auction_id' => 1
 				]);
 
