@@ -104,7 +104,8 @@ class AuctionsController extends Controller {
 		if (Auth::user() != null) {
 			$data['owner_id'] = Auth::user()->id;
 		} else {
-			return redirect()->route('registrationPersuasion')->with('message', 'Tenés que estar registrado para dar de alta subastas.');
+			// return redirect()->route('registrationPersuasion')->with('message', 'Tenés que estar registrado para dar de alta subastas.');
+			return redirect()->route('login')->with('errors', 'Tenés que estar registrado para dar de alta una subasta');
 		}
 
 		$data['category_id'] = Category::idForName($data['categoryName'])->first()->id;
@@ -122,7 +123,7 @@ class AuctionsController extends Controller {
 		Request::file('image')->move(public_path().'/images/', $data['picture']);
 		Auction::create($data);
 
-		return redirect()->route('auctions.exito')->with('auctionTitle', $data['title']);
+		return redirect()->route('auctions.exito')->with('message', 'Subasta creada con');
 	}
 
 	public static function validateImageDimension () {
@@ -150,7 +151,20 @@ class AuctionsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$auction = Auction::find($id);
+		if (AuctionsController::checkUser($auction->owner->id) && ($auction != null)) {
+			if (count($auction->offers) == 0) {
+				return view('auctions.edit')->with('auction', $auction);
+			} else {
+				return redirect()->back()->with('error', 'La subasta \''.$auction->title.'\' no puede ser modificada porque tiene ofertas');
+			}
+		} else {
+			return view('errors.picaron');
+		}
+	}
+
+	public static function checkUser($id) {
+		return (Auth::user() != null) && (Auth::user() == User::find($id));
 	}
 
 	/**
@@ -161,7 +175,38 @@ class AuctionsController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$auction = Auction::find($id);
+
+		if (!AuctionsController::checkUser($auction->owner->id)) {
+			return view('errors.picaron');
+		}
+
+		$data = Request::all();
+		$validator = Auction::initialValidate($data);
+		if ($validator->fails()) {
+			return redirect()->back()->with('errors', $validator->messages())->withInput();
+		}
+
+		$data['category_id'] = Category::idForName($data['categoryName'])->first()->id;
+		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
+		$data['picture'] = 'auction_'.Date('YmdHis').$data['owner_id'].rand(100,999);
+
+		$validator = Auction::finalValidate($data);
+		if ($validator->fails()) {
+			return redirect()->back()->with('errors', $validator->messages())->withInput();
+		}
+
+		Request::file('image')->move(public_path().'/images/', $data['picture']);
+		$auction->title = $data['title'];
+		$auction->description = $data['description'];
+		$auction->end_data = $data['end_date'];
+		$auction->category_id = $data['category_id'];
+		$auction->picture = $data['picture'];
+
+		$auction->save();
+
+		return redirect()->route('auctions.exito')->with('message', 'Subasta actualizada con');
+		// return redirect()->route('users.myAuctions');
 	}
 
 	/**
@@ -183,6 +228,7 @@ class AuctionsController extends Controller {
 				&& (User::find($winner_id) != null)) {
 			$auction->winner()->associate(User::find($winner_id));
 			$auction->save();
+			return view('auctions.exito')->with('message', 'Cobro efectuado con');
 		} else {
 			return view('errors.picaron');
 		}

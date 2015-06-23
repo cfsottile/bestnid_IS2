@@ -147,6 +147,16 @@ Route::get('auctions/exito', [
 	'uses' => 'AuctionsController@exito'
 	]);
 
+Route::get('auctions/{id}/edit', [
+	'as' => 'auctions.edit',
+	'uses' => 'AuctionsController@edit'
+	]);
+
+Route::post('auctions/{id}', [
+	'as' => 'auctions.update',
+	'uses' => 'AuctionsController@update'
+	]);
+
 //-----------------------------------------------------------------
 //---------------------Rutas de Administracion---------------------
 
