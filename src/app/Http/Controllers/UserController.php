@@ -221,9 +221,13 @@ class UserController extends Controller {
 
 
 		$user = User::find($id);
-		$user->delete();
-		Session::flash('success', 'Usuario eliminado con exito');
-		return redirect()->back();
+		if($user->isDeleteable()){
+			$user->delete();
+			return redirect()->back()->with('success', 'Usuario eliminado con exito');
+		}else{
+			return redirect()->back()->with('error', 'No puede eliminar esta cuenta, tiene subastas activas');
+
+		}
 	}
 
 	public function persuade () {

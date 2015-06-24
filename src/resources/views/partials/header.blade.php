@@ -8,7 +8,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('auctions.index')}}">Best<span style="color:#F33">nid</span></a>
+      <a class="navbar-brand" href="{{ route('auctions.index')}}" style="padding-top:2">
+        <span>
+         <img src='{{asset('images/logo/bestnid.png')}}' style="length:40px;width:40px"/>
+         Best<span style="color:#F33">nid</span>
+       </span>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
