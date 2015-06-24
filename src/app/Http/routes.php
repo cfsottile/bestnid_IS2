@@ -162,6 +162,12 @@ Route::post('auctions/{id}', [
 	'uses' => 'AuctionsController@update'
 	]);
 
+Route::get('auctions/{id}/delete', [
+	'as' => 'auctions.destroy',
+	'middleware' => 'auth',
+	'uses' => 'AuctionsController@destroy'
+	]);
+
 //-----------------------------------------------------------------
 //---------------------Rutas de Comentarios------------------------
 

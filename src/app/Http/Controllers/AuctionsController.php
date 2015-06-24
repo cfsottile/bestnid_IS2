@@ -153,7 +153,7 @@ class AuctionsController extends Controller {
 	public function edit($id)
 	{
 		$auction = Auction::find($id);
-		if (AuctionsController::checkUser($auction->owner->id) && ($auction != null)) {
+		if (AuctionsController::checkLoggedUserIdIs($auction->owner->id) && ($auction != null)) {
 			if (count($auction->offers) == 0) {
 				return view('auctions.edit')->with('auction', $auction);
 			} else {
@@ -164,7 +164,7 @@ class AuctionsController extends Controller {
 		}
 	}
 
-	public static function checkUser($id) {
+	public static function checkLoggedUserIdIs($id) {
 		return (Auth::user() != null) && (Auth::user() == User::find($id));
 	}
 
@@ -177,7 +177,7 @@ class AuctionsController extends Controller {
 	public function update($id)
 	{
 		$auction = Auction::find($id);
-		if (!AuctionsController::checkUser($auction->owner->id)) {
+		if (!AuctionsController::checkLoggedUserIdIs($auction->owner->id)) {
 			return view('errors.picaron');
 		}
 
@@ -223,7 +223,8 @@ class AuctionsController extends Controller {
 
 		$auction->save();
 
-		return view('auctions.exito')->with('message', 'Subasta actualizada con');
+		return redirect()->route('auctions.show', $auction->id)->with('success', 'Subasta actualizada con éxito');
+		// return view('auctions.exito')->with('message', 'Subasta actualizada con');
 		// return redirect()->route('auctions.exito')->with(['message' => 'Subasta actualizada con']);
 
 		// return redirect()->route('users.myAuctions');
@@ -237,7 +238,15 @@ class AuctionsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$auction = Auction::find($id);
+		if (AuctionsController::checkLoggedUserIdIs($auction->owner->id) && ($auction != null)) {
+			if ($auction->isDeleteable()) {
+				$auction->delete();
+				return redirect()->route('auctions.index')->with('success', 'La subasta'.$auction->title.' ha sido eliminada.');
+			} else {
+				return redirect()->back()->with('error', 'La subasta'.$auction->title.' no puede ser eliminada porque posee ofertas o ya finalizó.');
+			}
+		}
 	}
 
 	public function postWinner ($id) {

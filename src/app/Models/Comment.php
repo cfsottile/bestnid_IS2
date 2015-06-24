@@ -27,11 +27,11 @@ class Comment extends Model {
 	}
 
 	public function formatedCreationDate(){
-		return date('d m, Y h:i',strtotime($this->created_at));
+		return date('d/m/Y H:i',strtotime($this->created_at));
 	}
 
 	public function formatedResponseDate(){
-		return date('d m, Y h:i',strtotime($this->response_date));
+		return date('d/m/Y H:i',strtotime($this->response_date));
 	}
 
 	public function respond($data){

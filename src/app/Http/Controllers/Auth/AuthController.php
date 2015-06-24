@@ -80,7 +80,8 @@ class AuthController extends Controller {
         if(Auth::attempt($userdata, Request::input('remember-me', 0)))
         {
 						Session::flash('success', 'Bienvenido, '.(Auth::user()->name).'!');
-            return Redirect::to('/auctions');
+            // return Redirect::to('/auctions');
+			return redirect()->intended(route('auctions.index'));
         }
 
 

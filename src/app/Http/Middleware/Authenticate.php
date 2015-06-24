@@ -40,7 +40,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('login');
+				return redirect()->guest('login')->with('warning', '¡Tenés que estar logueado para hacer eso!');
 			}
 		}
 

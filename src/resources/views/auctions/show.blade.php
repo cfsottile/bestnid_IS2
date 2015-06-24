@@ -5,7 +5,15 @@
 @section('content')
 
     @include('partials.detailed_notifications')
-    <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
+    <div class="container-fluid pull-left">
+        <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a>
+    </div>
+    @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
+        <div class="container-fluid pull-right">
+            <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
+            <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
+        </div>
+    @endif
     <div class="jumbotron">
       <div class="page-header">
         <h2>{{ $auction->title }}</h2>
@@ -25,7 +33,7 @@
                 <b>Descripción </b> <br> {{ $auction->description }}
             </p>
             <p>
-                <b>Fecha de cierre</b> <br> {{ substr($auction->end_date, 0, 10) }}
+                <b>Fecha de cierre</b> <br> {{ substr($auction->formatedEndDate(), 0, 10) }}
             </p>
 
         </div>
@@ -40,7 +48,7 @@
 
       <!-- Button trigger modal -->
       @if(Auth::guest())
-      <a type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" href="{{route('registrationPersuasion')}}">
+      <a type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" href="{{route('login')}}">
         Hacer un comentario
       </a>
       @else

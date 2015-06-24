@@ -13,6 +13,10 @@
     <h1>Subastas</h1>
   </div>
 
+  <div class="container-fluid pull-left">
+      <a href="{{route('auctions.create')}}" class="btn btn-primary">Iniciar subasta</a>
+  </div>
+
     @if ($auctions->count() == 0)
       <h3><small>No se encontraron resultados para '{{ $query }}' </small></h3>
     @else

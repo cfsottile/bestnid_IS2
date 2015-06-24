@@ -111,4 +111,12 @@ class Auction extends Model {
 
 	}
 
+	public function formatedCreatedAt () {
+		return date('d/m/Y H:i',strtotime($this->created_at));
+	}
+
+	public function formatedEndDate () {
+		return date('d/m/Y H:i',strtotime($this->end_date));
+	}
+
 }
