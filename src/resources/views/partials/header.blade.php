@@ -46,6 +46,7 @@
                 @endif
                 <li><a href="{{ route('users.edit') }}">Editar mi cuenta</a></li>
                 <li><a href="{{ route('users.show') }}">Ver mis datos</a></li>
+                <li class="divider"></li>
                 <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
 
 							</ul>

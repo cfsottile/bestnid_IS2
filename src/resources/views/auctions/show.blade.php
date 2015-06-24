@@ -39,10 +39,15 @@
       {{-- Comentarios --}}
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#commentModal">
+      @if(Auth::guest())
+      <a type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" href="{{route('registrationPersuasion')}}">
         Hacer un comentario
-      </button>
-
+      </a>
+      @else
+        <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#commentModal">
+          Hacer un comentario
+        </button>
+      @endif
       <br>
       <br>
 
@@ -56,7 +61,7 @@
               <h6> {{$comment->formatedCreationDate()}} </h6>
             </div>
             <div class="col-lg-2">
-              @if(((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
+              @if(!(Auth::guest()) && ((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
                 <a class="btn btn-danger btn-xs pull-right" type="submit" href="{{route("comments.delete",["id" => $comment->id]) }}">Eliminar</a>
                 {{-- <a class="btn btn-default btn-xs pull-right" type="submit" href="{{route("comments.update",["id" => $comment->id]) }}">Editar</a> --}}
               @endif
@@ -148,6 +153,7 @@
       @endif
       @endif
 
+      @if(!(Auth::guest()))
       <!-- Modal -->
       <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -178,6 +184,7 @@
           </div>
         </div>
       </div>
+      @endif
 
 
     </div>
