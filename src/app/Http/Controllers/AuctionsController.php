@@ -272,13 +272,18 @@ class AuctionsController extends Controller {
 
 	public function postWinner ($id) {
 		$auction = Auction::find($id);
-		$winner_id = Request::get('winner_id');
+		$winner = User::find(Request::get('winner_id'));
 		if (Auth::user() != null
 				&& (Auth::user()->id == $auction->owner->id)
-				&& (User::find($winner_id) != null)) {
-			$auction->winner()->associate(User::find($winner_id));
+				&& ($winner != null)) {
+			if ($winner->cc_data == 1234123412341234) {
+				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro ganador');
+			}
+			$auction->winner()->associate($winner);
 			$auction->save();
-			return view('auctions.exito')->with('message', 'Cobro efectuado con');
+			$winner->notifyWonAuction($auction);
+			return redirect()->back()->with('success', 'El ganador fue seleccionado con éxito, y el cobro ha sido realizado');
+			// return view('auctions.exito')->with('message', 'Cobro efectuado con');
 		} else {
 			return view('errors.picaron');
 		}

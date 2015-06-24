@@ -31,6 +31,7 @@
             </p>
             @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
                 <div >
+                    <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
                     <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
                 </div>
@@ -161,12 +162,20 @@
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
                   @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
-                      <td>
-                          <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
-                              <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
-                              <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
-                          </form>
-                      </td>
+                      @if(!$auction->hasWinner())
+                          <td>
+                              <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
+                                  <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
+                                  <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
+                              </form>
+                          </td>
+                      @else
+                            @if($auction->winner == $offer->owner)
+                                <td>
+                                    <span class="label label-success">Ganador</span>
+                                </td>
+                            @endif
+                      @endif
                   @endif
                 </tr>
                 @endforeach

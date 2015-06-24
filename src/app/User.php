@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Mail;
+
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword, SoftDeletes;
@@ -84,6 +86,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return date('d/m/Y H:i',strtotime($this->created_at));
 	}
 
+
+	public function notifyWonAuction ($auction) {
+		$args = [
+			'winner' => $this,
+			'auctionOwner' => $auction->owner,
+			'auction' => $auction
+		];
+		Mail::send('emails.winnerNotification', $args, function($message)	{
+		    $message->to($this->email, $this->name." ".$this->last_name)->subject('¡Fuiste elegido ganador!');
+		});
+	}
+
 	public function formatedBornDate () {
 		return date('d/m/Y',strtotime($this->born_date));
 	}
@@ -97,6 +111,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			}
 		}
 		return false;
+	}
+
+	public function setWinner () {
+
 	}
 
 }

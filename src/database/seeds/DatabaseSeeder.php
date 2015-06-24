@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder {
     User::create([
       'name' => 'Cristian',
 	  'last_name' => 'Sottile',
-      'email' => 'cristian.sottile@is2.com',
+      'email' => 'cfsottile@gmail.com',
       'password' => Hash::make('cristian.sottile'),
       'dni' => '36948134',
       'born_date'=> Date('1992/06/27'),
@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder {
 	User::create([
       'name' => 'Ignacio',
 	  'last_name' => 'Babbini',
-      'email' => 'ignacio.babbini@is2.com',
+      'email' => 'ignababbini@gmail.com',
       'password' => Hash::make('ignacio.babbini'),
       'dni' => '36571600',
       'born_date'=> Date('1991/11/12'),
@@ -68,7 +68,7 @@ class UsersTableSeeder extends Seeder {
 	User::create([
       'name' => 'Natalia',
 	  'last_name' => 'Aparicio',
-      'email' => 'natalia.aparicio@is2.com',
+      'email' => 'nataliaderiver@hotmail.com',
       'password' => Hash::make('natalia.aparicio'),
       'dni' => '38706162',
       'born_date'=> Date('1995/05/21'),
