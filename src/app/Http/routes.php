@@ -129,16 +129,19 @@ Route::get('auctions/show/{id}', [
 
 Route::post('auctions/{id}/winner', [
 	'as' => 'auctions.postWinner',
+	'middleware' => 'auth',
 	'uses' => 'AuctionsController@postWinner'
 	])->where('id', '[0-9]+');
 
 Route::get('auctions/create', [
 	'as' => 'auctions.create',
+	'middleware' => 'auth',
 	'uses' => 'AuctionsController@create'
 	]);
 
 Route::post('auctions', [
 	'as' => 'auctions.store',
+	'middleware' => 'auth',
 	'uses' => 'AuctionsController@store'
 	]);
 
@@ -149,11 +152,13 @@ Route::get('auctions/exito', [
 
 Route::get('auctions/{id}/edit', [
 	'as' => 'auctions.edit',
+	'middleware' => 'auth',
 	'uses' => 'AuctionsController@edit'
 	]);
 
 Route::post('auctions/{id}', [
 	'as' => 'auctions.update',
+	'middleware' => 'auth',
 	'uses' => 'AuctionsController@update'
 	]);
 

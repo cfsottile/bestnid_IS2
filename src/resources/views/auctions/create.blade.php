@@ -14,6 +14,7 @@
           <form class="form-horizontal" role="form" method="POST" action="{{ route('auctions.store') }}" enctype="multipart/form-data">
             <fieldset>
               <legend>Alta de subasta</legend>
+
               <div class="form-group @if($errors->has('title')) has-error @endif">
                 <label for="name" class="col-lg-2 control-label">Título</label>
                 <div class="col-lg-9">
@@ -26,17 +27,7 @@
 					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="El título debe contener entre 3 y 255 carácteres">?</button>
 				</div>
               </div>
-              {{-- <div class="form-group">
-                <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                <div class="col-lg-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Checkbox
-                    </label>
-                  </div>
-                </div>
-              </div> --}}
+
               <div class="form-group @if($errors->has('description')) has-error @endif">
                 <label for="description" class="col-lg-2 control-label">Descripción</label>
                 <div class="col-lg-9">
@@ -49,23 +40,7 @@
 					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="La descripción no tiene restricciones">?</button>
 				</div>
               </div>
-              {{-- <div class="form-group">
-                <label class="col-lg-2 control-label">Radios</label>
-                <div class="col-lg-10">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                      Option one is this
-                    </label>
-                  </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option two can be something else
-                    </label>
-                  </div>
-                </div>
-              </div> --}}
+
               <div class="form-group @if($errors->has('image')) has-error @endif">
                 <label for="image" class="col-lg-2 control-label">Imagen</label>
                 <div class="col-lg-9">
@@ -75,9 +50,10 @@
 					@endif
                 </div>
 				<div class="col-lg-1">
-					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="La imagen debe ser .jpg, .jpeg o .png, su tamaño no debe superar los 10MB, y sus dimensiones no deben ser mayores a 500x500">?</button>
+					<button type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="" tabindex="-1" data-original-title="La imagen debe ser .jpg, .jpeg o .png y su tamaño no debe superar los 8MB">?</button>
 				</div>
               </div>
+
               <div class="form-group @if($errors->has('categoryName')) has-error @endif">
                 <label for="categoryName" class="col-lg-2 control-label">Categoría</label>
                 <div class="col-lg-9">
@@ -91,6 +67,7 @@
 				@endif
                 </div>
               </div>
+
               <div class="form-group @if($errors->has('durationInDays')) has-error @endif">
                 <label for="durationInDays" class="col-lg-2 control-label">Días de duración</label>
                 <div class="col-lg-9">
@@ -104,6 +81,7 @@
 				@endif
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                   <a href="{{ URL::previous() }}" class="btn btn-default">Cancelar</a>

@@ -71,11 +71,15 @@ class Auction extends Model {
 		return (new \DateTime($this->end_date))->diff(new \DateTime("now"))->d;
     }
 
+	public function elapsedDays () {
+		return floor((strtotime(Date('Y/m/d H:i:s')) - strtotime($this->created_at))/86400);
+	}
+
 	public static function initialValidate ($data) {
 		return Validator::make($data, [
 			'title' => 'required|string|min:3|max:255',
 			'description' => 'required',
-			'image' => 'required|image|mimes:jpg,jpeg,png|max:10240',
+			'image' => 'required|image|mimes:jpg,jpeg,png',
 			'categoryName' => 'required|string|exists:categories,name',
 			'durationInDays' => 'required|integer|between:15,30'
 			]);

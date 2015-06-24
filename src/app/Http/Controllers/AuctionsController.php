@@ -9,6 +9,7 @@ use Auth;
 use App\User;
 use Request;
 use Session;
+use Validator;
 
 class AuctionsController extends Controller {
 
@@ -86,7 +87,6 @@ class AuctionsController extends Controller {
 	public function store()
 	{
 		$data = Request::all();
-
 		$validator = Auction::initialValidate($data);
 
 		// if (AuctionsController::validateImageDimension()) {
@@ -99,6 +99,7 @@ class AuctionsController extends Controller {
 				->back()
 				->with('errors', $validator->messages())
 				->withInput();
+		dd($data);
 		}
 
 		if (Auth::user() != null) {
@@ -123,7 +124,7 @@ class AuctionsController extends Controller {
 		Request::file('image')->move(public_path().'/images/', $data['picture']);
 		Auction::create($data);
 
-		return redirect()->route('auctions.exito')->with('message', 'Subasta creada con');
+		return view('auctions.exito')->with('message', 'Subasta creada con');
 	}
 
 	public static function validateImageDimension () {
@@ -176,36 +177,54 @@ class AuctionsController extends Controller {
 	public function update($id)
 	{
 		$auction = Auction::find($id);
-
 		if (!AuctionsController::checkUser($auction->owner->id)) {
 			return view('errors.picaron');
 		}
 
 		$data = Request::all();
-		$validator = Auction::initialValidate($data);
+		$maxDurationInDays = 30 - $auction->elapsedDays();
+		$minDurationInDays = 15 - $auction->elapsedDays();
+		if ($minDurationInDays < 1) { $minDurationInDays = 1; }
+		$initialRules = [
+			'title' => 'required|string|min:3|max:255',
+			'description' => 'required',
+			'categoryName' => 'required|string|exists:categories,name',
+			'durationInDays' => 'required|integer|between:'.$minDurationInDays.','.$maxDurationInDays
+		];
+
+		if (Request::has('modifyImage')) {
+			$initialRules['image'] = 'required|image|mimes:jpg,jpeg,png|max:10240';
+		}
+
+		$validator = Validator::make($data, $initialRules);
 		if ($validator->fails()) {
 			return redirect()->back()->with('errors', $validator->messages())->withInput();
 		}
 
 		$data['category_id'] = Category::idForName($data['categoryName'])->first()->id;
 		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
-		$data['picture'] = 'auction_'.Date('YmdHis').$data['owner_id'].rand(100,999);
-
-		$validator = Auction::finalValidate($data);
-		if ($validator->fails()) {
-			return redirect()->back()->with('errors', $validator->messages())->withInput();
+		if (Request::has('modifyImage')) {
+			$data['picture'] = 'auction_'.Date('YmdHis').$data['owner_id'].rand(100,999);
+			$validator = Validator::make($data, ['picture' => 'required|string|min:4']);
+			if ($validator->fails()) {
+				return redirect()->back()->with('errors', $validator->messages())->withInput();
+			}
+			Request::file('image')->move(public_path().'/images/', $data['picture']);
 		}
 
-		Request::file('image')->move(public_path().'/images/', $data['picture']);
 		$auction->title = $data['title'];
 		$auction->description = $data['description'];
-		$auction->end_data = $data['end_date'];
+		$auction->end_date = $data['end_date'];
 		$auction->category_id = $data['category_id'];
-		$auction->picture = $data['picture'];
+		if (Request::has('modifyImage')) {
+			$auction->picture = $data['picture'];
+		}
 
 		$auction->save();
 
-		return redirect()->route('auctions.exito')->with('message', 'Subasta actualizada con');
+		return view('auctions.exito')->with('message', 'Subasta actualizada con');
+		// return redirect()->route('auctions.exito')->with(['message' => 'Subasta actualizada con']);
+
 		// return redirect()->route('users.myAuctions');
 	}
 
