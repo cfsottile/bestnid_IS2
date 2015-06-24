@@ -13,6 +13,7 @@
 	    <tr>
 	      <th>Nombre de subasta</th>
 	      <th>Motivo</th>
+	      <th>Monto</th>
 	      <th>Fecha y hora de oferta</th>
 	      <th>Opciones<th>
 	    </tr>
@@ -24,6 +25,7 @@
 			    <tr>
 			      <td>{{$of->auction->title}}</td>
 			      <td>{{$of->reason}}</td>
+			      <td>{{$of->amount}}</td>
 			      <td>{{$of->formatedCreationDate()}}</td>
 			      <td>
 			         <a href="{{ route('auctions.show', [ 'id' => $of->auction_id] ) }}" class="btn btn-default btn-xs">Ver</a>
@@ -48,6 +50,7 @@
           <tr>
             <th>Nombre de subasta</th>
             <th>Motivo</th>
+            <th>Monto</th>
 	      		<th>Fecha y hora de oferta</th>
           </tr>
         </thead>
@@ -57,6 +60,7 @@
           	<tr>
 				      <td>{{$of->auction->title}}</td>
 				      <td>{{$of->reason}}</td>
+				      <td>{{$of->amount}}</td>
 				      <td>{{$of->formatedCreationDate()}}</td>
           	</tr>
           	@endif
