@@ -148,6 +148,42 @@ Route::get('auctions/exito', [
 	]);
 
 //-----------------------------------------------------------------
+//---------------------Rutas de Comentarios------------------------
+
+Route::get('user/comments', [
+					 'as' => 'user.comments',
+					 'middleware' => 'Auth',
+					 'uses' => 'CommentsController@index'
+					]);
+
+
+Route::post('comment/store',[
+	 					'as' => 'comments.poststore',
+						'middleware' => 'auth',
+						'uses' => 'CommentsController@store'
+						]);
+
+Route::post('comment/respond',[
+						'as' => 'comments.postresponse',
+						'middleware' => 'auth',
+						'uses' => 'CommentsController@response'
+						]);
+
+Route::get('comment/delete/{id}',[
+					 'as' => 'comments.delete',
+					 'middleware' => 'auth',
+					 'uses' => 'CommentsController@destroy',
+					])->where('id', '[0-9]+');
+
+Route::get('comment/update/{id}',[
+					 'as' => 'comments.update',
+					 'middleware' => 'auth',
+					 'uses' => 'CommentsController@update',
+					])->where('id', '[0-9]+');
+
+
+
+//-----------------------------------------------------------------
 //---------------------Rutas de Administracion---------------------
 
 

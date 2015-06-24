@@ -48,7 +48,7 @@ class Auction extends Model {
 	}
 
 	public function comments() {
-		return $this->hasMany('App\Models\Comment', 'id');
+		return $this->hasMany('App\Models\Comment', 'auction_id');
 	}
 
 	public function pictureUrl() {

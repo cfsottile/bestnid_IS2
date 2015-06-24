@@ -3,6 +3,8 @@
 @section('title', $auction->title)
 
 @section('content')
+
+    @include('partials.detailed_notifications')
     <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
     <div class="jumbotron">
       <div class="page-header">
@@ -36,17 +38,69 @@
       <br>
       {{-- Comentarios --}}
 
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#commentModal">
+        Hacer un comentario
+      </button>
+
+      <br>
+      <br>
+
       @foreach($auction->comments as $comment)
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          {{$comment->content}} <br> {{ substr($comment->created_at, 0, 10) }}
+          <div class="row">
+            <div class="col-lg-10">
+              >  {{$comment->content}} <br>
+              <h6> {{$comment->formatedCreationDate()}} </h6>
+            </div>
+            <div class="col-lg-2">
+              @if(((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
+                <a class="btn btn-danger btn-xs pull-right" type="submit" href="{{route("comments.delete",["id" => $comment->id]) }}">Eliminar</a>
+                {{-- <a class="btn btn-default btn-xs pull-right" type="submit" href="{{route("comments.update",["id" => $comment->id]) }}">Editar</a> --}}
+              @endif
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
           @if(isset($comment->response))
-            {{$comment->response}} <br> {{ substr($comment->response_date, 0, 10) }}
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <a> {{$comment->response}} </a>
+                  <h6>  {{$comment->formatedResponseDate()}} </h6>
+                </div>
+                {{-- PODRIA SERVIR SI QUEREMOS ELIMINAR SOLO LA RESPUESTA, O HACER ALGO CON LA RESPUESTA --}}
+                {{-- <div class="col-lg-1">
+                  @if((Auth::user()->is_admin == 1) || (Auth::user()->id = $auction->owner_id))
+                    <a class="btn btn-danger btn-xs pull-right" type="submit">Eliminar</a>
+                  @endif
+                </div> --}}
+              </div>
+
+            </div>
+          @else
+            @if(!(Auth::guest()) && (Auth::user()->id == $auction->owner->id))
+            <div class="panel-body">
+              <div class="row">
+                <div class='col-lg-11'>
+                  <form role="form" method="POST" action='{{ route('comments.postresponse')}}'>
+                    <div class="form-group">
+                      <textarea name ='response' rows='2' class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" class="form-control" name="comment_id" value='{{$comment->id}}'>
+                    </div>
+                </div>
+                <div class="col-lg-1">
+                    <button class="btn btn-primary btn-xs pull-right" type="submit">Responder</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+            @endif
           @endif
-        </div>
       </div>
       @endforeach
 
@@ -57,10 +111,10 @@
 
           @if( count($auction->offers) > 0)
           <div class="well">
-            <a id="toggler" data-toggle="collapse" class="active" data-target="#demo">
+            <a id="toggler" data-toggle="collapse" class="active btn btn-primary btn-sm" data-target="#ofertas">
               Ofertas
             </a>
-            <table class="table table-striped table-hover collapse" id="demo">
+            <table class="table table-striped table-hover collapse" id="ofertas">
               <thead>
                 <tr>
                   {{-- <th>#ID</th> --}}
@@ -93,6 +147,38 @@
 
       @endif
       @endif
+
+      <!-- Modal -->
+      <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Escribe tu pregunta o comentario</h4>
+            </div>
+            <div class="modal-body">
+
+              <form role="form" method="POST" action='{{ route('comments.poststore') }}'>
+                <div class="form-group">
+                  <label for="content" class="control-label">Mensaje <small>(maximo 511 carácteres)</small></label>
+                  <textarea name ='content' id='textarea' rows='4' class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="owner_id" value='{{Auth::user()->id}}'>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="auction_id" value='{{$auction->id}}'>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Comentar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </div>
 @overwrite
