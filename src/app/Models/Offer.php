@@ -21,4 +21,10 @@ class Offer extends Model {
 		return date('d m Y - h:i',strtotime($this->created_at));
 	}
 
+	public static function validate($data) {
+		return Validator::make($data, [
+			'amount' => 'required|numeric|min:1',
+			]);
+	}
+
 }

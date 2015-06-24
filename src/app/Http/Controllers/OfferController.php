@@ -35,8 +35,8 @@ class OfferController extends Controller {
 	 */
 	public function create()
 	{
-		$auction_id = Request::input('auction_id');
-		return view('offers.create')->with('auction_id', $auction_id);
+/*		$auction_id = Request::input('auction_id');
+		return view('offers.create')->with('auction_id', $auction_id);*/
 	}
 
 
@@ -47,7 +47,7 @@ class OfferController extends Controller {
 	 */
 	public function store()
 	{
-		//
+
 	}
 
 	/**
@@ -78,9 +78,25 @@ class OfferController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$data = Request::all();
+
+		$validator = Offer::validate($data);
+
+		if ($validator->fails()) {
+			return redirect()
+				->back()
+				->with('error', 'Su monto no fue modificado, el minimo es $1');
+		}
+
+		$id = Request::input('id');
+		$offer = Offer::find($id);
+		$offer->amount = Request::input('amount');
+
+		$offer->save();
+
+		return redirect()->route('offers.index')->with('success','Cambios guardados');
 	}
 
 	/**
