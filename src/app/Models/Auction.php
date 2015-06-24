@@ -119,4 +119,15 @@ class Auction extends Model {
 		return date('d/m/Y H:i',strtotime($this->end_date));
 	}
 
+	public function userOffer($user){
+
+		foreach ($this->offers as $offer){
+			if($offer->owner_id == $user->id){
+				return $offer;
+			}
+		}
+		return null;
+
+	}
+
 }
