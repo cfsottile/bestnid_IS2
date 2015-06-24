@@ -318,7 +318,7 @@ class UsersTableSeeder extends Seeder {
 
 			$offer = Offer::create([
 				'amount' => 15.5,
-				'reason' => 'QUIERO ESA BOTELLA',
+				'reason' => 'Estoy haciendo una balsa de botellas, esa me sirve',
 				'owner_id' => 3,
 				'auction_id' => 1
 				]);
@@ -327,10 +327,10 @@ class UsersTableSeeder extends Seeder {
 			$offer = Offer::create([
 				'amount' => 5.5,
 				'reason' => 'Se ve piola, me gusta',
-				'owner_id' => 1,
+				'owner_id' => 4,
 				'auction_id' => 1
 				]);
-			Auction::find(1)->offers()->save($offer);
+			Auction::find(4)->offers()->save($offer);
 
 			$offer = Offer::create([
 				'amount' => 1006,
@@ -339,6 +339,22 @@ class UsersTableSeeder extends Seeder {
 				'auction_id' => 2
 				]);
 			Auction::find(2)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 432,
+				'reason' => 'Me serviria bien para estudiar en el patio',
+				'owner_id' => 1,
+				'auction_id' => 17
+				]);
+			Auction::find(17)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 432,
+				'reason' => 'Necesito donde comer y apoyar los platos',
+				'owner_id' => 3,
+				'auction_id' => 17
+				]);
+			Auction::find(17)->offers()->save($offer);
 
 		}
 	}
