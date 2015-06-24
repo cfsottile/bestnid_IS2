@@ -35,8 +35,10 @@ class OfferController extends Controller {
 	 */
 	public function create()
 	{
-		$auction_id = Request::input('auction_id');
-		return view('offers.create')->with('auction_id', $auction_id);
+		$auction = Auction::find(Request::input('auction_id'));
+		return view('offers.create')
+			->with('auction_id', $auction->id)
+			->with('auction_title', $auction->title);
 	}
 
 
@@ -47,7 +49,23 @@ class OfferController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$data = Request::all();
+		$validator = Offer::validate($data);
+
+		if($validator->fails()){
+			return redirect()->back()->with('errors', $validator->messages());
+		}
+
+		if(Auth::user()->hasOfferOn(Auction::find($data['auction_id']))){
+			return redirect()->route('auctions.show', ['id' => $data['auction_id']])->with('error', 'Ya tenes una oferta hecha para esta subasta!');
+		}
+
+
+		// dd($data);
+		Offer::create($data);
+		return redirect()->route('auctions.show', ['id' => $data['auction_id']])->with('success', 'Oferta hecha!');
+
+
 	}
 
 	/**

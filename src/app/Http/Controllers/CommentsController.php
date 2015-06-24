@@ -56,7 +56,7 @@ class CommentsController extends Controller {
 		if (Auth::user() != null) {
 			$data['owner_id'] = Auth::user()->id;
 		} else {
-			return redirect()->route('registrationPersuasion')->with('message', 'Tenés que estar registrado para hacer comentarios.');
+			return redirect()->route('login')->with('message', 'Tenés que estar registrado para hacer comentarios.');
 		}
 
 		Comment::create($data);

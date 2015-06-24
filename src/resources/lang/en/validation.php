@@ -172,6 +172,19 @@ return [
 			'exists' => 'Hubo un error con su usuario. Contacte a la administración.',
 		],
 
+		'reason' => [
+			'required' => 'Debe escribir un motivo',
+			'min' => 'El motivo debe contener al menos 2 carácteres',
+			'max' => 'El motivo debe contener como máximo 1024 carácteres'
+		],
+
+		'amount' => [
+			'required' => 'Debe especificar el monto de su oferta',
+			'min' => 'El monto debe ser como minimo de $1',
+			'max' => 'El monto puede ser de hasta $99999999999999999999.99',
+			'numeric' => 'El monto debe estar escrito de forma numérica',
+		],
+
 	],
 
 	/*

@@ -58,7 +58,7 @@
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
-        @if((Auth::user()->hasOfferOn($auction)))
+        @if(!(Auth::user()->hasOfferOn($auction)) && !(Auth::user()->id == $auction->owner->id))
         <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
           Ofertar
         </a>
