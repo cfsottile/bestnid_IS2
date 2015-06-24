@@ -45,7 +45,7 @@
 			<li>¿Cómo veo o cambio mis datos?</li>
 			&nbsp;&nbsp;&nbsp;&nbsp;En la barra superior de la página, en su extremo derecho,
 			si ha iniciado sesión, al hacer clic donde dice "Hola, -su nombre-" tiene un listado
-			de opciones. Allí se encuentra
+			de opciones. Allí se encuentra.
 			<br><br>
 			
 			<li>¿Cómo elimino mi cuenta?</li>
@@ -65,35 +65,36 @@
 		<h3>Sección de subastas</h3>
 		<ul>
 			<li>¿Cómo hago para subastar un objeto?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;Necesita una imagen del mismo, agregarle una 
+			&nbsp;&nbsp;&nbsp;&nbsp; La opción se encuentra en la vista de las
+			subastas, Iniciar Subasta. Necesita una imagen del mismo, agregarle una 
 			descripción al mismo y un tiempo entre 15 a 30 días.
 			<br><br>
 
-			<li>¿Cómo edito una subasta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			<br><br>
-			
-			<li>¿Cómo elimino mi subasta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			<li>¿Cómo edito o elimino mi subasta?</li>
+			&nbsp;&nbsp;&nbsp;&nbsp;Solo puedes editar o eliminar tus subastas. 
+			Tienes que ir a tu subasta,
+			y allí, debajo de los datos de su subasta, está la opción de editar o eliminar.
 			<br><br>
 
 			<li>¿Por qué no puedo editar o eliminar mi subasta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp; Si no puedes es porque ya tiene ofertar el mismo. Entonces
-			no es posible hacer cambios sobre ella, ni eliminarla.
+			&nbsp;&nbsp;&nbsp;&nbsp; Si no puedes es porque la subasta tiene ofertas. 
+			Entonces no es posible hacer cambios sobre ella, ni eliminarla.
 			<br><br>
 
-			<li>¿Cómo hago un comentario?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			<li>¿Cómo hago un comentario en una subasta?</li>
+			&nbsp;&nbsp;&nbsp;&nbsp; Debajo de los datos de la subasta está el
+			botón para comentar.
 			<br><br>
 			
 			<li>¿Cómo respondo un comentario en mi subasta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;Debajo del comentario, hay un campo para completar
+			donde irá tu respuesta ante el comentario.
 			<br><br>
-<!-- 			
-			<li></li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			<li>¿Puedo eliminar mis comentarios?</li>
+			&nbsp;&nbsp;&nbsp;&nbsp; Si, mientras no hayan respondido.
 			<br><br>
- -->
+
 		</ul>
 	</p>
 	<br>
@@ -109,8 +110,8 @@
 			<br><br>
 			
 			<li>¿Por qué no puedo editar o eliminar mi oferta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;Una vez que la subasta ha finalizado, no es posible
-			editar ni eliminar la oferta.
+			&nbsp;&nbsp;&nbsp;&nbsp;Una vez que la subasta ha finalizado, 
+			no es posible editar ni eliminar la oferta.
 			<br><br>
 		</ul>
 	</p>	

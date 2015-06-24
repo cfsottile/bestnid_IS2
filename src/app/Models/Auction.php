@@ -130,4 +130,7 @@ class Auction extends Model {
 
 	}
 
+	public function hasWinner() {
+		return $this->winner != null;
+	}
 }

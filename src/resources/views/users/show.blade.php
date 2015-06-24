@@ -24,10 +24,10 @@
               <li class="list-group-item">Datos de tarjeta de credito: {{ $user->cc_data }}</li>
             </ul>
             @if( (Auth::user()->is_admin == 0) || (Auth::user()->id == $user->id) )
-              <a href="{{ route('users.edit') }}" class="btn btn-primary btn-sm pull-right">Editar mis datos</a>
+<!--               <a href="{{ route('users.edit') }}" class="btn btn-primary btn-sm pull-right">Editar mis datos</a> -->
               <a href="{{ route('users.delete')}}" class="btn btn-danger btn-sm pull-right">Eliminar mi cuenta</a>
             @else
-              <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-primary btn-sm pull-right">Editar datos de usuario</a>
+<!--               <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-primary btn-sm pull-right">Editar datos de usuario</a> -->
               <a href="{{ route('admin.users.delete' , ['id' => $user->id]) }}" class="btn btn-danger btn-sm pull-right">Eliminar usuario</a>
             @endif
             <br>

@@ -122,6 +122,12 @@ Route::get('offers/create', [
 	'uses' => 'OfferController@create'
 	]);
 
+Route::post('offers/store',[
+						'middleware' => 'auth',
+						'as' => 'offers.store',
+						'uses' => 'OfferController@store'
+						]);
+
 
 //----------------------------------------------------------------
 
