@@ -46,7 +46,7 @@
                     <input type="checkbox" id="modifyImage" name="modifyImage" onchange="setModifyImage();" @if(old('modifyImage') != null)checked={{ old('modifyImage') }}@endif>Editar imagen
                 </label>
                 <div class="col-lg-9">
-                    <div id="imageEdit" class="@if(old('modifyImage') != true) hidden @endif">
+                    <div id="imageEdit" class="@if(old('modifyImage') != "on") hidden @endif">
                         <input type="file" id="image" name="image" value="{{old('image')}}">
                         @if($errors->has('image'))
                             <p class="help-block">{{$errors->first('image')}}</p>

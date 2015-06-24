@@ -182,6 +182,7 @@ class AuctionsController extends Controller {
 		}
 
 		$data = Request::all();
+
 		$maxDurationInDays = 30 - $auction->elapsedDays();
 		$minDurationInDays = 15 - $auction->elapsedDays();
 		if ($minDurationInDays < 1) { $minDurationInDays = 1; }
@@ -193,7 +194,7 @@ class AuctionsController extends Controller {
 		];
 
 		if (Request::has('modifyImage')) {
-			$initialRules['image'] = 'required|image|mimes:jpg,jpeg,png|max:10240';
+			$initialRules['image'] = 'required|image|mimes:jpg,jpeg,png';
 		}
 
 		$validator = Validator::make($data, $initialRules);
@@ -204,7 +205,7 @@ class AuctionsController extends Controller {
 		$data['category_id'] = Category::idForName($data['categoryName'])->first()->id;
 		$data['end_date'] = Date('Y/m/d', strtotime("+" . $data['durationInDays'] . " days"));
 		if (Request::has('modifyImage')) {
-			$data['picture'] = 'auction_'.Date('YmdHis').$data['owner_id'].rand(100,999);
+			$data['picture'] = 'auction_'.Date('YmdHis').$auction->owner_id.rand(100,999);
 			$validator = Validator::make($data, ['picture' => 'required|string|min:4']);
 			if ($validator->fails()) {
 				return redirect()->back()->with('errors', $validator->messages())->withInput();
