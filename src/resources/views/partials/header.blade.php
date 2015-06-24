@@ -42,6 +42,7 @@
 					@if (Auth::guest())
 						<li><a href="{{ url('/register') }}">Registrate</a></li>
             <li><a href="{{ url('/login') }}">Logueate</a></li>
+            <li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hola, {{ Auth::user()->name }} <span class="caret"></span></a>
