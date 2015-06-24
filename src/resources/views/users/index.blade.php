@@ -58,7 +58,7 @@
       <td>
          <a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Ver</a>
          <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Editar</a>
-         <a href="#" class="btn btn-default btn-xs">Dar Permisos de Administrador</a>
+         {{-- <a href="#" class="btn btn-default btn-xs">Dar Permisos de Administrador</a> --}}
          <a title="Eliminar Usuario" href="{{ route('admin.users.delete' , ['id' => $user->id]) }}" class="btn btn-danger btn-xs">Eliminar</a>
       </td>
     </tr>

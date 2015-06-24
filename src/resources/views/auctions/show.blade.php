@@ -5,9 +5,9 @@
 @section('content')
 
     @include('partials.detailed_notifications')
-    <div class="container-fluid pull-left">
-        {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a> --}}
-    </div>
+    {{-- <div class="container-fluid pull-left">
+        <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a>
+    </div> --}}
     <div class="jumbotron">
       <div class="page-header">
         <h2>{{ $auction->title }}</h2>
@@ -40,7 +40,7 @@
         </div>
         {{-- Auction Image --}}
         <div class="col-lg-6">
-          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail" height="350" width="350"/>
+          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail pull-right" height="350" width="350"/>
         </div>
       </div>
 
@@ -52,10 +52,18 @@
       <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
         Hacer un comentario
       </a>
+      <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
+        Ofertar
+      </a>
       @else
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
+        @if((Auth::user()->hasOfferOn($auction)))
+        <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
+          Ofertar
+        </a>
+        @endif
       @endif
       <br>
       <br>
@@ -120,7 +128,16 @@
 
       {{-- Ofertas --}}
 
+
       @if(!(Auth::guest()))
+        @if(Auth::user()->hasOfferOn($auction))
+          <div class="well">
+            <span>
+              <b>Tu oferta</b>: {{ $auction->userOffer(Auth::user())->reason }} - <b>Monto</b>: {{ $auction->userOffer(Auth::user())->amount }}
+            </span>
+          </div>
+        @endif
+
         @if((Auth::user()->id == $auction->owner->id) || (Auth::user()->is_admin == 1))
 
           @if( count($auction->offers) > 0)
@@ -132,7 +149,7 @@
               <thead>
                 <tr>
                   {{-- <th>#ID</th> --}}
-                  <th>Usuario</th>
+                  {{-- <th>Usuario</th> --}}
                   <th>Motivo</th>
                   {{-- <th>Monto</th> --}}
                 </tr>
@@ -141,7 +158,7 @@
                 @foreach($auction->offers as $offer)
                 <tr>
                   {{-- <td>{{$offer->id}}</td> --}}
-                  <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td>
+                  {{-- <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td> --}}
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
                   @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
@@ -186,7 +203,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-primary">Comentar</button>
               </form>
             </div>

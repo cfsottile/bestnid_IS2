@@ -103,18 +103,19 @@ Route::get('offers', [
 					'uses' => 'OfferController@index'
 					]);
 
+
 Route::get('offers/delete/{id}',[
 					 'as' => 'offers.delete',
 					 'middleware' => 'auth',
 					 'uses' => 'OfferController@destroy',
 					])->where('id', '[0-9]+');
 
-
-/*Route::get('offers/create', [
+Route::get('offers/create', [
+	'middleware' => 'auth',
 	'as' => 'offers.create',
 	'uses' => 'OfferController@create'
 	]);
-*/
+
 
 //----------------------------------------------------------------
 

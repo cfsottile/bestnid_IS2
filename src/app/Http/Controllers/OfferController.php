@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Auction;
 use App\Models\Category;
-use App\Models\Offer; 
+use App\Models\Offer;
 
 use Auth;
 use App\User;
@@ -17,7 +17,7 @@ class OfferController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
-	 * Ofertas de UN usuario 
+	 * Ofertas de UN usuario
 	 * @return Response
 	 */
 	public function index()
@@ -35,7 +35,8 @@ class OfferController extends Controller {
 	 */
 	public function create()
 	{
-		return view('offers.create');
+		$auction_id = Request::input('auction_id');
+		return view('offers.create')->with('auction_id', $auction_id);
 	}
 
 

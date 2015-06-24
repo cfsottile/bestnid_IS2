@@ -19,8 +19,8 @@
               {{-- <li class="list-group-item">ID: {{ $user->id }}</li> --}}
               <li class="list-group-item">Nombre: {{ $user->name }}</li>
               <li class="list-group-item">Apellido: {{ $user->last_name }}</li>
-              <li class="list-group-item">Fecha de Nacimiento: {{ substr($user->born_date, 0, 10) }}</li>
-              <li class="list-group-item">Fecha de Registro: {{ substr($user->created_at, 0, 10) }}</li>
+              <li class="list-group-item">Fecha de Nacimiento: {{ $user->formatedBornDate() }}</li>
+              <li class="list-group-item">Fecha de Registro: {{ $user->formatedCreatedAt() }}</li>
               <li class="list-group-item">Datos de tarjeta de credito: {{ $user->cc_data }}</li>
             </ul>
             @if( (Auth::user()->is_admin == 0) || (Auth::user()->id == $user->id) )
