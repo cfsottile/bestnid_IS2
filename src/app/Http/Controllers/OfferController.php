@@ -91,7 +91,9 @@ class OfferController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Offer::destroy($id);
+
+		return redirect()->back()->with('success', 'Oferta eliminada!');
 	}
 
 }

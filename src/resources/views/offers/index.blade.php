@@ -31,7 +31,7 @@
 			      <td>
 			         <a href="{{ route('auctions.show', [ 'id' => $of->auction_id] ) }}" class="btn btn-default btn-xs">Ver</a>
 			         <a href="" class="btn btn-default btn-xs">Editar</a>
-			         <a title="Eliminar Oferta" href="" class="btn btn-danger btn-xs">Eliminar</a>
+<!-- 			         <a title="Cancelar Oferta" href="{{ route('offers.delete', [ 'id' => $of->id] ) }}" class="btn btn-danger btn-xs">Cancelar</a> -->
 			      </td>
 			    </tr>
 			  @endif
