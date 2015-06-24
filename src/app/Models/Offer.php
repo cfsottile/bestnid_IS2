@@ -17,4 +17,8 @@ class Offer extends Model {
 		return $this->belongsTo('App\Models\Auction', 'auction_id');
 	}
 
+	public function formatedCreationDate(){
+		return date('d m Y - h:i',strtotime($this->created_at));
+	}
+
 }
