@@ -3,6 +3,7 @@
 @section('title', 'Datos de cuenta')
 
 @section('content')
+  @include('partials.detailed_notifications')
   {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a> --}}
   <div class="page-header">
     <h1> Mis Datos </h1>

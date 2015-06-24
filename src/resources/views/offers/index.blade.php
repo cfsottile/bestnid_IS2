@@ -3,10 +3,11 @@
 @section('title', 'Mis ofertas')
 
 @section('content')
+	@include('partials.detailed_notifications')
 	<a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
 	  <div class="page-header">
 	    <h1>Mis ofertas</h1>
-	  </div>	
+	  </div>
 
 	<table class="table table-striped table-hover ">
 	  <thead>
@@ -37,8 +38,8 @@
 	    @endforeach
 	  </tbody>
 	</table>
-	<br> 
-	<br> 
+	<br>
+	<br>
 		{{-- Para subastas finalizadas --}}
 
     <div class="well">
@@ -56,7 +57,7 @@
         </thead>
         <tbody>
           @foreach($offers as $of)
-						@if($of->auction->end_date > Date('Y/m/d H:i:s'))          	
+						@if($of->auction->end_date > Date('Y/m/d H:i:s'))
           	<tr>
 				      <td>{{$of->auction->title}}</td>
 				      <td>{{$of->reason}}</td>
