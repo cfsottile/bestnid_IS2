@@ -94,7 +94,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		Mail::send('emails.winnerNotification', $args, function($message)	{
 		    $message->to($this->email, $this->name." ".$this->last_name)->subject('¡Fuiste elegido ganador!');
 		});
-
+	}
+	
 	public function formatedBornDate () {
 		return date('d/m/Y',strtotime($this->born_date));
 	}
