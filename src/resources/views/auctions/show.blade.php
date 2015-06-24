@@ -6,7 +6,7 @@
 
     @include('partials.detailed_notifications')
     <div class="container-fluid pull-left">
-        <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a>
+        {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a> --}}
     </div>
     @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
         <div class="container-fluid pull-right">

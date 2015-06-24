@@ -87,7 +87,7 @@
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
 									<a href="{{ URL::previous() }}" class="btn btn-default">
-										Atrás
+										Cancelar
 									</a>
 									<button type="submit" class="btn btn-primary">
 										Actualizar datos

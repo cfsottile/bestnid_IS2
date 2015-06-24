@@ -3,7 +3,7 @@
 @section('title', 'Datos de cuenta')
 
 @section('content')
-  <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
+  {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a> --}}
   <div class="page-header">
     <h1> Mis Datos </h1>
   </div>
