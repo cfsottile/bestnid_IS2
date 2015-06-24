@@ -5,9 +5,9 @@
 @section('content')
 
     @include('partials.detailed_notifications')
-    <div class="container-fluid pull-left">
-        {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a> --}}
-    </div>
+    {{-- <div class="container-fluid pull-left">
+        <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a>
+    </div> --}}
     <div class="jumbotron">
       <div class="page-header">
         <h2>{{ $auction->title }}</h2>
@@ -39,7 +39,7 @@
         </div>
         {{-- Auction Image --}}
         <div class="col-lg-6">
-          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail" height="350" width="350"/>
+          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail pull-right" height="350" width="350"/>
         </div>
       </div>
 
@@ -51,10 +51,18 @@
       <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
         Hacer un comentario
       </a>
+      <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
+        Ofertar
+      </a>
       @else
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
+        @if((Auth::user()->hasOfferOn($auction)))
+        <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
+          Ofertar
+        </a>
+        @endif
       @endif
       <br>
       <br>
@@ -194,7 +202,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-primary">Comentar</button>
               </form>
             </div>

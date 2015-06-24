@@ -103,11 +103,12 @@ Route::get('offers', [
 					'uses' => 'OfferController@index'
 					]);
 
-/*Route::get('offers/create', [
+Route::get('offers/create', [
+	'middleware' => 'auth',
 	'as' => 'offers.create',
 	'uses' => 'OfferController@create'
 	]);
-*/
+
 
 //----------------------------------------------------------------
 
