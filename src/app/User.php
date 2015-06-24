@@ -88,9 +88,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return date('d/m/Y',strtotime($this->born_date));
 	}
 
+	public function hasOfferOn($auction) {
 
+		foreach ($auction->offers as $offer){
 
-
-
+			if ($offer->owner_id == $this->id){
+					return true;
+			}
+		}
+		return false;
+	}
 
 }

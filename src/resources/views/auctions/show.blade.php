@@ -119,7 +119,16 @@
 
       {{-- Ofertas --}}
 
+
       @if(!(Auth::guest()))
+        @if(Auth::user()->hasOfferOn($auction))
+          <div class="well">
+            <span>
+              <b>Tu oferta</b>: {{ $auction->userOffer(Auth::user())->reason }} - <b>Monto</b>: {{ $auction->userOffer(Auth::user())->amount }}
+            </span>
+          </div>
+        @endif
+
         @if((Auth::user()->id == $auction->owner->id) || (Auth::user()->is_admin == 1))
 
           @if( count($auction->offers) > 0)
@@ -131,7 +140,7 @@
               <thead>
                 <tr>
                   {{-- <th>#ID</th> --}}
-                  <th>Usuario</th>
+                  {{-- <th>Usuario</th> --}}
                   <th>Motivo</th>
                   {{-- <th>Monto</th> --}}
                 </tr>
@@ -140,7 +149,7 @@
                 @foreach($auction->offers as $offer)
                 <tr>
                   {{-- <td>{{$offer->id}}</td> --}}
-                  <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td>
+                  {{-- <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td> --}}
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
                   @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
