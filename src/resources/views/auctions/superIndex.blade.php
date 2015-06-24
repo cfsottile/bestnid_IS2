@@ -5,7 +5,7 @@
 @section('content')
 
 @include('partials.detailed_notifications')
-<a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
+{{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a> --}}
 <div class="page-header">
   <h1> Indice de subastas </h1>
 </div>
@@ -44,6 +44,8 @@
       <th>Nombre</th>
       <th>Fecha de inicio</th>
       <th>Fecha de cierre</th>
+      <th>#Ofertas</th>
+      <th>#Comentarios</th>
       <th>Opciones<th>
     </tr>
   </thead>
@@ -54,12 +56,14 @@
       <td>{{$auction->id}}</td>
       <td>{{$auction->owner_id}}</td>
       <td>{{$auction->title}}</td>
-      <td>{{$auction->created_at}}</td>
-      <td>{{$auction->end_date}}</td>
+      <td>{{$auction->formatedCreatedAt()}}</td>
+      <td>{{$auction->formatedEndDate()}}</td>
+      <td>{{count($auction->offers)}}</td>
+      <td>{{count($auction->comments)}}</td>
       <td>
          <a href="{{ route('auctions.show' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Ver</a>
-         {{-- <a href="{{ route('admin.users.edit' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Editar</a>
-         <a title="Eliminar Usuario" href="{{ route('admin.users.delete' , ['id' => $auction->id]) }}" class="btn btn-danger btn-xs">Eliminar</a> --}}
+         {{-- <a href="{{ route('admin.users.edit' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Editar</a> --}}
+         <a href="{{ route('admin.auctions.delete' , ['id' => $auction->id]) }}" class="btn btn-danger btn-xs">Eliminar</a>
       </td>
     </tr>
 

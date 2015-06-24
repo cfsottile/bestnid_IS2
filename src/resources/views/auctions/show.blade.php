@@ -8,12 +8,6 @@
     <div class="container-fluid pull-left">
         {{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-left">Atrás</a> --}}
     </div>
-    @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
-        <div class="container-fluid pull-right">
-            <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
-            <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
-        </div>
-    @endif
     <div class="jumbotron">
       <div class="page-header">
         <h2>{{ $auction->title }}</h2>
@@ -35,6 +29,12 @@
             <p>
                 <b>Fecha de cierre</b> <br> {{ substr($auction->formatedEndDate(), 0, 10) }}
             </p>
+            @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
+                <div >
+                    <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
+                    <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
+                </div>
+            @endif
 
         </div>
         {{-- Auction Image --}}
@@ -48,11 +48,11 @@
 
       <!-- Button trigger modal -->
       @if(Auth::guest())
-      <a type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" href="{{route('login')}}">
+      <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
         Hacer un comentario
       </a>
       @else
-        <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#commentModal">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
       @endif

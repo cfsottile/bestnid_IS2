@@ -5,7 +5,7 @@
 @section('content')
 
 @include('partials.detailed_notifications')
-<a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
+{{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a> --}}
 <div class="page-header">
   <h1> Indice de usuarios registrados </h1>
 </div>
@@ -53,7 +53,7 @@
       <td>{{$user->id}}</td>
       <td>{{$user->name}} {{$user->last_name}}</td>
       <td>{{$user->email}}</td>
-      <td>{{$user->created_at}}</td>
+      <td>{{$user->formatedCreatedAt()}}</td>
       <td>{{$user->dni}}</td>
       <td>
          <a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Ver</a>

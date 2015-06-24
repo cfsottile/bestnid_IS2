@@ -249,6 +249,27 @@ class AuctionsController extends Controller {
 		}
 	}
 
+	/**
+	* Remove the specified resource from storage.
+	*
+	* @param  int  $id
+	* @return Response
+	*/
+	public function adminDestroy($id)
+	{
+		//ver "soft delete", podria servir
+
+
+		$auction = Auction::find($id);
+		if($auction->isDeleteable()){
+			$auction->delete();
+			return redirect()->back()->with('success', 'Subasta eliminado con exito');
+		}else{
+			return redirect()->back()->with('error', 'No puede eliminar esta subasta, tiene ofertas activas');
+
+		}
+	}
+
 	public function postWinner ($id) {
 		$auction = Auction::find($id);
 		$winner_id = Request::get('winner_id');

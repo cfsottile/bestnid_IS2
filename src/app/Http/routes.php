@@ -270,3 +270,9 @@ Route::post('auctions/superindex',[
 					 'as' => 'admin.auctions.postsuperindex',
 					 'uses' => 'AuctionsController@superIndex'
 					 ]);
+
+Route::get('auctions/delete/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+ 					 'as' => 'admin.auctions.delete',
+					 'uses' => 'UserController@adminDestroy'
+				   ]) ->where('id', '[0-9]+');
