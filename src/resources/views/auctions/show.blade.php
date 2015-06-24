@@ -31,6 +31,7 @@
             </p>
             @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
                 <div >
+                    <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
                     <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
                 </div>
