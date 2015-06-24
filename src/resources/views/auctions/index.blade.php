@@ -27,20 +27,20 @@
             {{-- resutados para busqueda con query (categoria) --}}
             <div class="container-fluid pull-right">
               <span> Ordenar por:
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=asc') }}" class="btn btn-sm btn-default">nombre A-Z</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&category=true&direction=desc') }}" class="btn btn-sm btn-default"> nombre Z-A</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=asc') }}" class="btn btn-sm btn-default">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&category=true&direction=desc') }}" class="btn btn-sm btn-default">más reciente</a>
             </div>
             <h3><small>Resultados para la categoria '{{ $query }}' </small></h3>
           @else
             {{-- resultados para busqueda con query (busqueda) --}}
             <div class="container-fluid pull-right">
               <span> Ordenar por:
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
-                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=asc') }}" class="btn btn-sm btn-default">nombre A-Z</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=title&direction=desc') }}" class="btn btn-sm btn-default"> nombre Z-A</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=asc') }}" class="btn btn-sm btn-default">menos reciente</a>
+                <a href="{{ route('auctions.index', 'query='.$query.'&orderCriteria=created_at&direction=desc') }}" class="btn btn-sm btn-default">más reciente</a>
             </div>
             <h3><small>Resultados para '{{ $query }}' </small></h3>
           @endif
@@ -49,10 +49,10 @@
           <div class="container">
             <div class="pull-right">
             <span> Ordenar por:
-              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=asc') }}" class="btn btn-primary btn-sm">nombre A-Z</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=desc') }}" class="btn btn-primary btn-sm"> nombre Z-A</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=asc') }}" class="btn btn-primary btn-sm">menos reciente</a>
-              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=desc') }}" class="btn btn-primary btn-sm">más reciente</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=asc') }}" class="btn btn-sm btn-default">nombre A-Z</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=title&direction=desc') }}" class="btn btn-sm btn-default"> nombre Z-A</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=asc') }}" class="btn btn-sm btn-default">menos reciente</a>
+              <a href="{{ route('auctions.index', 'orderCriteria=created_at&direction=desc') }}" class="btn btn-sm btn-default">más reciente</a>
           </div>
         </div>
       @endif
