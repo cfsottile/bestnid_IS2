@@ -56,6 +56,7 @@
                 <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
 
 							</ul>
+            <li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
 						</li>
 					@endif
 				</ul>
