@@ -84,6 +84,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return date('d/m/Y H:i',strtotime($this->created_at));
 	}
 
+	public function formatedBornDate () {
+		return date('d/m/Y',strtotime($this->born_date));
+	}
+
 
 
 
