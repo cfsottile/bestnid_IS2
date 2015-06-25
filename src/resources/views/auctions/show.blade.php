@@ -170,11 +170,11 @@
                               </form>
                           </td>
                       @else
+                        <td>
                             @if($auction->winner == $offer->owner)
-                                <td>
                                     <span class="label label-success">Ganador</span>
-                                </td>
                             @endif
+                        </td>
                       @endif
                   @endif
                 </tr>

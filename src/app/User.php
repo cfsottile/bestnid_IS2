@@ -117,4 +117,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	}
 
+	public function notifyPaymentError ($auction) {
+		$args = [
+			'user' => $this,
+			'auction' => $auction
+		];
+		Mail::send('emails.paymentError', $args, function($message)	{
+			$message->to($this->email, $this->name." ".$this->last_name)->subject('Hubo problemas con un cobro');
+		});
+	}
+
 }

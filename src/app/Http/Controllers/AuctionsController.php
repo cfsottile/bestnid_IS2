@@ -277,6 +277,7 @@ class AuctionsController extends Controller {
 				&& (Auth::user()->id == $auction->owner->id)
 				&& ($winner != null)) {
 			if ($winner->cc_data == 1234123412341234) {
+				$winner->notifyPaymentError($auction);
 				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro ganador');
 			}
 			$auction->winner()->associate($winner);

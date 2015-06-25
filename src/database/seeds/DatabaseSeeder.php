@@ -89,6 +89,18 @@ class UsersTableSeeder extends Seeder {
       'is_admin' => '1',
     ]);
 
+	User::create([
+      'name' => 'Tarjeta',
+	  'last_name' => 'Inválida',
+      'email' => 'tarjeta.invalida@is2.com',
+      'password' => Hash::make('tarjeta.invalida'),
+      'dni' => '12312311',
+      'born_date'=> Date('1992/04/22'),
+      'phone' => '+54 9 221 444 2312',
+       'cc_data' => '1234123412341234',
+      'is_admin' => '0',
+    ]);
+
 	}
 
 }
