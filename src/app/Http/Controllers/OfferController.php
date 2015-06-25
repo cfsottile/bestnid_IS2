@@ -99,7 +99,7 @@ class OfferController extends Controller {
 	{
 		$data = Request::all();
 
-		$validator = Offer::validate($data);
+		$validator = Offer::validateAmount($data);
 
 		if ($validator->fails()) {
 			return redirect()
@@ -107,6 +107,7 @@ class OfferController extends Controller {
 				->with('error', 'Su monto no fue modificado, el minimo es $1');
 		}
 
+		/*dd(Request::all());*/
 		$id = Request::input('id');
 		$offer = Offer::find($id);
 		$offer->amount = Request::input('amount');

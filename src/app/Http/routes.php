@@ -241,7 +241,7 @@ Route::get('admin/index', [
 
 
 Route::get('/help', [
-					'as' => '/help',
+					'as' => 'help',
 					function(){
 						return view('help.help');
 					}
