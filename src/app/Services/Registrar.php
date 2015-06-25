@@ -42,13 +42,14 @@ class Registrar implements RegistrarContract {
 	{
 		return User::create([
 			'name' => $data['name'],
+			'last_name' => $data['last_name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 			'dni' => $data['dni'],
 			'born_date' => $data['born_date'],
 			'phone' => $data['phone'],
-			'cc_data' => $data['cc_data'],
-			'is_admin' => $data['is_admin'],
+			'cc_data' => $data['cc_data']
+			// 'is_admin' => false,
 			//regDate pasa a ser equivalente a created_at
 		]);
 	}

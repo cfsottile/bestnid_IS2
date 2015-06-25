@@ -114,6 +114,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		];
 
 		Mail::send('emails.paymentError', $args, function($message)	{
+			// dd($message);
 			$message->to($this->email, $this->name." ".$this->last_name)->subject('Hubo problemas con un cobro');
 		});
 	}
@@ -126,6 +127,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		];
 
 		Mail::send('emails.winnerNotification', $args, function($message) {
+			// dd($message);
 		    $message->to($this->email, $this->name." ".$this->last_name)->subject('¡Fuiste elegido ganador!');
 		});
 	}
