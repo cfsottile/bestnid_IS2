@@ -280,9 +280,9 @@ class AuctionsController extends Controller {
 				$winner->notifyPaymentError($auction);
 				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro ganador');
 			}
+			$winner->notifyWonAuction($auction);
 			$auction->winner()->associate($winner);
 			$auction->save();
-			$winner->notifyWonAuction($auction);
 			return redirect()->back()->with('success', 'El ganador fue seleccionado con éxito, y el cobro ha sido realizado');
 			// return view('auctions.exito')->with('message', 'Cobro efectuado con');
 		} else {
