@@ -30,7 +30,10 @@
 			      <td>{{$of->formatedCreationDate()}}</td>
 			      <td>
 			         <a href="{{ route('auctions.show', [ 'id' => $of->auction_id] ) }}" class="btn btn-default btn-xs">Ver</a>
-			         <a href="" class="btn btn-default btn-xs">Editar</a>
+						  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
+			          Editar
+			        </button>
+			         <!-- <a href="" class="btn btn-default btn-xs">Editar</a> -->
 <!-- 			         <a title="Cancelar Oferta" href="{{ route('offers.delete', [ 'id' => $of->id] ) }}" class="btn btn-danger btn-xs">Cancelar</a> -->
 			      </td>
 			    </tr>
@@ -69,5 +72,35 @@
         </tbody>
       </table>
     </div>
+
+		<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Escribe tu monto nuevo</h4>
+            </div>
+            <div class="modal-body">
+
+              <form role="form" method="POST" action='{{ route('comments.poststore') }}'>
+                <div class="form-group">
+                  <label for="content" class="control-label">Monto <small>(minimo $1)</small></label>
+                  <textarea name ='content' id='textarea' rows='4' class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="owner_id" value='{{Auth::user()->id}}'>
+                </div>
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="auction_id" value='{{$auction->id}}'>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Comentar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
 @overwrite

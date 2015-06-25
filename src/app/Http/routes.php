@@ -110,11 +110,23 @@ Route::get('offers/delete/{id}',[
 					 'uses' => 'OfferController@destroy',
 					])->where('id', '[0-9]+');
 
+Route::post('offers/update',[
+	 					'as' => 'offers.update',
+						'middleware' => 'auth',
+						'uses' => 'OfferController@update'
+						]);
+
 Route::get('offers/create', [
 	'middleware' => 'auth',
 	'as' => 'offers.create',
 	'uses' => 'OfferController@create'
 	]);
+
+Route::post('offers/store',[
+						'middleware' => 'auth',
+						'as' => 'offers.store',
+						'uses' => 'OfferController@store'
+						]);
 
 
 //----------------------------------------------------------------
