@@ -33,6 +33,7 @@ class Offer extends Model {
 		return Validator::make($data, [
 			'amount' => 'required|numeric|min:1',
 			]);
+	}
 
 	public static function validate($data){
 
