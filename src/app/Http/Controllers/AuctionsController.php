@@ -141,7 +141,8 @@ class AuctionsController extends Controller {
 	public function show($id)
 	{
 		$auction = Auction::find($id);
-		return view('auctions.show')->with('auction', $auction);
+		// if (!$auction->finished() || AuctionsController::checkLoggedUserIdIs($auction->owner) || )
+			return view('auctions.show')->with('auction', $auction);
 	}
 
 	/**

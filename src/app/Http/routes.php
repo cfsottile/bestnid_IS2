@@ -144,6 +144,7 @@ Route::get('auctions', [
 
 Route::get('auctions/show/{id}', [
 					 'as' => 'auctions.show',
+					 'middleware' => 'auctionEnded',
 					 'uses' => 'AuctionsController@show'
 				   ]) ->where('id', '[0-9]+');
 

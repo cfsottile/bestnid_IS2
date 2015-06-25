@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->string('cc_data',16); //datos de tarjeta de credito (credit card)
 			$table->string('cc_scode',3)->nullable();
 			$table->string('cc_exp_date',5)->nullable();
-			$table->boolean('is_admin');
+			$table->boolean('is_admin')->default(0);
 
 			$table->softDeletes(); //crea columna deleted_at
 			$table->timestamps(); //crea columnas created_at + updated_at

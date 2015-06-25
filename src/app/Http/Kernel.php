@@ -27,7 +27,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
-		'isAdmin' => 'App\Http\Middleware\isAdmin'
+		'isAdmin' => 'App\Http\Middleware\isAdmin',
+		'auctionEnded' => 'App\Http\Middleware\EndedAuctionChecker'
 	];
 
 }
