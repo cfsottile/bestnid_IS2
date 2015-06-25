@@ -40,6 +40,7 @@
       <ul class="nav navbar-nav navbar-right">
         <ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
+            <li><a href="{{ route('help') }}">Ayuda</a></li>
 						<li><a href="{{ url('/register') }}">Registrate</a></li>
             <li><a href="{{ url('/login') }}">Logueate</a></li>
             <li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>

@@ -31,7 +31,7 @@ class Offer extends Model {
 
 	public static function validateAmount($data) {
 		return Validator::make($data, [
-			'amount' => 'required|numeric|min:1',
+			'amount' => 'required|numeric|min:1|max:99999999999999999999,99',
 			]);
 	}
 

@@ -29,8 +29,8 @@
 			      <td>{{$of->amount}}</td>
 			      <td>{{$of->formatedCreationDate()}}</td>
 			      <td>
-			         <a href="{{ route('auctions.show', [ 'id' => $of->auction_id] ) }}" class="btn btn-default btn-xs">Ver</a>
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
+			         <a href="{{ route('auctions.show', [ 'id' => $of->auction_id] ) }}" class="btn btn-default btn-sm">Ver</a>
+						  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#offerModal" data-offerid="{{$of->id}}">
 			          Editar
 			        </button>
 			         <!-- <a href="" class="btn btn-default btn-xs">Editar</a> -->
@@ -73,7 +73,9 @@
       </table>
     </div>
 
-		<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		@if(count($offers)>0)
+
+		<div class="modal fade" id="offerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -88,8 +90,8 @@
                   <label for="content" class="control-label">Monto <small>(minimo $1)</small></label>
                 </div>
                 <div class="form-group">
-                  <input type="hidden" class="form-control" name="id" value='{{$of->id}}'>
-                </div>                
+                  <input type="hidden" class="form-control" name="id" id="offerid">
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -99,5 +101,19 @@
           </div>
         </div>
       </div>
+
+			<script>
+			jQuery(function($){
+				$('#offerModal').on('show.bs.modal', function (event) {
+					var button = $(event.relatedTarget) // Button that triggered the modal
+					var offer = button.data('offerid') // Extract info from data-* attributes
+					// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+					// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+					var modal = $(this)
+					$('#offerid').val(offer);
+				})
+			})
+			</script>
+			@endif
 
 @overwrite
