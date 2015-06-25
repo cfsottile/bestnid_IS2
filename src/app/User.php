@@ -87,16 +87,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 
-	public function notifyWonAuction ($auction) {
-		$args = [
-			'winner' => $this,
-			'auctionOwner' => $auction->owner,
-			'auction' => $auction
-		];
-		Mail::send('emails.winnerNotification', $args, function($message)	{
-		    $message->to($this->email, $this->name." ".$this->last_name)->subject('¡Fuiste elegido ganador!');
-		});
-	}
 
 	public function formatedBornDate () {
 		return date('d/m/Y',strtotime($this->born_date));
@@ -122,9 +112,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			'user' => $this,
 			'auction' => $auction
 		];
+
 		Mail::send('emails.paymentError', $args, function($message)	{
 			$message->to($this->email, $this->name." ".$this->last_name)->subject('Hubo problemas con un cobro');
 		});
 	}
 
+	public function notifyWonAuction ($auction) {
+		$args = [
+			'winner' => $this,
+			'auctionOwner' => $auction->owner,
+			'auction' => $auction
+		];
+
+		Mail::send('emails.winnerNotification', $args, function($message) {
+		    $message->to($this->email, $this->name." ".$this->last_name)->subject('¡Fuiste elegido ganador!');
+		});
+	}
 }

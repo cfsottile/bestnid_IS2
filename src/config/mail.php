@@ -16,8 +16,8 @@ return [
 	*/
 
 	// 'driver' => env('MAIL_DRIVER', 'smtp'),
-	'driver' => 'log',
-	
+	'driver' => 'mailgun',
+
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Address
@@ -55,7 +55,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => 'bestnid@bestnid.g24.is2.edu.ar', 'name' => 'BestNid'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
 	|
 	*/
 
-	'username' => env('MAIL_USERNAME'),
+	'username' => 'postmaster@sandbox0c15990cf43f4c87a1251386ee861bc0.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
 	|
 	*/
 
-	'password' => env('MAIL_PASSWORD'),
+	'password' => '2fe3056ef804e081c41d066702026ea9',
 
 	/*
 	|--------------------------------------------------------------------------
