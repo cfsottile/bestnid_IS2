@@ -59,7 +59,7 @@
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
-        @if(!(Auth::user()->hasOfferOn($auction)) && !(Auth::user()->id == $auction->owner->id))
+        @if((Auth::user()->hasOfferOn($auction)))
         <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
           Ofertar
         </a>
@@ -162,20 +162,12 @@
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
                   @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
-                      @if(!$auction->hasWinner())
-                          <td>
-                              <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
-                                  <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
-                                  <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
-                              </form>
-                          </td>
-                      @else
-                            @if($auction->winner == $offer->owner)
-                                <td>
-                                    <span class="label label-success">Ganador</span>
-                                </td>
-                            @endif
-                      @endif
+                      <td>
+                          <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
+                              <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
+                              <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
+                          </form>
+                      </td>
                   @endif
                 </tr>
                 @endforeach
