@@ -82,21 +82,18 @@
             </div>
             <div class="modal-body">
 
-              <form role="form" method="POST" action='{{ route('comments.poststore') }}'>
+              <form role="form" method="POST" action='{{ route('offers.update') }}'>
                 <div class="form-group">
+                  <input type="number" class="form-control" name="amount">
                   <label for="content" class="control-label">Monto <small>(minimo $1)</small></label>
-                  <textarea name ='content' id='textarea' rows='4' class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="hidden" class="form-control" name="owner_id" value='{{Auth::user()->id}}'>
-                </div>
-                <div class="form-group">
-                  <input type="hidden" class="form-control" name="auction_id" value='{{$auction->id}}'>
-                </div>
+                  <input type="hidden" class="form-control" name="id" value='{{$of->id}}'>
+                </div>                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Comentar</button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
               </form>
             </div>
           </div>
