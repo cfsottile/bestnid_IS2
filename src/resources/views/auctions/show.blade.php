@@ -29,7 +29,7 @@
             <p>
                 <b>Fecha de cierre</b> <br> {{ substr($auction->formatedEndDate(), 0, 10) }}
             </p>
-            @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
+            @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id) && (count($auction->offers) == 0))
                 <div >
                     <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
@@ -63,7 +63,7 @@
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
-        @if((Auth::user()->hasOfferOn($auction)))
+        @if(!(Auth::user()->hasOfferOn($auction)) && (Auth::user()->id != $auction->owner->id))
         <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
           Ofertar
         </a>
@@ -82,7 +82,8 @@
               <h6> {{$comment->formatedCreationDate()}} </h6>
             </div>
             <div class="col-lg-2">
-              @if(!(Auth::guest()) && ((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
+              {{-- (Auth::user()->is_admin == 1) ||  esto es para q el admin pueda borrar comentas tambien, va en el if este de abajo--}}
+              @if(!(Auth::guest()) && ((Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
                 <form method="GET" action="{{route("comments.delete",["id" => $comment->id]) }}" style="display:inline">
                   <button class="btn btn-xs btn-danger pull-right" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar comentario" data-message="Estás seguro? Será permanente">
                     Eliminar
