@@ -5,7 +5,7 @@
 @section('content')
 
 @include('partials.detailed_notifications')
-<a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a>
+{{-- <a href="{{ URL::previous() }}" class="btn btn-default pull-right">Atrás</a> --}}
 <div class="page-header">
   <h1> Panel de Administración </h1>
 </div>

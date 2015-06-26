@@ -56,15 +56,21 @@
       <td>{{$user->formatedCreatedAt()}}</td>
       <td>{{$user->dni}}</td>
       <td>
-         <a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Ver</a>
-         <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Editar</a>
+         {{-- <a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Ver</a> --}}
+         {{-- <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-default btn-xs">Editar</a> --}}
          {{-- <a href="#" class="btn btn-default btn-xs">Dar Permisos de Administrador</a> --}}
-         <a title="Eliminar Usuario" href="{{ route('admin.users.delete' , ['id' => $user->id]) }}" class="btn btn-danger btn-xs">Eliminar</a>
+         <form method="GET" action="{{ route('admin.users.delete' , ['id' => $user->id]) }}" style="display:inline">
+           <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar usuario" data-message="Estás seguro? Será permanente">
+             Eliminar
+           </button>
+         </form>
       </td>
     </tr>
 
     @endforeach
   </tbody>
 </table>
+
+@include('partials.delete_confirmation')
 
 @endsection

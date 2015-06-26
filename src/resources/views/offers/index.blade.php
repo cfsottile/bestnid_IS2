@@ -33,8 +33,11 @@
 						  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#offerModal" data-offerid="{{$of->id}}">
 			          Editar
 			        </button>
-			         <!-- <a href="" class="btn btn-default btn-xs">Editar</a> -->
-<!-- 			         <a title="Cancelar Oferta" href="{{ route('offers.delete', [ 'id' => $of->id] ) }}" class="btn btn-danger btn-xs">Cancelar</a> -->
+							{{-- <form method="GET" action="{{ route('offers.delete', [ 'id' => $of->id] ) }}" style="display:inline">
+								<button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Cancelar oferta" data-message="Estás seguro? Será permanente">
+									Cancelar
+								</button>
+							</form> --}}
 			      </td>
 			    </tr>
 			  @endif
@@ -115,5 +118,7 @@
 			})
 			</script>
 			@endif
+
+			@include('partials.delete_confirmation')
 
 @overwrite

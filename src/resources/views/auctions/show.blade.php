@@ -84,7 +84,7 @@
             <div class="col-lg-2">
               @if(!(Auth::guest()) && ((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
                 <form method="GET" action="{{route("comments.delete",["id" => $comment->id]) }}" style="display:inline">
-                  <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar comentario" data-message="Estás seguro? Será permanente">
+                  <button class="btn btn-xs btn-danger pull-right" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar comentario" data-message="Estás seguro? Será permanente">
                     Eliminar
                   </button>
                 </form>

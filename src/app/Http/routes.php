@@ -253,31 +253,31 @@ Route::get('/help', [
 					}
 					]);
 
-Route::get('users/index',[
+Route::get('admin/users/index',[
 					 'middleware' => ['auth','isAdmin'],
 					 'as' => 'admin.users.index',
 					 'uses' => 'UserController@index'
 					 ]);
 
-Route::post('users/index',[
+Route::post('admin/users/index',[
 					 'middleware' => ['auth','isAdmin'],
 					 'as' => 'admin.users.postindex',
 					 'uses' => 'UserController@index'
 					 ]);
 
-Route::get('users/delete/{id}', [
+Route::get('admin/users/delete/{id}', [
 					 'middleware' => ['auth','isAdmin'],
  					 'as' => 'admin.users.delete',
 					 'uses' => 'UserController@adminDestroy'
 				   ]) ->where('id', '[0-9]+');
 
-Route::get('users/show/{id}', [
+Route::get('admin/users/show/{id}', [
 					 'middleware' => ['auth','isAdmin'],
  					 'as' => 'admin.users.show',
 					 'uses' => 'UserController@adminShow'
 				   ]) ->where('id', '[0-9]+');
 
-Route::get('users/edit/{id}', [
+Route::get('admin/users/edit/{id}', [
 					 'middleware' => ['auth','isAdmin'],
  					 'as' => 'admin.users.edit',
 					 'uses' => 'UserController@adminEdit'
