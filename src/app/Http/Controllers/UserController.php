@@ -91,6 +91,14 @@ class UserController extends Controller {
 					->with('user', $user);
 	}
 
+	public function myauctions()
+	{
+		$user = Auth::user();
+		$auctions = $user->auctions;
+
+		return view('users.auctionsIndex')->with('auctions', $auctions);
+	}
+
 
 	/**
 	 * Display the specified resource.

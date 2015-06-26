@@ -12,7 +12,7 @@
 
           <form class="form-horizontal" role="form" method="POST" action="{{ route('auctions.update', $auction->id) }}" enctype="multipart/form-data">
             <fieldset>
-              <legend>Alta de subasta</legend>
+              <legend>Edición de subasta</legend>
 
               <div class="form-group @if($errors->has('title')) has-error @endif">
                 <label for="name" class="col-lg-2 control-label">Título</label>
@@ -106,7 +106,7 @@
               <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                   <a href="{{ route('auctions.show', ['id' => $auction->id ]) }}" class="btn btn-default">Cancelar</a>
-                  <button type="submit" class="btn btn-primary">Dar de alta</button>
+                  <button type="submit" class="btn btn-primary">Actualizar cambios</button>
                 </div>
               </div>
             </fieldset>

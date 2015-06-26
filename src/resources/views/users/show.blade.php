@@ -35,7 +35,7 @@
             <h3 class='panel-title'>Datos de subastas</h3>
             <br>
             <ul class="list-group">
-            <li class="list-group-item">Subastas iniciadas <span class="badge">{{count($user->auctions)}}</span> </li>
+              <li class="list-group-item"><a href="{{ route('user.myauctions') }}">Subastas iniciadas <span class="badge">{{count($user->auctions)}}</span> </li>
               <li class="list-group-item"><a href="{{ route('offers.index') }}">Subastas ofertadas</a> <span class="badge">{{count($user->offers)}}</span> </li>
               <li class="list-group-item">Subastas ganadas <span class="badge">0</span> </li>
               <li class="list-group-item">Comentarios hechos <span class="badge">{{count($user->comments)}}</span> </li>

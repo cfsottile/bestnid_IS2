@@ -90,12 +90,17 @@ Route::get('users/persuade', [
 	'uses' => 'UserController@persuade'
 	]);
 
+Route::get('myauctions', [
+						'middleware' => 'auth',
+						'as' => 'user.myauctions',
+						'uses' => 'UserController@myauctions'
+	]);
+
 
 //----------------------------------------------------------------
 
 //----------------------Rutas de Offers---------------------------
 
-//RUTAS EN ESTADO DE PRUEBA AUN
 
 Route::get('offers', [
 					'middleware' =>'auth',

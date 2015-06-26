@@ -34,7 +34,7 @@
                     <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
                     <form method="GET" action="{{ route('auctions.destroy', $auction->id) }}" style="display:inline">
-                      <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar subasta" data-message="Estás seguro? Será permanente">
+                      <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar subasta" data-message="Estás seguro? Será permanente">
                         Eliminar
                       </button>
                     </form>
