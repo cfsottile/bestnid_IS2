@@ -104,7 +104,7 @@ class OfferController extends Controller {
 		if ($validator->fails()) {
 			return redirect()
 				->back()
-				->with('error', 'Su monto no fue modificado, el minimo es $1');
+				->with('error', $validator->messages()->first());
 		}
 
 		/*dd(Request::all());*/

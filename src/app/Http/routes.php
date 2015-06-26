@@ -280,20 +280,20 @@ Route::get('users/edit/{id}', [
 
 //---------------------Administracion de subastas------------------
 
-Route::get('auctions/superindex',[
+Route::get('admin/auctions/adminindex',[
 					 'middleware' => ['auth','isAdmin'],
 					 'as' => 'admin.auctions.superindex',
-					 'uses' => 'AuctionsController@superIndex'
+					 'uses' => 'AuctionsController@adminindex'
 					 ]);
 
-Route::post('auctions/superindex',[
+Route::post('admin/auctions/postadminindex',[
 					 'middleware' => ['auth','isAdmin'],
-					 'as' => 'admin.auctions.postsuperindex',
-					 'uses' => 'AuctionsController@superIndex'
+					 'as' => 'admin.auctions.postadminindex',
+					 'uses' => 'AuctionsController@adminindex'
 					 ]);
 
-Route::get('auctions/delete/{id}', [
+Route::get('admin/auctions/delete/{id}', [
 					 'middleware' => ['auth','isAdmin'],
  					 'as' => 'admin.auctions.delete',
-					 'uses' => 'UserController@adminDestroy'
+					 'uses' => 'AuctionsController@adminDestroy'
 				   ]) ->where('id', '[0-9]+');

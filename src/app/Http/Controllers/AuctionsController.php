@@ -10,6 +10,7 @@ use App\User;
 use Request;
 use Session;
 use Validator;
+use Carbon;
 
 class AuctionsController extends Controller {
 
@@ -45,7 +46,7 @@ class AuctionsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function superIndex()
+	public function adminindex()
 	{
 		$auctions = Auction::all();
 
@@ -53,7 +54,7 @@ class AuctionsController extends Controller {
 		if (Request::has('date_start') && Request::has('date_end')) {
 
 			 $from = Request::get('date_start');
-			 $to = Request::get('date_end');
+			$to= (Carbon\Carbon::parse(Request::get('date_end'))->addDays(1));
 
 			$auctions = Auction::whereBetween('created_at',[$from,$to])->get();
 		}
@@ -186,6 +187,7 @@ class AuctionsController extends Controller {
 	 */
 	public function update($id)
 	{
+
 		$auction = Auction::find($id);
 		if (!AuctionsController::checkLoggedUserIdIs($auction->owner->id)) {
 			return view('errors.picaron');
