@@ -79,7 +79,7 @@
             </div>
             <div class="col-lg-2">
               @if(!(Auth::guest()) && ((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
-                <a class="btn btn-danger btn-xs pull-right" type="submit" href="{{route("comments.delete",["id" => $comment->id]) }}">Eliminar</a>
+<!--                 <a class="btn btn-danger btn-xs pull-right" type="submit" href="{{route("comments.delete",["id" => $comment->id]) }}">Eliminar</a> -->
                 {{-- <a class="btn btn-default btn-xs pull-right" type="submit" href="{{route("comments.update",["id" => $comment->id]) }}">Editar</a> --}}
               @endif
             </div>
@@ -138,7 +138,7 @@
           </div>
         @endif
 
-        @if((Auth::user()->id == $auction->owner->id) || (Auth::user()->is_admin == 1))
+        @if((Auth::user()->id == $auction->owner->id))
 
           @if( count($auction->offers) > 0)
           <div class="well">

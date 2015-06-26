@@ -66,8 +66,6 @@
               <div class="panel-heading">
                 <h6>
                 Dias restantes: {{$a->remainingDays()}}
-                <br>
-                Ofertas: {{ count($a->offers) }}
                 </h6>
               </div>
               <div class="panel-body" style="height:300px">
