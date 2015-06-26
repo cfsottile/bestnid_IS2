@@ -22,7 +22,7 @@
 	  <tbody>
 	    @foreach($auctions as $a)
 	    {{-- Para subastas en curso --}}
-		    @if($a->end_date < Date('Y/m/d H:i:s'))
+		    @if(!$a->finished())
 			    <tr>
 			      <td><a href="{{ route('auctions.show', [ 'id' => $a->id] ) }}">{{$a->title}}</a></td>
 			      <td>{{$a->description}}</td>
@@ -57,7 +57,7 @@
         </thead>
         <tbody>
           @foreach($auctions as $a)
-						@if($a->end_date > Date('Y/m/d H:i:s'))
+						@if($a->finished())
 						<tr>
 							<td><a href="{{ route('auctions.show', [ 'id' => $a->id] ) }}">{{$a->title}}</a></td>
 					    <td>{{$a->description}}</td>

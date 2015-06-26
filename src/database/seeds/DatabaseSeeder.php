@@ -342,7 +342,15 @@ class UsersTableSeeder extends Seeder {
 				'owner_id' => 4,
 				'auction_id' => 1
 				]);
-			Auction::find(4)->offers()->save($offer);
+			Auction::find(1)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 10.5,
+				'reason' => 'Mi tarjeta es inválida, me imagino que necesitan alguna para probar ese caso. Saludos',
+				'owner_id' => 5,
+				'auction_id' => 1
+				]);
+			Auction::find(1)->offers()->save($offer);
 
 			$offer = Offer::create([
 				'amount' => 1006,
