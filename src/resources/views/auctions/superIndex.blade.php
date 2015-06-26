@@ -63,7 +63,11 @@
       <td>
          <a href="{{ route('auctions.show' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Ver</a>
          {{-- <a href="{{ route('admin.users.edit' , ['id' => $auction->id]) }}" class="btn btn-default btn-xs">Editar</a> --}}
-         <a href="{{ route('admin.auctions.delete' , ['id' => $auction->id]) }}" class="btn btn-danger btn-xs">Eliminar</a>
+         <form method="GET" action="{{ route('admin.auctions.delete' , ['id' => $auction->id]) }}" style="display:inline">
+           <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar subasta" data-message="Estás seguro? Será permanente">
+             Eliminar
+           </button>
+         </form>
       </td>
     </tr>
 
@@ -71,6 +75,6 @@
   </tbody>
 </table>
 
-
+@include('partials.delete_confirmation')
 
 @endsection

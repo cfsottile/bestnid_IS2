@@ -33,7 +33,11 @@
                 <div >
                     <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
-                    <a href="{{ route('auctions.destroy', $auction->id) }}" class="btn btn-default btn-danger">Eliminar</a>
+                    <form method="GET" action="{{ route('auctions.destroy', $auction->id) }}" style="display:inline">
+                      <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar subasta" data-message="Estás seguro? Será permanente">
+                        Eliminar
+                      </button>
+                    </form>
                 </div>
             @endif
 
@@ -79,7 +83,11 @@
             </div>
             <div class="col-lg-2">
               @if(!(Auth::guest()) && ((Auth::user()->is_admin == 1) || (Auth::user()->id = $comment->owner_id)) && ($comment->response == null))
-                <a class="btn btn-danger btn-xs pull-right" type="submit" href="{{route("comments.delete",["id" => $comment->id]) }}">Eliminar</a>
+                <form method="GET" action="{{route("comments.delete",["id" => $comment->id]) }}" style="display:inline">
+                  <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar comentario" data-message="Estás seguro? Será permanente">
+                    Eliminar
+                  </button>
+                </form>
                 {{-- <a class="btn btn-default btn-xs pull-right" type="submit" href="{{route("comments.update",["id" => $comment->id]) }}">Editar</a> --}}
               @endif
             </div>
@@ -222,4 +230,5 @@
 
 
     </div>
+    @include('partials.delete_confirmation')
 @overwrite
