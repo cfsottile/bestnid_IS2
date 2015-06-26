@@ -146,7 +146,7 @@
           </div>
         @endif
 
-        @if((Auth::user()->id == $auction->owner->id) || (Auth::user()->is_admin == 1))
+        @if((Auth::user()->id == $auction->owner->id))
 
           @if( count($auction->offers) > 0)
           <div class="well">

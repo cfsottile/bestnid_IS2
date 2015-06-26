@@ -135,6 +135,6 @@ class Auction extends Model {
 	}
 
 	public function finished () {
-		return false;
+		return Date('Y/m/d H:i:s') >= $this->end_date;
 	}
 }
