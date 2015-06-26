@@ -29,7 +29,7 @@
             <p>
                 <b>Fecha de cierre</b> <br> {{ substr($auction->formatedEndDate(), 0, 10) }}
             </p>
-            @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id))
+            @if(!Auth::guest() && (Auth::user()->id == $auction->owner->id) && (count($auction->offers) == 0))
                 <div >
                     <br>
                     <a href="{{ route('auctions.edit', $auction->id) }}" class="btn btn-default">Editar</a>
@@ -63,7 +63,7 @@
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
           Hacer un comentario
         </button>
-        @if((Auth::user()->hasOfferOn($auction)))
+        @if(!(Auth::user()->hasOfferOn($auction)) && (Auth::user()->id != $auction->owner->id))
         <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
           Ofertar
         </a>
