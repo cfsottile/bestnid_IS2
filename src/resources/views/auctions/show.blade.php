@@ -52,25 +52,27 @@
       {{-- Comentarios --}}
 
       <!-- Button trigger modal -->
-      @if(Auth::guest())
-      <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
-        Hacer un comentario
-      </a>
-      <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
-        Ofertar
-      </a>
-      @else
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
-          Hacer un comentario
-        </button>
-        @if(!(Auth::user()->hasOfferOn($auction)) && (Auth::user()->id != $auction->owner->id))
-        <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
-          Ofertar
-        </a>
-        @endif
+      @if(!$auction->finished())
+          @if(Auth::guest())
+          <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
+            Hacer un comentario
+          </a>
+          <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
+            Ofertar
+          </a>
+          @else
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">
+              Hacer un comentario
+            </button>
+            @if(!(Auth::user()->hasOfferOn($auction)) && (Auth::user()->id != $auction->owner->id))
+            <a class="btn btn-primary btn-sm" href='{{route('offers.create', ['auction_id' => $auction->id])}}'>
+              Ofertar
+            </a>
+            @endif
+          @endif
+          <br>
+          <br>
       @endif
-      <br>
-      <br>
 
       @foreach($auction->comments as $comment)
 
