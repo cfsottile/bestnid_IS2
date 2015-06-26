@@ -141,8 +141,17 @@ class AuctionsController extends Controller {
 	public function show($id)
 	{
 		$auction = Auction::find($id);
-		// if (!$auction->finished() || AuctionsController::checkLoggedUserIdIs($auction->owner) || )
+		if (!$auction->finished()
+				|| AuctionsController::checkLoggedUserIdIs($auction->owner->id)
+				|| AuctionsController::loggedUserIsAdmin()) {
 			return view('auctions.show')->with('auction', $auction);
+		} else {
+			return redirect()->route('auctions.index')->with('error', 'La subasta que querés ver finalizó');
+		}
+	}
+
+	public static function loggedUserIsAdmin () {
+		return (Auth::user() != null) && (Auth::user()->is_admin == 1);
 	}
 
 	/**
