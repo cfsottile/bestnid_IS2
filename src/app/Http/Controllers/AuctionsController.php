@@ -125,7 +125,8 @@ class AuctionsController extends Controller {
 		Request::file('image')->move(public_path().'/images/', $data['picture']);
 		Auction::create($data);
 
-		return view('auctions.exito')->with('message', 'Subasta creada con');
+		return redirect()->route('auctions.index')->with('success', '¡Subasta creada con éxito!');
+		// return view('auctions.exito')->with('message', 'Subasta creada con');
 	}
 
 	public static function validateImageDimension () {
@@ -292,9 +293,10 @@ class AuctionsController extends Controller {
 				$winner->notifyPaymentError($auction);
 				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro ganador');
 			}
-			$winner->notifyWonAuction($auction);
 			$auction->winner()->associate($winner);
 			$auction->save();
+			$auction->owner->sendWinnerData($auction);
+			$winner->notifyWonAuction($auction);
 			return redirect()->back()->with('success', 'El ganador fue seleccionado con éxito, y el cobro ha sido realizado');
 			// return view('auctions.exito')->with('message', 'Cobro efectuado con');
 		} else {

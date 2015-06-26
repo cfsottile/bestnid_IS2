@@ -5,4 +5,7 @@
         pero hubo un error cuando quisimos efectuar el pago. Regularizá tu situación con el banco lo antes posible, quizá tenés
         suerte y el/la subastador/a te da otra chance y vuelve a intentar seleccionarte más tarde.
     </p>
+    <p>
+        Saludos, ¡esperamos que salga todo bien!
+    </p>
 </body>
