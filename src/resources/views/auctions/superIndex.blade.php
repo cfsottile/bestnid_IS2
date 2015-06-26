@@ -10,7 +10,7 @@
   <h1> Indice de subastas </h1>
 </div>
 
-<form role="form" method="POST" action="{{route('admin.auctions.postsuperindex')}}">
+<form role="form" method="POST" action="{{route('admin.auctions.postadminindex')}}">
   <div class="row">
     <div class="col-lg-offset-2 col-lg-4">
       <div class="form-group">
@@ -70,5 +70,7 @@
     @endforeach
   </tbody>
 </table>
+
+
 
 @endsection

@@ -8,6 +8,7 @@ use Validator;
 use Request;
 use Auth;
 use Session;
+use Carbon;
 
 
 
@@ -28,7 +29,11 @@ class UserController extends Controller {
 		if (Request::has('date_start') && Request::has('date_end')) {
 
 			 $from = Request::get('date_start');
-			 $to = Request::get('date_end');
+
+			 $to= (Carbon\Carbon::parse(Request::get('date_end'))->addDays(1));
+
+
+
 
 			$users = User::whereBetween('created_at',[$from,$to])->get();
 		}
