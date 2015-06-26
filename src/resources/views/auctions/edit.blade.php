@@ -5,11 +5,10 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
-
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
 
           <form class="form-horizontal" role="form" method="POST" action="{{ route('auctions.update', $auction->id) }}" enctype="multipart/form-data">
             <fieldset>
@@ -106,7 +105,7 @@
 
               <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                  <a href="{{ URL::previous() }}" class="btn btn-default">Cancelar</a>
+                  <a href="{{ route('auctions.show', ['id' => $auction->id ]) }}" class="btn btn-default">Cancelar</a>
                   <button type="submit" class="btn btn-primary">Dar de alta</button>
                 </div>
               </div>
