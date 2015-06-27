@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Auction;
 use App\Models\Category;
+use App\Models\Offer;
 
 use Auth;
 use App\User;
@@ -286,18 +287,19 @@ class AuctionsController extends Controller {
 	public function postWinner ($id) {
 		$auction = Auction::find($id);
 		$winner = User::find(Request::get('winner_id'));
+		$offer = Offer::find(Request::get('offer_id'));
 		if (Auth::user() != null
 				&& (Auth::user()->id == $auction->owner->id)
 				&& ($winner != null)) {
 			if ($winner->cc_data == 1234123412341234) {
 				$winner->notifyPaymentError($auction);
-				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro ganador');
+				return redirect()->back()->with('error', 'Hubo un problema al momento de efectuar el cobro. Por favor, intentá nuevamente más tarde o elegí otro/a ganador/a');
 			}
 			$auction->winner()->associate($winner);
 			$auction->save();
-			$auction->owner->sendWinnerData($auction);
+			$auction->owner->sendWinnerData($auction, $offer);
 			$winner->notifyWonAuction($auction);
-			return redirect()->back()->with('success', 'El ganador fue seleccionado con éxito, y el cobro ha sido realizado');
+			return redirect()->back()->with('success', 'El/la ganador/a fue seleccionado con éxito, y el cobro ha sido realizado. Recibirás por email el monto de la oferta y los datos del/la ganador/a');
 			// return view('auctions.exito')->with('message', 'Cobro efectuado con');
 		} else {
 			return view('errors.picaron');

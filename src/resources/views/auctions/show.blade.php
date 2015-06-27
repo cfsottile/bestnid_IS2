@@ -177,6 +177,7 @@
                           <td>
                               <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">
                                   <input type="hidden" name="winner_id" value="{{ $offer->owner->id }}">
+                                  <input type="hidden" name="offer_id" value="{{ $offer->id }}">
                                   <input class="btn btn-primary btn-xs" type="submit" name="" value="Elegir">
                               </form>
                           </td>
