@@ -115,9 +115,11 @@ class UsersTableSeeder extends Seeder {
 	    DB::table('auctions')->delete();
 
 			Auction::create([
+				'created_at' => '2015-06-12 10:10:10',
+				// 'end_date' => '2015-06-03 20:51:57',
+				// 'end_date' => Date('Y/m/d', strtotime("+15 days")),
+				'end_date' => Date('Y/m/d', strtotime("+5 days")),
 				'title' => 'Botella de agua 1L',
-				// 'end_date' => 2015-06-03 20:51:57,
-				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Botella de agua en no muy buen estado; se cayó del camión repartidor.',
 				'picture' => 'auction_1.jpg',
 				'owner_id' => 1,
@@ -126,7 +128,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'AK-47',
-				'end_date' => Date('Y/m/d', strtotime("+23 days")),
+				'created_at' => '2015-06-10 10:10:10',
+				'end_date' => Date('Y/m/d', strtotime("+2 days")),
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
 				'owner_id' => 2,
@@ -135,6 +138,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Moto G 2013',
+				// 'created_at' => '2015-06-11 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+30 days")),
 				'description' => 'El celular está en perfecto estado.',
 				'picture' => 'auction_3.jpg',
@@ -144,6 +148,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cargador para macbook',
+				'created_at' => '2015-06-17 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Buen estado.',
 				'picture' => 'auction_4.jpg',
@@ -153,7 +158,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Casco',
-				'end_date' => Date('Y/m/d', strtotime("+26 days")),
+				'created_at' => '2015-06-03 10:10:10',
+				'end_date' => Date('Y/m/d', strtotime("+10 days")),
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
 				'owner_id' => 2,
@@ -162,6 +168,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cartuchera Faber-Castell',
+				'created_at' => '2015-06-20 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+18 days")),
 				'description' => 'Feroz cartuchera.',
 				'picture' => 'auction_6.jpg',
@@ -171,7 +178,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Neumatico Pirelli P400 185/65/14',
-				'end_date' => Date('Y/m/d', strtotime("+15 days")),
+				'created_at' => '2015-06-15 10:10:10',
+				'end_date' => Date('Y/m/d', strtotime("+10 days")),
 				'description' => 'Rueda 0 KM!!!',
 				'picture' => 'auction_7.jpg',
 				'owner_id' => 4,
@@ -180,7 +188,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'DeLorean Volver al Futuro II (Sun Star S2710)',
-				'end_date' => Date('Y/m/d', strtotime("+16 days")),
+				'created_at' => '2015-06-02 10:10:10',
+				'end_date' => Date('Y/m/d', strtotime("+2 days")),
 				'description' => 'Solo se puede teletransportar al presente',
 				'picture' => 'auction_8.jpg',
 				'owner_id' => 4,
@@ -189,6 +198,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cocina Industrial Morelli 60cm Horno Visor',
+				'created_at' => '2015-06-20 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+19 days")),
 				'description' => 'Medida: 60 x 62 x 82 cm. Tiene frente, mesaday laterales en acero inoxidables esmerilado.',
 				'picture' => 'auction_9.jpg',
@@ -270,7 +280,9 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Sofa de lujo',
-				'end_date' => Date('Y/m/d', strtotime("+xx days")),
+				'created_at' => '2015-06-1 10:10:10',
+				'end_date' => '2015-06-26 10:10:10',
+				// 'end_date' => Date('Y/m/d', strtotime("+xx days")),
 				'description' => 'Genial sofá, imperdible',
 				'picture' => 'auction_18.jpg',
 				'owner_id' => 1,
@@ -374,7 +386,31 @@ class UsersTableSeeder extends Seeder {
 				'owner_id' => 3,
 				'auction_id' => 17
 				]);
-			Auction::find(17)->offers()->save($offer);
+			Auction::find(18)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 211,
+				'reason' => 'Quiero ese sillón',
+				'owner_id' => 3,
+				'auction_id' => 18
+				]);
+			Auction::find(18)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 100,
+				'reason' => 'Me sacaron de mi casa, necesito donde dormir',
+				'owner_id' => 2,
+				'auction_id' => 18
+				]);
+			Auction::find(18)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 300,
+				'reason' => 'El perro me destrozó mi sillón, necesito uno nuevo',
+				'owner_id' => 5,
+				'auction_id' => 18
+				]);
+			Auction::find(18)->offers()->save($offer);
 
 		}
 	}
