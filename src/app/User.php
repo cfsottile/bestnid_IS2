@@ -130,9 +130,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		});
 	}
 
-	public function sendWinnerData ($auction) {
+	public function sendWinnerData ($auction, $offer) {
 		$args = [
-			'auction' => $auction
+			'auction' => $auction,
+			'offer' => $offer
 		];
 
 		Mail::send('emails.sendWinnerData', $args, function($message) {
