@@ -102,11 +102,17 @@
 		<h3>Ofertas</h3>
 		<ul>
 			<li>¿Cómo oferto en una subasta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;Si quieres obtener un artículo subastado
+			tiene que ir a la pagina de la subasta, y allí mismo estará
+			la opción para ofertar por la misma. Puedes editar el monto de tu
+			ofertar, y se te notificará por mail si has ganado al finalizar
+			la subasta.
 			<br><br>
 
 			<li>¿Cómo edito o elimino mi oferta?</li>
-			&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;Si quieres modificar tu oferta debes ir
+			al panel de ofertas. LLegás desde ver mi datos - Subastas ofertadas.
+			Allí podrás editar o eliminar tu oferta. 
 			<br><br>
 			
 			<li>¿Por qué no puedo editar o eliminar mi oferta?</li>
