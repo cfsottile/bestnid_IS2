@@ -22,7 +22,7 @@
 	  <tbody>
 	    @foreach($offers as $of)
 	    {{-- Para subastas en curso --}}
-		    @if($of->auction->end_date < Date('Y/m/d H:i:s'))
+		    @if(!$of->auction->finished())
 			    <tr>
 			      <td>{{$of->auction->title}}</td>
 			      <td>{{$of->reason}}</td>
@@ -33,11 +33,11 @@
 						  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#offerModal" data-offerid="{{$of->id}}">
 			          Editar
 			        </button>
-							{{-- <form method="GET" action="{{ route('offers.delete', [ 'id' => $of->id] ) }}" style="display:inline">
+							<form method="GET" action="{{ route('offers.delete', [ 'id' => $of->id] ) }}" style="display:inline">
 								<button class="btn btn-sm btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Cancelar oferta" data-message="Estás seguro? Será permanente">
 									Cancelar
 								</button>
-							</form> --}}
+							</form>
 			      </td>
 			    </tr>
 			  @endif
@@ -63,7 +63,7 @@
         </thead>
         <tbody>
           @foreach($offers as $of)
-						@if($of->auction->end_date > Date('Y/m/d H:i:s'))
+						@if($of->auction->finished())
           	<tr>
 				      <td>{{$of->auction->title}}</td>
 				      <td>{{$of->reason}}</td>
