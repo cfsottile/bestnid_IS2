@@ -16,7 +16,8 @@
       <div class="form-group">
         <label class="col-md-3 control-label">Registradas entre: </label>
         <div class="col-md-9">
-          <input type="date" class="form-control" name="date_start" value="{{ old('date_start') }}">
+          <input type="date" class="form-control" name="date_start" value='{{$report_data['date_start']}}'>
+
         </div>
       </div>
     </div>
@@ -24,7 +25,8 @@
       <div class="col-lg-6">
         <div class="form-group">
           <div class="input-group col-lg-6">
-            <input type="date" class="form-control" name="date_end" value="{{ old('date_end')}}">
+
+            <input type="date" class="form-control" name="date_end" value="{{$report_data['date_end']}}"/>
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit">Buscar</button>
             </span>
@@ -35,12 +37,27 @@
   </div>
 </form>
 
+@if(isset($report_data))
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <p style="text-align: center"><b>Resultados de la busqueda:</b>
+        Sbuastas registradas entre las fechas
+          <b>{{date('d/m/Y',strtotime($report_data['date_start']))}}</b>
+          y
+          <b>{{date('d/m/Y',strtotime($report_data['date_end']))}}</b>
+      </p>
+      <p style="text-align: center">
+        Total de subastas registradas entre las fechas especificadas: <b>{{count($auctions)}}</b>
+      </p>      
+    </div>
+  </div>
+@endif
 
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>#ID</th>
-      <th>#ID dueño</th>
+      {{-- <th>#ID</th> --}}
+      {{-- <th>#ID dueño</th> --}}
       <th>Nombre</th>
       <th>Fecha de inicio</th>
       <th>Fecha de cierre</th>
@@ -53,8 +70,8 @@
     @foreach($auctions as $auction)
 
     <tr>
-      <td>{{$auction->id}}</td>
-      <td>{{$auction->owner_id}}</td>
+      {{-- <td>{{$auction->id}}</td> --}}
+      {{-- <td>{{$auction->owner_id}}</td> --}}
       <td>{{$auction->title}}</td>
       <td>{{$auction->formatedCreatedAt()}}</td>
       <td>{{$auction->formatedEndDate()}}</td>

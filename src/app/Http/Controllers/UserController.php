@@ -25,6 +25,7 @@ class UserController extends Controller {
 		// $users = User::withTrashed()->get();
 
 		$users = User::all();
+		$report_data = null;
 
 		if (Request::has('date_start') && Request::has('date_end')) {
 
@@ -33,9 +34,17 @@ class UserController extends Controller {
 			 $to= (Carbon\Carbon::parse(Request::get('date_end'))->addDays(1));
 
 
-
-
 			$users = User::whereBetween('created_at',[$from,$to])->get();
+
+			if($from > $to){
+				return redirect()->back()
+												 ->with('error','Intervalo de tiempo no válido')
+												 ->with('users', $users);
+			}
+
+			$report_data = ['date_start' => $from,
+											'date_end' => $to->subDay(1)->toDateString()
+										 ];
 		}
 
 		if ((Request::has('date_start') && !Request::has('date_end'))	|| (!Request::has('date_start') && Request::has('date_end')))
@@ -43,7 +52,10 @@ class UserController extends Controller {
 			Session::flash('error','Debe introducir ambas fechas');
 		}
 
-		return view('users.index')->with('users',$users);
+
+		return view('users.index')->with('users',$users)
+															->with('report_data', $report_data);
+
 	}
 
 	/**

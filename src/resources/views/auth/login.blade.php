@@ -47,7 +47,7 @@
 									<button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 
 									{{-- funcion para resetear la password, para mas adelante --}}
-									{{-- <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a> --}}
+									<a class="btn btn-link" href="{{ url('/password/email') }}">Olvidaste tu contraseña?</a>
 								</div>
 							</div>
 						</fieldset>

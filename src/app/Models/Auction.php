@@ -63,6 +63,15 @@ class Auction extends Model {
 		return $query->where('end_date', '>', Date('Y/m/d H:i:s'));
 	}
 
+	public function scopeFinalizaed ($query) {
+		return $query->where('end_date', '<=', Date('Y/m/d H:i:s'));
+	}
+
+	public function scopeFinalizedOnDate ($query, $date) {
+
+		return $query->where('end_date', '<=', $date);
+	}
+
 	public function scopeIsOfCategory($query, $categoryId) {
 		return $query->where('category_id', '=', $categoryId);
 	}
@@ -137,4 +146,6 @@ class Auction extends Model {
 	public function finished () {
 		return strtotime(Date('Y/m/d')) >= strtotime(substr($this->end_date, 0, 10));
 	}
+
+
 }

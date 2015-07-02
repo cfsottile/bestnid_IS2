@@ -50,6 +50,7 @@ class AuctionsController extends Controller {
 	public function adminindex()
 	{
 		$auctions = Auction::all();
+		$report_data = null;
 
 
 		if (Request::has('date_start') && Request::has('date_end')) {
@@ -58,6 +59,19 @@ class AuctionsController extends Controller {
 			$to= (Carbon\Carbon::parse(Request::get('date_end'))->addDays(1));
 
 			$auctions = Auction::whereBetween('created_at',[$from,$to])->get();
+
+			if($from > $to){
+				return redirect()->back()
+												->with('error','Intervalo de tiempo no válido')
+												->with('users', $auctions);
+			}
+
+			// dd(Auction::finalized($to->toDateString())->get());
+
+			$report_data = ['date_start' => $from,
+											'date_end' => $to->subDay(1)->toDateString()
+											// 'finalized_auctions_count' => count(Auction::finalizedOnDate($to->toDateString())->get())
+										];
 		}
 
 		if ((Request::has('date_start') && !Request::has('date_end'))	|| (!Request::has('date_start') && Request::has('date_end')))
@@ -65,7 +79,8 @@ class AuctionsController extends Controller {
 			Session::flash('error','Debe introducir ambas fechas');
 		}
 
-		return view('auctions.superIndex')->with('auctions', $auctions);
+		return view('auctions.superIndex')->with('auctions', $auctions)
+																			->with('report_data', $report_data);
 	}
 
 
