@@ -51,7 +51,7 @@
                 @if (Auth::user()->is_admin == 1)
                 <li><a href="{{ route('admin.index') }}">Panel de Administración</a></li>
                 @endif
-                <!-- <li><a href="{{ route('users.edit') }}">Editar mi cuenta</a></li> -->
+                <li><a href="{{ route('users.edit') }}">Editar mi cuenta</a></li>
                 <li><a href="{{ route('users.show') }}">Ver mis datos</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('help') }}">Ayuda</a></li>
