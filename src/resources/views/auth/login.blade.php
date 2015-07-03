@@ -12,7 +12,7 @@
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
 						<fieldset>
 	    				<legend>Iniciar Sesión</legend>
-							{{-- NOTIFICACIONES --}}
+
 							@include('partials.detailed_notifications')
 
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">

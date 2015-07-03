@@ -34,7 +34,7 @@
 							<div class="form-group @if($errors->has('amount')) has-error @endif">
 								<label class="col-md-4 control-label">Monto</label>
 								<div class="col-md-6">
-									<input type="number" class="form-control" name="amount">
+									<input type="double" class="form-control" name="amount">
                   @if($errors->has('amount'))
         						<p class="help-block">{{$errors->first('amount')}}</p>
         					@endif

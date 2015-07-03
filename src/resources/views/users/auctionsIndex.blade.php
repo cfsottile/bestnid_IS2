@@ -16,7 +16,7 @@
 	      <th>Descripción</th>
 	      <th>Fecha y hora de inicio</th>
 	      <th>Fecha y hora de cierre</th>
-{{--	      <th>Opciones<th> --}}
+	      <th>Opciones<th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -29,8 +29,8 @@
 			      <td>{{$a->formatedCreatedAt()}}</td>
 			      <td>{{$a->formatedEndDate()}}</td>
 			      <td>
-	      		<a href="{{ route('auctions.show', [ 'id' => $a->id] ) }}" class="btn btn-default btn-sm">Ver</a>
-						<a href="" class="btn btn-default btn-xs">Editar</a>
+	      			<a href="{{ route('auctions.show', [ 'id' => $a->id] ) }}" class="btn btn-default btn-xs">Ver</a>
+							<a href="" class="btn btn-default btn-xs">Editar</a>
 			      </td>
 			    </tr>
 			  @endif
