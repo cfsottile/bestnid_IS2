@@ -70,7 +70,7 @@
               </div>
               <div class="panel-body" style="height:300px">
                 <a href="{{ route('auctions.show', ['id' => $a->id ]) }}">
-                <img src="{{ $a->pictureUrl() }}" alt="{{ $a->title }}"/>
+                <img src="{{ $a->pictureUrl() }}" alt="{{ $a->title }}" style="max-height:260px" />
                 </a>
               </div>
               <div class="panel-footer" style="height:0=150px; overflow:auto" >

@@ -44,7 +44,7 @@
         </div>
         {{-- Auction Image --}}
         <div class="col-lg-6">
-          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail pull-right" height="350" width="350"/>
+          <img src='{{ $auction->pictureUrl() }}' class="img-thumbnail pull-right" style="max-height:350px; max-width:350px"/>
         </div>
       </div>
 
