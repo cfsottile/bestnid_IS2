@@ -302,3 +302,23 @@ Route::get('admin/auctions/delete/{id}', [
  					 'as' => 'admin.auctions.delete',
 					 'uses' => 'AuctionsController@adminDestroy'
 				   ]) ->where('id', '[0-9]+');
+
+//----------------Administracion de Categorias---------------------
+
+Route::get('admin/categories/index', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.categories.index',
+					 'uses' => 'CategoryController@index'
+					]);
+
+Route::get('admin/categories/edit/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.categories.edit',
+					 'uses' => 'CategoryController@index'
+					])->where('id', '[0-9]+');
+
+Route::get('admin/categories/delete/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.categories.delete',
+					 'uses' => 'CategoryController@index'
+					])->where('id', '[0-9]+');

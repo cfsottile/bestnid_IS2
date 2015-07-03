@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-    <a href="#">
+    <a href="{{route('admin.categories.index')}}">
       <img class="img-thumbnail" style="width:250px;height:250px" src="{{asset('images/administration/categorias.jpg')}}"/>
     </a>
     </div>
