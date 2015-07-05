@@ -3,9 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-
 use App\Models\Category;
+use Request;
+use Validator;
 
 class CategoryController extends Controller {
 
@@ -37,7 +37,18 @@ class CategoryController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$data = Request::all();
+
+		$validator = Category::validate($data);
+
+		if ($validator->fails()) {
+			return redirect()->back()->with('errors', $validator->messages());
+		}
+
+		Category::create($data);
+		return redirect()->back()->with('success', 'Categoria agregada');
+
+
 	}
 
 	/**
@@ -68,9 +79,24 @@ class CategoryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+
+		$data = Request::all();
+		
+		$category = Category::find($data['id']);
+
+		$validator = Category::validate($data);
+
+		if ($validator->fails()){
+			return redirect()->back()->with('errors', $validator->messages());
+		}
+
+		$category->actualizar($data);
+
+		return redirect()->back()->with('success', 'Categoria actualizada con éxito!');
+
+
 	}
 
 	/**
@@ -81,7 +107,18 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+
+		if (Category::find($id)->isDeleteable()){
+
+			Category::destroy($id);
+			return redirect()->back()->with('success', 'Categoria Eliminada con Exito');
+
+		} else {
+
+			return redirect()->back()->with('error', 'No se puede eliminar esta categoría, tiene subastas asociadas');
+
+		}
+
 	}
 
 }

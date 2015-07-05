@@ -311,14 +311,20 @@ Route::get('admin/categories/index', [
 					 'uses' => 'CategoryController@index'
 					]);
 
-Route::get('admin/categories/edit/{id}', [
+Route::post('admin/categories/update', [
 					 'middleware' => ['auth','isAdmin'],
-					 'as' => 'admin.categories.edit',
-					 'uses' => 'CategoryController@index'
-					])->where('id', '[0-9]+');
+					 'as' => 'admin.categories.update',
+					 'uses' => 'CategoryController@update'
+					]);
 
 Route::get('admin/categories/delete/{id}', [
 					 'middleware' => ['auth','isAdmin'],
 					 'as' => 'admin.categories.delete',
-					 'uses' => 'CategoryController@index'
+					 'uses' => 'CategoryController@destroy'
 					])->where('id', '[0-9]+');
+
+Route::post('admin/categories/store', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.categories.store',
+					 'uses' => 'CategoryController@store'
+					]);
