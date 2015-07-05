@@ -212,7 +212,7 @@ class UserController extends Controller {
 
 		$user->save();
 
-		return redirect()->route('users.show')->with('success','Cambios guardados');
+		return redirect()->back()->with('success','Cambios guardados');
 	}
 	/**
 	* Remove the specified resource from storage.
@@ -253,6 +253,17 @@ class UserController extends Controller {
 			return redirect()->back()->with('error', 'No puede eliminar esta cuenta, tiene subastas activas');
 
 		}
+	}
+
+	public function makeAdmin($id) {
+
+		$user = User::find($id);
+		if($user->isAdmin()){
+			return redirect()->back()->with('error', 'Usuario '.$user->email.' ya es administrador');
+		}
+			$user->makeAdmin();
+			return redirect()->back()->with('success', 'Usuario '.$user->email.' elevado a administrador');
+
 	}
 
 	public function persuade () {

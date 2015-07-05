@@ -290,6 +290,9 @@ class AuctionsController extends Controller {
 
 
 		$auction = Auction::find($id);
+
+		// dd($auction->isDeleteable());
+
 		if($auction->isDeleteable()){
 			$auction->delete();
 			return redirect()->back()->with('success', 'Subasta eliminado con exito');

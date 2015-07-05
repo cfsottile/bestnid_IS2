@@ -103,6 +103,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return false;
 	}
 
+	public function isAdmin(){
+
+		if ($this->is_admin == 1) {
+			return true;
+		}
+		return false;
+	}
+
+	public function makeAdmin() {
+		$this->is_admin = 1;
+		$this->save();
+	}
+
 	public function setWinner () {
 
 	}
