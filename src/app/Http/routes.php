@@ -81,7 +81,7 @@ Route::get('users/edit', [
 				  ]);
 
 Route::patch('users/update', [
-						'as' => 'users.store',
+						'as' => 'users.update',
 						'uses' => 'UserController@update'
 					 ]);
 

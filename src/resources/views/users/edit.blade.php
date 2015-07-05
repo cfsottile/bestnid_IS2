@@ -10,7 +10,7 @@
 				<div class="panel-body">
 
 					{{-- FORMULARIO --}}
-					<form class="form-horizontal" role="form" method="POST" action="{{ route('users.store') }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{ route('users.update') }}">
 						<fieldset>
 							<legend><h3>Edición de datos: {{ $user->name }}</h3></legend>
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -86,7 +86,7 @@
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
-									<a href="{{ URL::previous() }}" class="btn btn-default">
+									<a href="{{ route('users.show' , ['id' => $user->id]) }}" class="btn btn-default">
 										Cancelar
 									</a>
 									<button type="submit" class="btn btn-primary">

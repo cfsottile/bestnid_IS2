@@ -105,7 +105,7 @@ class Auction extends Model {
 
 		if (count($this->offers) > 0) { //si tiene ofertas
 
-			if ($this->end_date < Date('Y/m/d H:i:s')){ //si tiene ofertas y pero ya cerró
+			if ($this->end_date < Date('Y-m-d H:i:s')){ //si tiene ofertas y pero ya cerró
 
 				return true;
 			}

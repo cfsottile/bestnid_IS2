@@ -212,7 +212,12 @@ class UserController extends Controller {
 
 		$user->save();
 
-		return redirect()->back()->with('success','Cambios guardados');
+/*		return redirect()->back()->with('success','Cambios guardados');*/
+
+		return view('users.show')
+					->with('user', $user)
+					->with('success','Cambios guardados');		
+
 	}
 	/**
 	* Remove the specified resource from storage.
