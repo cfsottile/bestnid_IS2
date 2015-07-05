@@ -271,7 +271,7 @@ class AuctionsController extends Controller {
 		if (AuctionsController::checkLoggedUserIdIs($auction->owner->id) && ($auction != null)) {
 			if ($auction->isDeleteable()) {
 				$auction->delete();
-				return redirect()->route('auctions.index')->with('success', 'La subasta'.$auction->title.' ha sido eliminada.');
+				return redirect()->route('auctions.index')->with('success', 'La subasta '.$auction->title.' ha sido eliminada.');
 			} else {
 				return redirect()->back()->with('error', 'La subasta'.$auction->title.' no puede ser eliminada porque posee ofertas o ya finalizó.');
 			}
