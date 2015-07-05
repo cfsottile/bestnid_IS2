@@ -107,16 +107,16 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-
-		if (Category::find($id)->isDeleteable()){
-
+		$category = Category::find($id);
+		if ($category->isDeleteable()){		
 			Category::destroy($id);
-			return redirect()->back()->with('success', 'Categoria Eliminada con Exito');
-
+			return redirect()->back()->with('success', 'Categoria '.$category->name.' eliminada con Exito');
+//		LO MODIFIQUE SOLO PARA QUE APAREZCA EL NOMBRE DE LA CATEGORIA
+/*		if (Category::find($id)->isDeleteable()){
+			Category::destroy($id);
+			return redirect()->back()->with('success', 'Categoria Eliminada con Exito');*/
 		} else {
-
 			return redirect()->back()->with('error', 'No se puede eliminar esta categoría, tiene subastas asociadas');
-
 		}
 
 	}
