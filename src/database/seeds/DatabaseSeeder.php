@@ -386,7 +386,7 @@ class UsersTableSeeder extends Seeder {
 				'owner_id' => 3,
 				'auction_id' => 17
 				]);
-			Auction::find(18)->offers()->save($offer);
+			Auction::find(17)->offers()->save($offer);
 
 			$offer = Offer::create([
 				'amount' => 211,
