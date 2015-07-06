@@ -60,7 +60,6 @@
 						<th>Descripción</th>
 						<th>Fecha y hora de inicio</th>
 						<th>Fecha y hora de cierre</th>
-						<th>Ver<th>
 					</tr>
 				</thead>
 				<tbody>

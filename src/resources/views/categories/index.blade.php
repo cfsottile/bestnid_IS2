@@ -37,17 +37,14 @@
            </form>
         </td>
       </tr>
-
-      @endforeach
-      <tr>
-        <td>
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoryModal">
-            Categoria Nueva
-          </button>
-        </td>
-      </tr>
     </tbody>
-  </table>
+    @endforeach
+    </table>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addCategoryModal">
+      Categoria Nueva
+    </button>
+    
+  
 
 
 {{-- modal para modificar categoria --}}

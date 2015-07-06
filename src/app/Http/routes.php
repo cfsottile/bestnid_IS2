@@ -74,6 +74,12 @@ Route::get('users/show', [
 					 'uses' => 'UserController@show'
 					 ]);
 
+Route::get('users/show/{id}', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'users.showid',
+					 'uses' => 'UserController@showid'
+					 ])->where('id', '[0-9]+');
+
 Route::get('users/edit', [
 					'middleware' => 'auth',
  					'as' => 'users.edit',

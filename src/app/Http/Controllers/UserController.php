@@ -103,6 +103,17 @@ class UserController extends Controller {
 					->with('user', $user);
 	}
 
+	public function showid($id)
+	{
+		$user = User::find($id);
+		if (!$user) {
+
+			return redirect()->back();
+		}
+		return view('users.show')
+					->with('user', $user);
+	}
+
 	public function myauctions()
 	{
 		$user = Auth::user();
