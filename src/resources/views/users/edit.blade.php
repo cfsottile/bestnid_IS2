@@ -86,7 +86,7 @@
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
-									<a href="{{ route('users.showid' , ['id' => $user->id]) }}" class="btn btn-default">
+									<a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default">
 										Cancelar
 									</a>
 									<button type="submit" class="btn btn-primary">
