@@ -69,7 +69,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return $this->hasMany('App\Models\Auction', 'owner_id');
 
 	}
-	
 
 	public function wonAuctions() {
 
@@ -101,6 +100,67 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return $this->hasMany('App\Models\Offer', 'owner_id');
 
 	}
+
+	public function activeOffers(){
+
+		$offers = $this->offers;
+		$requested_offers = [];
+		$i = 0;
+
+		foreach($offers as $offer) {
+				if(!$offer->auction->finished()){
+					$requested_offers[$i++] = $offer;
+				}
+		}
+		return $requested_offers;
+	}
+
+	public function finalizedOffers(){
+
+		$offers = $this->offers;
+		$requested_offers = [];
+		$i = 0;
+
+		foreach($offers as $offer) {
+				if($offer->auction->finished()){
+					$requested_offers[$i++] = $offer;
+				}
+		}
+		return $requested_offers;
+	}
+
+	public function winnerOffers(){
+
+		$offers = $this->offers;
+		$requested_offers = [];
+		$i = 0;
+
+		foreach($offers as $offer) {
+				if((!$offer->auction->finished()) && (isset($offer->auction->winner))){
+					if($offer->auction->winner->id == $this->id){
+						$requested_offers[$i++] = $offer;
+					}
+				}
+		}
+		return $requested_offers;
+	}
+
+	public function lostOffers(){
+
+		$offers = $this->offers;
+		$requested_offers = [];
+		$i = 0;
+
+		foreach($offers as $offer) {
+				if((!$offer->auction->finished()) && (isset($offer->auction->winner))){
+					if($offer->auction->winner->id != $this->id){
+						$requested_offers[$i++] = $offer;
+					}
+				}
+		}
+		return $requested_offers;
+	}
+
 
 	public function formatedCreatedAt () {
 		return date('d/m/Y H:i',strtotime($this->created_at));

@@ -25,6 +25,30 @@ class OfferController extends Controller {
 		$user = Auth::user();
 		$offers = $user->offers;
 
+		if (Request::has('filter')) {
+
+			if (Request::input('filter') == '0'){ //solo subastas activas
+
+				$offers = $user->activeOffers();
+
+			} elseif (Request::input('filter') == '1') { //solo subastas finalizadas
+
+				$offers =  $user->finalizedOffers();
+
+			} elseif (Request::input('filter') == '2') { //solo subastas ganadas
+
+				$offers =  $user->winnerOffers();
+
+			} elseif (Request::input('filter') == '3') { //solo subastas perdidas
+
+				$offers =  $user->lostOffers();
+
+			}
+
+		}
+
+
+
 		return view('offers.index')->with('offers',$offers);
 	}
 
