@@ -48,7 +48,7 @@
       </p>
       <p style="text-align: center">
         Total de subastas registradas entre las fechas especificadas: <b>{{count($auctions)}}</b>
-      </p>      
+      </p>
     </div>
   </div>
 @endif
@@ -69,7 +69,7 @@
   <tbody>
     @foreach($auctions as $auction)
 
-    <tr>
+    <tr @if($auction->finished()) class="danger" @endif>
       {{-- <td>{{$auction->id}}</td> --}}
       {{-- <td>{{$auction->owner_id}}</td> --}}
       <td>{{$auction->title}}</td>

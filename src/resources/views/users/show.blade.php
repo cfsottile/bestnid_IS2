@@ -24,14 +24,14 @@
               <li class="list-group-item">Datos de tarjeta de credito: {{ $user->cc_data }}</li>
             </ul>
             @if( (Auth::user()->is_admin == 0) || (Auth::user()->id == $user->id) )
-              {{-- <a href="{{ route('users.edit') }}" class="btn btn-primary btn-sm pull-right">Editar mis datos</a> --}}
+              <a href="{{ route('users.edit') }}" class="btn btn-primary btn-sm pull-right">Editar mis datos</a>
               <form method="GET" action="{{ route('users.delete') }}" style="display:inline">
 								<button class="btn btn-sm btn-danger pull-right" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar cuenta de usuario" data-message="Estás seguro? Será permanente">
 									Eliminar cuenta
 								</button>
 							</form>
             @else
-               {{-- <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-primary btn-sm pull-right">Editar datos de usuario</a> --}}
+               <a href="{{ route('admin.users.edit' , ['id' => $user->id]) }}" class="btn btn-primary btn-sm pull-right">Editar datos de usuario</a>
               <form method="GET" action="{{ route('admin.users.delete' , ['id' => $user->id]) }}" style="display:inline">
 								<button class="btn btn-sm btn-danger pull-right" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar cuenta de usuario" data-message="Estás seguro? Será permanente">
 									Eliminar cuenta
@@ -45,7 +45,7 @@
             <ul class="list-group">
               <li class="list-group-item"><a href="{{ route('user.myauctions') }}">Subastas iniciadas</a> <span class="badge">{{count($user->auctions)}}</span> </li>
               <li class="list-group-item"><a href="{{ route('offers.index') }}">Subastas ofertadas</a> <span class="badge">{{count($user->offers)}}</span> </li>
-              <li class="list-group-item">Subastas ganadas <span class="badge">0</span> </li>
+              <li class="list-group-item">Subastas ganadas <span class="badge">{{count($user->wonAuctions())}}</span> </li>
               <li class="list-group-item">Comentarios hechos <span class="badge">{{count($user->comments)}}</span> </li>
             </ul>
         </div>

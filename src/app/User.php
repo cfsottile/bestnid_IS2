@@ -69,6 +69,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return $this->hasMany('App\Models\Auction', 'owner_id');
 
 	}
+	
+
+	public function wonAuctions() {
+
+		$wonAuctions = [];
+		$i = 0;
+		$auctions = $this->auctions;
+
+		foreach ($auctions as $auction)
+		{
+			if (isset($auction->winner)){
+				if($auction->winner->id == $this->id){
+					$wonAuctions[$i] = $auction;
+					$i++;
+				}
+			}
+		}
+		return $wonAuctions;
+	}
+
 
 	public function comments(){
 
