@@ -261,7 +261,7 @@ class UsersTableSeeder extends Seeder {
 				'description' => 'Armo placards y quiero probar suerte subastando uno.',
 				'picture' => 'auction_15.jpg',
 				'owner_id' => 4,
-				'category_id' => 5
+				'category_id' => 4
 			]);
 
 			Auction::create([
