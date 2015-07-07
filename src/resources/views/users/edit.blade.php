@@ -86,7 +86,11 @@
 
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
+									@if (Auth::user()->is_admin != 0)
 									<a href="{{ route('admin.users.show' , ['id' => $user->id]) }}" class="btn btn-default">
+									@else
+									<a href="{{ route('users.show') }}" class="btn btn-default">
+									@endif
 										Cancelar
 									</a>
 									<button type="submit" class="btn btn-primary">
