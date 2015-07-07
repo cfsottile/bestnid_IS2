@@ -32,11 +32,11 @@
 		<tbody>
 			@foreach($offers as $of)
 			{{-- Para subastas en curso --}}
-
 					<tr
 						@if($of->auction->finished())
-							@if(isset($of->auction->winner))
-								@if($of->auction->winner->id == Auth::user()->id)
+							@if(isset($of->auction->winner_id))
+
+								@if($of->auction->winner_id == Auth::user()->id)
 									class="success" title="Subasta finalizada; eres el ganador! :D"
 								@else
 									class="danger" title="Subasta finalizada; esta vez no te eligieron :("

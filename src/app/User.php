@@ -136,8 +136,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$i = 0;
 
 		foreach($offers as $offer) {
-				if((!$offer->auction->finished()) && (isset($offer->auction->winner))){
-					if($offer->auction->winner->id == $this->id){
+				//dd( (!$offer->auction->finished()), (isset($offer->auction->winner_id)), $offer->auction );
+				if( ($offer->auction->finished()) && (isset($offer->auction->winner_id)) ){
+					if($offer->auction->winner_id == $this->id){
 						$requested_offers[$i++] = $offer;
 					}
 				}
@@ -152,8 +153,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$i = 0;
 
 		foreach($offers as $offer) {
-				if((!$offer->auction->finished()) && (isset($offer->auction->winner))){
-					if($offer->auction->winner->id != $this->id){
+				if(($offer->auction->finished()) && (isset($offer->auction->winner_id))){
+					if($offer->auction->winner_id != $this->id){
 						$requested_offers[$i++] = $offer;
 					}
 				}

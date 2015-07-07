@@ -41,7 +41,7 @@
   <div class="panel panel-info">
     <div class="panel-body">
       <p style="text-align: center"><b>Resultados de la busqueda:</b>
-        Sbuastas registradas entre las fechas
+        Subastas registradas entre las fechas
           <b>{{date('d/m/Y',strtotime($report_data['date_start']))}}</b>
           y
           <b>{{date('d/m/Y',strtotime($report_data['date_end']))}}</b>

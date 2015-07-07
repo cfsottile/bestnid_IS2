@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Offer;
 use App\Models\Auction;
 use App\Models\Category;
+use App\Models\Comment;
 use App\User;
 
 class DatabaseSeeder extends Seeder {
@@ -21,7 +22,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->call('CategoriesTableSeeder');
 		$this->call('AuctionsTableSeeder');
+		$this->call('CommentsTableSeeder');
 		$this->call('OffersTableSeeder');
+
 
 		// $this->call('UserTableSeeder');
 
@@ -115,7 +118,8 @@ class UsersTableSeeder extends Seeder {
 	    DB::table('auctions')->delete();
 
 			Auction::create([
-				'created_at' => '2015-06-12 10:10:10',
+				// 'created_at' => '2015-06-12 10:10:10',
+				'created_at' => '2015-06-28 10:10:10',
 				// 'end_date' => '2015-06-03 20:51:57',
 				// 'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'end_date' => Date('Y/m/d', strtotime("+5 days")),
@@ -285,8 +289,9 @@ class UsersTableSeeder extends Seeder {
 				// 'end_date' => Date('Y/m/d', strtotime("+xx days")),
 				'description' => 'Genial sofá, imperdible',
 				'picture' => 'auction_18.jpg',
-				'owner_id' => 1,
-				'category_id' => 4
+				'owner_id' => 4,
+				'category_id' => 4,
+				'winner_id'=> 2
 			]);
 	}
 }
@@ -407,10 +412,39 @@ class UsersTableSeeder extends Seeder {
 			$offer = Offer::create([
 				'amount' => 300,
 				'reason' => 'El perro me destrozó mi sillón, necesito uno nuevo',
-				'owner_id' => 5,
+				'owner_id' => 1,
 				'auction_id' => 18
 				]);
 			Auction::find(18)->offers()->save($offer);
 
 		}
 	}
+
+class CommentsTableSeeder extends Seeder{
+
+	public function run(){
+
+		Comment::create([
+			'content' => 'Es bebible?',
+			'response' => 'Si, se puede tomar. Ya la probe.',
+			'response_date' => Date('Y/m/d', strtotime("+3 days")),
+			'owner_id' => 4,
+			'auction_id' => 1
+			]);
+
+		Comment::create([
+			'content' => 'Viene con un sobre de jugo? nnnn',
+			'owner_id' => 3,
+			'auction_id' => 1
+			]);
+
+		Comment::create([
+			'content' => 'Tiene gas?',
+			'owner_id' => 5,
+			'auction_id' => 1
+			]);
+
+	}
+
+}
+
