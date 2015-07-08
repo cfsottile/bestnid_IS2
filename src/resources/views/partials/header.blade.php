@@ -33,7 +33,7 @@
       </ul>
       <form class="navbar-form navbar-left" role="search" method="GET" action="{{ route('auctions.index')}}">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Buscar..." name="query">
+          <input type="text" class="form-control" style="width:400px;margin-left:190" placeholder="Buscar..." name="query">
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></button>
       </form>
@@ -48,11 +48,14 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hola, {{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+                <li><a href="{{ route('users.show') }}">Ver mis datos</a></li>
+                <li><a href="{{ route('user.myauctions') }}"> <span class="glyphicon glyphicon-menu-right"></span> Ver mis subastas</a></li>
+                <li><a href="{{ route('offers.index') }}"> <span class="glyphicon glyphicon-menu-right"></span> Ver mis ofertas</a></li>
+                <li><a href="{{ route('users.edit') }}"> <span class="glyphicon glyphicon-menu-right"></span> Editar mi cuenta</a></li>
                 @if (Auth::user()->is_admin == 1)
+                <li class="divider"></li>
                 <li><a href="{{ route('admin.index') }}">Panel de Administración</a></li>
                 @endif
-                <li><a href="{{ route('users.edit') }}">Editar mi cuenta</a></li>
-                <li><a href="{{ route('users.show') }}">Ver mis datos</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ route('help') }}">Ayuda</a></li>
                 <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>

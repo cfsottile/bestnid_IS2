@@ -236,6 +236,7 @@ Route::get('comment/update/{id}',[
 
 Route::get('admin/index', [
 						'as' => 'admin.index',
+						'middleware' => ['auth', 'isAdmin'],
 						function(){
 							return view('administration.index');
 						}
