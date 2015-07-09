@@ -26,7 +26,7 @@
             @if( (Auth::user()->is_admin == 0) || (Auth::user()->id == $user->id) )
               <div class="container-fluid pull-right">
                 <a href="{{ route('users.edit') }}" class="btn btn-primary btn-sm">Editar mis datos</a>
-                
+
                 <form method="GET" action="{{ route('users.delete') }}" style="display:inline">
   								<button class="btn btn-sm btn-danger pull-right" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Eliminar cuenta de usuario" data-message="Estás seguro? Será permanente">
   									Eliminar cuenta
@@ -45,6 +45,7 @@
             @endif
             <br>
             <br>
+            @if($user->id == Auth::user()->id)
             <h3 class='panel-title'>Datos de subastas</h3>
             <br>
             <ul class="list-group">
@@ -53,6 +54,7 @@
               <li class="list-group-item"><a href="{{ route('offers.index', ['filter' => '2']) }}">Subastas ganadas</a> <span class="badge">{{count($user->winnerOffers())}}</span> </li>
               <li class="list-group-item">Comentarios hechos <span class="badge">{{count($user->comments)}}</span> </li>
             </ul>
+            @endif
         </div>
       </div>
     </div>

@@ -16,13 +16,13 @@
       <div class="row">
         {{-- Auction INFO --}}
         <div class="col-lg-6">
-          @if(!(Auth::guest()))
-            @if(Auth::user()->is_admin == 1)
+          {{-- @if(!(Auth::guest()))
+            @if(Auth::user()->isAdmin())
               <p>
                 <b> Subastador </b> <br> {{ $auction->owner->name.' '.$auction->owner->last_name }}
               </p>
             @endif
-          @endif
+          @endif --}}
             <p>
                 <b>Descripción </b> <br> {{ $auction->description }}
             </p>
@@ -108,7 +108,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12">
-                  <a> {{$comment->response}} </a>
+                  <span> {{$comment->response}} </span>
                   <h6>  {{$comment->formatedResponseDate()}} </h6>
                 </div>
                 {{-- PODRIA SERVIR SI QUEREMOS ELIMINAR SOLO LA RESPUESTA, O HACER ALGO CON LA RESPUESTA --}}
