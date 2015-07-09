@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Validator;
+use Carbon;
 
 class Auction extends Model {
 
@@ -145,6 +146,13 @@ class Auction extends Model {
 
 	public function finished () {
 		return strtotime(Date('Y/m/d')) >= strtotime(substr($this->end_date, 0, 10));
+	}
+
+	public function terminate(){
+
+		$this->end_date = Carbon\Carbon::now();
+		$this->save();
+
 	}
 
 

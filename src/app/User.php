@@ -234,4 +234,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			$message->to($this->email, $this->name." ".$this->last_name)->subject('¡Elegiste a un ganador!');
 		});
 	}
+
+	public function isOwnerOfAuction($auction) {
+		return $this->id == $auction->owner->id;
+	}
 }

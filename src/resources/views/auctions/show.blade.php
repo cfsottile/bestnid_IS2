@@ -49,9 +49,8 @@
       </div>
 
       <br>
-      {{-- Comentarios --}}
 
-      <!-- Button trigger modal -->
+
       @if(!$auction->finished())
           @if(Auth::guest())
           <a type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="{{route('login')}}">
@@ -69,10 +68,19 @@
               Ofertar
             </a>
             @endif
+            {{--TERMINATE del Auction, solo para DEVELOPMENT--}}
+            @if((Auth::user()->isAdmin()) || (Auth::user()->isOwnerOfAuction($auction)))
+              <a class="btn btn-sm btn-danger" href="{{route('admin.auctions.terminate', ['id'=> $auction->id])}}">
+                ( <span class="glyphicon glyphicon-wrench"></span> ) TERMINATE
+              </a>
+            @endif
+            {{--/TERMINATE--}}
           @endif
           <br>
           <br>
       @endif
+
+      {{-- Comentarios --}}
 
       @foreach($auction->comments as $comment)
 
@@ -172,7 +180,7 @@
                   {{-- <td>{{$offer->owner->name}} {{$offer->owner->last_name}}</td> --}}
                   <td>{{$offer->reason}}</td>
                   {{-- <td> X </td> --}}
-                  @if((substr($auction->end_date, 0, 10) < Date("Y-m-d")) && (Auth::user()->id == $auction->owner->id))
+                  @if(($auction->finished()) && (Auth::user()->id == $auction->owner->id))
                       @if(!$auction->hasWinner())
                           <td>
                               <form class="" action="{{ route('auctions.postWinner', $auction->id) }}" method="post">

@@ -328,4 +328,14 @@ class AuctionsController extends Controller {
 		return view('auctions.exito');
 	}
 
+	public function terminate() {
+
+		$auction = Auction::find(Request::input('id'));
+
+		$auction->terminate();
+
+		return redirect()->back()->with('success', 'Subasta finalizada');
+
+	}
+
 }

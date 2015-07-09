@@ -310,6 +310,12 @@ Route::get('admin/auctions/delete/{id}', [
 					 'uses' => 'AuctionsController@adminDestroy'
 				   ]) ->where('id', '[0-9]+');
 
+Route::get('admin/auctions/terminate', [
+					 'middleware' => ['auth','isAdmin'],
+					 'as' => 'admin.auctions.terminate',
+					 'uses' => 'AuctionsController@terminate'
+					]);
+
 //----------------Administracion de Categorias---------------------
 
 Route::get('admin/categories/index', [
