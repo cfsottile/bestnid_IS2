@@ -122,7 +122,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-06-28 10:10:10',
 				// 'end_date' => '2015-06-03 20:51:57',
 				// 'end_date' => Date('Y/m/d', strtotime("+15 days")),
-				'end_date' => Date('Y/m/d', strtotime("+5 days")),
+				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'title' => 'Botella de agua 1L',
 				'description' => 'Botella de agua en no muy buen estado; se cayó del camión repartidor.',
 				'picture' => 'auction_1.jpg',
@@ -132,7 +132,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'AK-47',
-				'created_at' => '2015-06-10 10:10:10',
+				'created_at' => '2015-06-30 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+2 days")),
 				'description' => 'Prefiero no hacer comentarios al respecto.',
 				'picture' => 'auction_2.jpg',
@@ -152,7 +152,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cargador para macbook',
-				'created_at' => '2015-06-17 10:10:10',
+				'created_at' => '2015-06-27 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+15 days")),
 				'description' => 'Buen estado.',
 				'picture' => 'auction_4.jpg',
@@ -162,7 +162,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Casco',
-				'created_at' => '2015-06-03 10:10:10',
+				'created_at' => '2015-06-30 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+10 days")),
 				'description' => 'Casco de mi abuelo. Sólo coleccionistas.',
 				'picture' => 'auction_5.jpg',
@@ -172,7 +172,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cartuchera Faber-Castell',
-				'created_at' => '2015-06-20 10:10:10',
+				'created_at' => '2015-07-02 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+18 days")),
 				'description' => 'Feroz cartuchera.',
 				'picture' => 'auction_6.jpg',
@@ -182,7 +182,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Neumatico Pirelli P400 185/65/14',
-				'created_at' => '2015-06-15 10:10:10',
+				'created_at' => '2015-07-05 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+10 days")),
 				'description' => 'Rueda 0 KM!!!',
 				'picture' => 'auction_7.jpg',
@@ -192,7 +192,7 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'DeLorean Volver al Futuro II (Sun Star S2710)',
-				'created_at' => '2015-06-02 10:10:10',
+				'created_at' => '2015-07-03 10:10:10',
 				'end_date' => Date('Y/m/d', strtotime("+2 days")),
 				'description' => 'Solo se puede teletransportar al presente',
 				'picture' => 'auction_8.jpg',
@@ -202,8 +202,8 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Cocina Industrial Morelli 60cm Horno Visor',
-				'created_at' => '2015-06-20 10:10:10',
-				'end_date' => Date('Y/m/d', strtotime("+19 days")),
+				'created_at' => '2015-06-29 10:10:10',
+				'end_date' => Date('Y/m/d', strtotime("+9 days")),
 				'description' => 'Medida: 60 x 62 x 82 cm. Tiene frente, mesaday laterales en acero inoxidables esmerilado.',
 				'picture' => 'auction_9.jpg',
 				'owner_id' => 4,
