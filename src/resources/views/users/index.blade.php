@@ -54,7 +54,7 @@
 <table class="table table-striped table-hover ">
 	<thead>
 		<tr>
-			<th>#ID</th>
+			{{-- <th>#ID</th> --}}
 			<th>Nombre y Apellido</th>
 			<th>Email</th>
 			<th>Registro</th>
@@ -64,9 +64,9 @@
 	</thead>
 	<tbody>
 		@foreach($users as $user)
-		
+
 			<tr>
-				<td>{{$user->id}}</td>
+				{{-- <td>{{$user->id}}</td> --}}
 				<td>{{$user->name}} {{$user->last_name}}</td>
 				<td>{{$user->email}}</td>
 				<td>{{$user->formatedCreatedAt()}}</td>

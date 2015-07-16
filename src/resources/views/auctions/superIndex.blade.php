@@ -69,7 +69,7 @@
   <tbody>
     @foreach($auctions as $auction)
 
-    <tr @if($auction->finished()) class="danger" @endif>
+    <tr @if($auction->finished()) class="danger" title="Subasta finalizada" @endif>
       {{-- <td>{{$auction->id}}</td> --}}
       {{-- <td>{{$auction->owner_id}}</td> --}}
       <td>{{$auction->title}}</td>
