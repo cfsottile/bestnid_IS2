@@ -266,20 +266,23 @@ class UsersTableSeeder extends Seeder {
 
 			Auction::create([
 				'title' => 'Dressoir',
-				'end_date' => Date('Y/m/d', strtotime("+26 days")),
+				'created_at' => '2015-06-12 10:10:10',
+				'end_date' => '2015-06-29 10:10:10',
 				'description' => 'Lo encontré en la calle, está en muy buen estado.',
 				'picture' => 'auction_16.jpg',
-				'owner_id' => 1,
+				'owner_id' => 4,
 				'category_id' => 4
 			]);
 
 			Auction::create([
 				'title' => 'Mesa de cedro',
-				'end_date' => Date('Y/m/d', strtotime("+27 days")),
+				'created_at' => '2015-06-10 10:10:10',
+				'end_date' => '2015-06-27 10:10:10',
 				'description' => 'Esta mesa de cedro fue fabricada en el año 1754, siempre fue cuidada en extremo.',
 				'picture' => 'auction_17.jpg',
 				'owner_id' => 4,
-				'category_id' => 4
+				'category_id' => 4,
+				'winner_id'=> 1
 			]);
 
 			Auction::create([
@@ -291,7 +294,7 @@ class UsersTableSeeder extends Seeder {
 				'picture' => 'auction_18.jpg',
 				'owner_id' => 4,
 				'category_id' => 4,
-				'winner_id'=> 2
+				'winner_id'=> 3
 			]);
 	}
 }
@@ -377,8 +380,49 @@ class UsersTableSeeder extends Seeder {
 				]);
 			Auction::find(2)->offers()->save($offer);
 
+			//////
+			$offer = Offer::create([
+				'amount' => 205.3,
+				'reason' => 'Para decorar mi arbolito de navidad',
+				'owner_id' => 3,
+				'auction_id' => 14
+				]);
+			Auction::find(14)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 4000.75,
+				'reason' => 'Mi celu anterior se ahogo en la sanja',
+				'owner_id' => 3,
+				'auction_id' => 3
+				]);
+			Auction::find(3)->offers()->save($offer);
+
 			$offer = Offer::create([
 				'amount' => 432,
+				'reason' => 'Mi ropa esta guardada en bolsas',
+				'owner_id' => 1,
+				'auction_id' => 16
+				]);
+			Auction::find(16)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 400,
+				'reason' => 'Me gusta y la quiero en mi pieza',
+				'owner_id' => 2,
+				'auction_id' => 16
+				]);
+			Auction::find(16)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 5002,
+				'reason' => 'Colecciono muebles bajitos y antiguos',
+				'owner_id' => 3,
+				'auction_id' => 16
+				]);
+			Auction::find(16)->offers()->save($offer);
+
+			$offer = Offer::create([
+				'amount' => 500,
 				'reason' => 'Me serviria bien para estudiar en el patio',
 				'owner_id' => 1,
 				'auction_id' => 17
@@ -386,9 +430,17 @@ class UsersTableSeeder extends Seeder {
 			Auction::find(17)->offers()->save($offer);
 
 			$offer = Offer::create([
+				'amount' => 114,
+				'reason' => 'Quedaria muy bonita para tomar el te',
+				'owner_id' => 3,
+				'auction_id' => 17
+				]);
+			Auction::find(17)->offers()->save($offer);
+
+			$offer = Offer::create([
 				'amount' => 432,
 				'reason' => 'Necesito donde comer y apoyar los platos',
-				'owner_id' => 3,
+				'owner_id' => 2,
 				'auction_id' => 17
 				]);
 			Auction::find(17)->offers()->save($offer);

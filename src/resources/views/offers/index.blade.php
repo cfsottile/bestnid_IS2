@@ -73,38 +73,6 @@
 	<br>
 	<br>
 
-		{{-- Para subastas finalizadas --}}
-
-	{{-- <div class="well">
-		<a id="toggler" data-toggle="collapse" class="active btn btn-primary btn-sm" data-target="#ofertas">
-			Ofertas finalizadas
-		</a>
-		<table class="table table-striped table-hover collapse" id="ofertas">
-			<thead>
-				<tr>
-					<th>Nombre de subasta</th>
-					<th>Motivo</th>
-					<th>Monto</th>
-					<th>Fecha y hora de oferta</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($offers as $of)
-					@if($of->auction->finished())
-						<tr>
-							<td>{{$of->auction->title}}</td>
-							<td>{{$of->reason}}</td>
-							<td>{{$of->amount}}</td>
-							<td>{{$of->formatedCreationDate()}}</td>
-						</tr>
-					@endif
-				@endforeach
-			</tbody>
-		</table>
-	</div> --}}
-
-
-
 	@if(count($offers)>0)
 
 	<div class="modal fade" id="offerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
