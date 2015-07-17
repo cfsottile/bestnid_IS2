@@ -274,13 +274,9 @@ class UserController extends Controller {
 	public function makeCommon($id) {
 
 		$user = User::find($id);
-//		if($user->isAdmin()){
 		$user->makeCommon();
 		return redirect()->route('auctions.index')
-			->with('success', 'Ya es no administrador');
-//		}
-//			return redirect()->back()->with('error', 'Usuario '.$user->email.' ya es un usuario normal');
-
+			->with('success', 'Ya no eres administrador');
 	}
 
 	public function persuade () {

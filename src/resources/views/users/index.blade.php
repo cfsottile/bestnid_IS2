@@ -83,7 +83,11 @@
 						<a href="{{ route('admin.users.makeAdmin' , ['id' => $user->id]) }}" class="btn btn-info btn-xs">Dar Permisos de Administrador</a>
 					@else
 						@if ($user->id == Auth::user()->id)
-							<a href="{{ route('admin.users.makeCommon' , ['id' => $user->id]) }}" class="btn btn-info btn-xs">Deja de ser Administrador</a>
+						<form method="GET" action="{{ route('admin.users.makeCommon' , ['id' => $user->id]) }}" style="display:inline">
+								<button class="btn btn-info btn-xs" type="button" data-toggle="modal" data-target="#confirm" data-title="Quitar permisos de administrador" data-message="Estás seguro? Será permanente">
+									Dejar de ser Administrador
+								</button>
+						</form>
 						@endif
 					@endif
 				</td>
@@ -92,6 +96,7 @@
 	</tbody>
 </table>
 
+@include('partials.confirmation')
 @include('partials.delete_confirmation')
 
 @endsection
