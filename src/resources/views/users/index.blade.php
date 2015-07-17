@@ -81,6 +81,10 @@
 					</form>
 					@if ($user->is_admin == 0)
 						<a href="{{ route('admin.users.makeAdmin' , ['id' => $user->id]) }}" class="btn btn-info btn-xs">Dar Permisos de Administrador</a>
+					@else
+						@if ($user->id == Auth::user()->id)
+							<a href="{{ route('admin.users.makeCommon' , ['id' => $user->id]) }}" class="btn btn-info btn-xs">Deja de ser Administrador</a>
+						@endif
 					@endif
 				</td>
 			</tr>

@@ -290,6 +290,12 @@ Route::get('admin/users/makeAdmin/{id}', [
 						'uses' => 'UserController@makeAdmin'
 					 ])->where('id', '[0-9]+');
 
+Route::get('admin/users/makeCommon/{id}', [
+						'middleware' => ['auth','isAdmin'],
+						'as' => 'admin.users.makeCommon',
+						'uses' => 'UserController@makeCommon'
+					 ])->where('id', '[0-9]+');
+
 //---------------------Administracion de subastas------------------
 
 Route::get('admin/auctions/adminindex',[

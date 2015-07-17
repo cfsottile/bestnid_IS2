@@ -197,6 +197,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$this->save();
 	}
 
+	public function makeCommon() {
+		$this->is_admin = 0;
+		$this->save();
+	}	
+
 	public function setWinner () {
 
 	}
