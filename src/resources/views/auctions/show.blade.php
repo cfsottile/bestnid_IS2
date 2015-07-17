@@ -68,13 +68,13 @@
               Ofertar
             </a>
             @endif
-            {{--TERMINATE del Auction, solo para DEVELOPMENT--}}
+            {{--TERMINATE del Auction, solo para DEVELOPMENT
             @if((Auth::user()->isAdmin()) || (Auth::user()->isOwnerOfAuction($auction)))
               <a class="btn btn-sm btn-danger" href="{{route('admin.auctions.terminate', ['id'=> $auction->id])}}">
                 ( <span class="glyphicon glyphicon-wrench"></span> ) TERMINATE
               </a>
             @endif
-            {{--/TERMINATE--}}
+            /TERMINATE--}}
           @endif
           <br>
           <br>
