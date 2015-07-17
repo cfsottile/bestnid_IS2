@@ -27,7 +27,7 @@
         <td>{{$category->name}}</td>
         <td>{{count($category->auctions)}}</td>
         <td>
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editCategoryModal" data-categoryId="{{$category->id}}">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editCategoryModal" data-categoryId="{{$category->id}}" data-categoryName="{{$category->name}}">
             Editar
           </button>
            <form method="GET" action="{{ route('admin.categories.delete' , ['id' => $category->id]) }}" style="display:inline">
@@ -61,7 +61,7 @@
           <form role="form" method="POST" action="{{ route('admin.categories.update') }}">
             <div class="form-group">
               <label for="name" class="control-label">Nombre de categoria <small>(entre 2 y 50 carácteres)</small></label>
-              <input type='text' name ='name' class="form-control">
+              <input type='text' name='name' class="form-control" id="categoryname">
             </div>
             <div class="form-group">
   						<input type="hidden" class="form-control" name="id" id="categoryid">
@@ -81,11 +81,12 @@
       $('#editCategoryModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var category = button.data('categoryid') // Extract info from data-* attributes
-
+        var catname = button.data('categoryname')
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
         $('#categoryid').val(category)
+        $('#categoryname').val(catname)
 
       })
     })
