@@ -8,6 +8,8 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Mail;
+use App\Models\Auction;
+
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -200,7 +202,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function makeCommon() {
 		$this->is_admin = 0;
 		$this->save();
-	}	
+	}
 
 	public function setWinner () {
 
@@ -242,5 +244,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isOwnerOfAuction($auction) {
 		return $this->id == $auction->owner->id;
+	}
+
+	public function notifyHasNewComment ($auction, $commentContent) {
+		$args = [
+			'commentContent' => $commentContent,
+			'auction' => $auction
+		];
+
+		Mail::send('emails.hasNewComment', $args, function($message) {
+			$message->to($this->email, $this->name." ".$this->last_name)->subject('Hicieron un comentario en tu subasta');
+		});
+	}
+
+	public function notifyCommentResponded ($comment) {
+		$args = [
+			'comment' => $comment,
+			'auction' => Auction::find($comment->auction_id),
+			'user' => User::find($comment->owner_id)
+		];
+
+		Mail::send('emails.commentResponded', $args, function($message) {
+			$message->to($this->email, $this->name." ".$this->last_name)->subject('Contestaron a un comentario tuyo');
+		});
 	}
 }

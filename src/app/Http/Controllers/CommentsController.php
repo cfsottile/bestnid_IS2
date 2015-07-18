@@ -60,6 +60,8 @@ class CommentsController extends Controller {
 		}
 
 		Comment::create($data);
+		$auction = Auction::find($data['auction_id']);
+		$auction->owner->notifyHasNewComment($auction, $data['content']);
 		return redirect()->back()->with('success', 'Comentario hecho!');
 	}
 
@@ -133,6 +135,7 @@ class CommentsController extends Controller {
 		$comment = Comment::find($data['comment_id']);
 		$comment->respond($data);
 
+		User::find($comment->owner_id)->notifyCommentResponded($comment);
 		return redirect()->back()->with('success', 'Comentario respondido!');
 
 
