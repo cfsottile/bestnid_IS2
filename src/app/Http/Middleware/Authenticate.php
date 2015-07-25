@@ -40,8 +40,12 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('login')->with('warning', '¡Tenés que estar logueado para hacer eso!');
 			}
+		}
+
+		if ($request->RequestUri == '/register'){
+			return redirect('auctions');
 		}
 
 		return $next($request);

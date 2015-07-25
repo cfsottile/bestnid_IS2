@@ -49,7 +49,7 @@ trait ResetsPasswords {
 		switch ($response)
 		{
 			case PasswordBroker::RESET_LINK_SENT:
-				return redirect()->back()->with('status', trans($response));
+				return redirect('login')->with('success', trans($response));
 
 			case PasswordBroker::INVALID_USER:
 				return redirect()->back()->withErrors(['email' => trans($response)]);
@@ -63,7 +63,7 @@ trait ResetsPasswords {
 	 */
 	protected function getEmailSubject()
 	{
-		return isset($this->subject) ? $this->subject : 'Your Password Reset Link';
+		return isset($this->subject) ? $this->subject : 'Restablecimiento de contraseña';
 	}
 
 	/**

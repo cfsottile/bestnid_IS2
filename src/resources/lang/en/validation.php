@@ -90,6 +90,101 @@ return [
 		'attribute-name' => [
 			'rule-name' => 'custom-message',
 		],
+		'name' => [
+			'min' => 'El nombre debe tener al menos :min carácteres',
+			'required' => 'El nombre es requerido',
+			'max' => 'El nombre debe tener hasta :max carácteres',
+			'regex' => 'El nombre no tiene un formato válido',
+		],
+		'last_name' => [
+			'min' => 'El apellido debe tener al menos :min carácteres',
+			'required' => 'El apellido es requerido',
+			'max' => 'El apellido debe tener hasta :max carácteres',
+			'regex' => 'El apellido no tiene un formato válido',
+		],
+		'email' => [
+			'required' => 'La dirección email es requerida',
+			'max' => 'La dirección email debe tener hasta :max carácteres',
+			'email' => 'La dirección email debe ser una dirección válida.',
+			'unique' => 'La dirección email ya ha sido usada'
+		],
+		'password' => [
+			'required' => 'La contraseña es requerida',
+			'max' => 'La contraseña debe tener hasta :max carácteres',
+			'min' => 'La contraseña debe tener al menos :min carácteres',
+			'confirmed' => 'Es necesario que las dos contraseñas coincidan',
+		],
+		'dni' => [
+			'required' => 'El DNI es requerido',
+			'regex' => 'El DNI tiene no tiene un formato válido',
+			'min' => 'El DNI debe tener al menos :min números',
+			'max' => 'El DNI debe tener hasta :max números',
+		],
+		'born_date' => [
+			'required' => 'La fecha de nacimiento es requerida',
+			'date' => 'No es un formato válido de fecha',
+		],
+		'phone' => [
+			'required' => 'El telefono es requerido',
+			'min' => 'El telefono debe tener al menos :min números',
+			'max' => 'El telefono debe tener hasta :max números',
+			'regex' => 'El teléfono no tiene un formato válido'
+		],
+		'cc_data' => [
+			'required' => 'La tarjeta es requerida',
+			'regex' => 'El número de tarjeta no tiene un formato válido',
+			'min' => 'El número de tarjeta debe tener 16 números',
+			'max' => 'El número de tarjeta debe tener 16 números'
+		],
+		'accept_terms' => [
+			'accepted' => 'Es necesario aceptar los términos y condiciones',
+		],
+
+		'title' => [
+			'required' => 'El título es requerido',
+			'max' => 'El título debe tener como máximo :max caracteres',
+			'min' => 'El título debe tener como mínimo :min caracteres',
+		],
+		'description' => [
+			'required' => 'La desripción es requerida',
+		],
+		'categoryName' => [
+			'required' => 'Debe ingresar alguna categoría',
+			'exists' => 'Hubo un problema con la categoría. Contacte a la administración.'
+		],
+		'durationInDays' => [
+			'required' => 'La duración de la subasta es requerida',
+			'between' => 'La duración debe ser de entre :min y :max días inclusive'
+		],
+		'image' => [
+			'required' => 'La imagen es requerida',
+			'image' => 'La imagen debe ser un archivo de tipo imagen',
+			'mimes' => 'Los tipos de archivos soportados son jpg, jpeg y png',
+			'max' => 'El tamaño de la imagen no puede ser superior a :max bytes'
+		],
+
+		'picture' => [
+			'required' => 'La foto es requerida',
+			'min:4' => 'El nombre de la imagen es inválido. Contacte a la administración.'
+		],
+		'owner_id' => [
+			'required' => 'Debe estar registrado para crear subastas',
+			'exists' => 'Hubo un error con su usuario. Contacte a la administración.',
+		],
+
+		'reason' => [
+			'required' => 'Debe escribir un motivo',
+			'min' => 'El motivo debe contener al menos 2 carácteres',
+			'max' => 'El motivo debe contener como máximo 1024 carácteres'
+		],
+
+		'amount' => [
+			'required' => 'Debe especificar el monto de su oferta',
+			'min' => 'El monto debe ser como minimo de $1',
+			'max' => 'El monto puede ser de hasta $99999999999999999999.99',
+			'numeric' => 'El monto debe estar escrito de forma numérica',
+		],
+
 	],
 
 	/*
